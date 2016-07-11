@@ -1,0 +1,539 @@
+
+
+@{ Register Src="controles/Menu.ascx" TagName="Menu" TagPrefix="uc1" }
+@{ Register Assembly="Anthem" Namespace="Anthem" TagPrefix="anthem" }
+@{ Register Src="controles/CloseSession.ascx" TagName="CloseSession" TagPrefix="uc2" }
+@{ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" }
+@{ Register Src="controles/Ctr_Usuario.ascx" TagName="Ctr_Usuario" TagPrefix="uc3" }
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>T3Web -
+        @{ Response.Write(_Str_TituloPantalla);}
+</title>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+
+    <script type="text/javascript">
+        function _Mtd_BloquearCambioDePestana(sender, args) 
+		{
+			if (sender.get_activeTabIndex() == 1 || sender.get_activeTabIndex() == 2) 
+			{
+				//sender.set_activeTabIndex(0);
+			}
+        }
+        
+        function _Mtd_Onload() {
+            document.getElementById('progressBackgroundFilter1').style.display = "block";
+            document.getElementById('progressBackgroundFilter2').style.display = "block";
+            //document.getElementById('progressBackgroundFilter3').style.display = "block";
+        }
+        
+        function _Mtd_MostrarTab(_Int_Tab)
+        {
+            var container = $find('_TC_Principal');
+            container.set_activeTabIndex(_Int_Tab);
+        }
+              
+    </script>
+
+    </head>
+<body topmargin="0" onload="_Mtd_Onload();" class="cuerpo">
+    <form id="form1" runat="server">
+    <center>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"
+            EnableScriptLocalization="False">
+        </asp:ScriptManager>
+        <asp:UpdatePanel ID="_UP_Menu" runat="server">
+            <ContentTemplate>
+                <table style="width: 780px;" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td align="center">
+                            <uc1:Menu ID="Menu1" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" bgcolor="#BBD4F8" style="border: 1px solid #3b619c">
+                            <table width="100%">
+                                <tr>
+                                    <td width="5">
+                                        <font face="Verdana" size="1"><strong><span>
+                                            <asp:ImageButton Style="cursor: default" ID="ImageButton1" runat="server" ImageUrl="image/separator.gif" />
+                                        </span></strong></font>
+                                    </td>
+                                    <td width="45">
+                                        <font face="Verdana" size="1"><strong><span>
+                                            <asp:UpdatePanel ID="_UP_MenuPrincipal" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:ImageButton ID="_Img_Nuevo" runat="server" ImageUrl="image/new.gif" />
+                                                    <asp:ImageButton ID="_Img_Guardar" runat="server" ImageUrl="image/save.gif" />
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                        </span></strong></font>
+                                    </td>
+                                    <td width="10%">
+                                        <font face="Verdana" size="1"><strong><span>
+                                            <asp:ImageButton Style="cursor: default" ID="ImageButton6" runat="server" ImageUrl="image/separator.gif" />
+                                        </span></strong></font>
+                                        <uc2:CloseSession ID="CloseSession2" runat="server" />
+                                    </td>
+                                    <td style="text-align: right">
+                                        <uc3:Ctr_Usuario ID="Ctr_Usuario1" runat="server" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" bgcolor="#666666">
+                            <asp:Label ID="_Lbl_TituloReporte" runat="server" Text="Título del reporte" Font-Bold="True"
+                                Font-Names="Verdana" Font-Size="8pt" ForeColor="White"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <asp:UpdatePanel ID="_UP_Principal" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <table class="textoRegular" width="780px">
+                    <tr>
+                        <td align="left" width="100px">
+                            <b>
+                                <asp:Label ID="_Lbl_Compania" runat="server" Text="Compañía :"></asp:Label>
+                            </b>
+                        </td>
+                        <td align="left">
+                            <asp:DropDownList ID="_Cb_Compania" runat="server" CssClass="textoRegular" Width="350px"
+                                AutoPostBack="True" Font-Size="7pt" 
+                                onselectedindexchanged="_Cb_Compania_SelectedIndexChanged">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                </table>               
+                <asp:Panel ID="_Pnl_Parametros" runat="server"></asp:Panel>
+                <asp:Button ID="_Btn_Consultar" runat="server" Text="Consultar" BorderStyle="Solid" CssClass="textoRegular" onclick="_Btn_Consultar_Click" />                
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <br>
+        <center>
+            <asp:UpdatePanel ID="_UP_TabContainer" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+            <asp:Panel ID="_Pnl_Consulta" runat="server" Visible="false">
+                <table width="780px">
+                <tr>
+                    <td>
+
+                        <asp:Panel ID="_Pnl_TabContainer" runat="server" Visible="true" Style="text-align: left">
+                            <ajaxToolkit:TabContainer ID="_TC_Principal" runat="server" ActiveTabIndex="0" 
+                                Width="100%" OnClientActiveTabChanged="_Mtd_BloquearCambioDePestana"
+                                CssClass="ajax__tab_yuitabview-theme" AutoPostBack="False" 
+                                onactivetabchanged="_TC_Principal_ActiveTabChanged">
+                                <ajaxToolkit:TabPanel ID="_TP_Consulta" runat="server" HeaderText="Consulta">
+                                    <HeaderTemplate>
+                                        Consulta
+                                    </HeaderTemplate>
+                                    <ContentTemplate>
+                                        <asp:UpdatePanel ID="_UP_Consulta" runat="server" UpdateMode="Conditional">
+                                            <ContentTemplate>
+                                                <table width="100%" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td>
+                                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                                                <tr valign="top">
+                                                                    <td style="text-align: left; font-family: verdana; font-size: 8pt;" valign="top">
+                                                                        <asp:GridView ID="_Dtg_Principal" runat="server" AllowPaging="True" CellPadding="4"
+                                                                            ForeColor="#333333" OnSelectedIndexChanged="_Dtg_Principal_SelectedIndexChanged"
+                                                                            Style="text-align: left" Width="100%" AutoGenerateColumns="False" OnRowDeleting="_Dtg_Principal_RowDeleting"
+                                                                            OnPageIndexChanging="_Dtg_Principal_PageIndexChanging">
+                                                                            <AlternatingRowStyle BackColor="White" />
+                                                                            <Columns>
+                                                                                <asp:TemplateField ShowHeader="False">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Select" Text="Seleccionar"><img src="logos/ver.gif" onclick="_Mtd_MostrarTab(1);" border='0'/></asp:LinkButton>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+                                                                                <asp:BoundField DataField="cvendedorname" HeaderText="Vendedor">
+                                                                                    <ItemStyle HorizontalAlign="Left" Font-Size="XX-Small" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="c_fecha_pedido" HeaderText="Fecha pedido">
+                                                                                    <ItemStyle HorizontalAlign="Center" Font-Size="XX-Small" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="cpedido" HeaderText="Pedido">
+                                                                                    <ItemStyle HorizontalAlign="Center" Font-Size="XX-Small" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="c_fecha_factura" HeaderText="Fecha factura">
+                                                                                    <ItemStyle HorizontalAlign="Center" Font-Size="XX-Small" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="cfactura" HeaderText="Factura">
+                                                                                    <ItemStyle HorizontalAlign="Center" Font-Size="XX-Small" />
+                                                                                </asp:BoundField>                                                                                
+                                                                                <asp:BoundField DataField="cliente" HeaderText="Cliente">
+                                                                                    <ItemStyle HorizontalAlign="Left" Font-Size="XX-Small" />
+                                                                                </asp:BoundField>                                                                                
+                                                                                <asp:BoundField DataField="c_zona" HeaderText="Cod. Zona">
+                                                                                    <ItemStyle HorizontalAlign="Center" Font-Size="XX-Small" 
+                                                                                        VerticalAlign="Middle" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="cname" HeaderText="Zona" >
+                                                                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="XX-Small" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="cempaques" HeaderText="Cajas Ped." >
+                                                                                    <ItemStyle HorizontalAlign="Center" Font-Size="XX-Small" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="cunidades" HeaderText="Unid. Ped.">
+                                                                                    <ItemStyle HorizontalAlign="Center" Font-Size="XX-Small" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="c_montotot_si" HeaderText="Monto SI Ped.">
+                                                                                    <ItemStyle HorizontalAlign="Center" Font-Size="XX-Small" 
+                                                                                        VerticalAlign="Middle" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="cfpago" HeaderText="F. Pago" >
+                                                                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="XX-Small" />
+                                                                                </asp:BoundField>
+                                                                                <asp:ImageField DataImageUrlField="cstatus" HeaderText="Estatus">
+                                                                                    <ItemStyle HorizontalAlign="Center" />
+                                                                                </asp:ImageField>
+                                                                            </Columns>
+                                                                            <EditRowStyle BackColor="#2461BF" />
+                                                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                                            <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" Font-Names="Verdana"
+                                                                                Font-Size="7pt" ForeColor="Black" />
+                                                                            <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" ForeColor="White"
+                                                                                HorizontalAlign="Center" />
+                                                                            <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                                        </asp:GridView>
+                                                                    </td>
+                                                                </tr>                                                                
+                                                            </table>
+                                                        </td>
+                                                    </tr>                                                    
+                                                </table>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>                                        
+                                    </ContentTemplate>
+                                </ajaxToolkit:TabPanel>                                
+                                <ajaxToolkit:TabPanel ID="_TP_Detalle" runat="server" HeaderText="Detalle">
+                                    <HeaderTemplate>
+                                        Detalle
+                                    </HeaderTemplate>
+                                    <ContentTemplate>
+                                        <asp:UpdatePanel ID="_UP_Detalle" runat="server" UpdateMode="Conditional">
+                                            <ContentTemplate>
+                                                <table width="100%" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td>
+                                                            <table class="textoRegular" cellpadding="5" width="100%">
+                                                            <tr>
+                                                                <td><b>Fecha pedido :</b><br>
+                                                                    <asp:TextBox Enabled="False" 
+                                                                        ID="_Txt_DetalleFechaPedido" runat="server" Width="100px" 
+                                                                        CssClass="textoRegular" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox></td>
+                                                                <td><b>Pedido :</b><br>
+                                                                    <asp:TextBox Enabled="False" ID="_Txt_DetalleCodigoPedido" 
+                                                                        runat="server" Width="100px" CssClass="textoRegular" BorderStyle="Solid" 
+                                                                        BorderWidth="1px"></asp:TextBox></td>
+                                                                <td><b>Cliente :</b><br><asp:TextBox Enabled="False" ID="_Txt_DetalleCliente" 
+                                                                        runat="server" Width="500px" CssClass="textoRegular" BorderStyle="Solid" 
+                                                                        BorderWidth="1px"></asp:TextBox></td>
+                                                            </tr>
+                                                             <tr>
+                                                                 <td>
+                                                                     <b>Fecha factura :</b><br>
+                                                                     <asp:TextBox ID="_Txt_DetalleFechaFactura" runat="server" BorderStyle="Solid" 
+                                                                         CssClass="textoRegular" Enabled="False" Width="100px" BorderWidth="1px"></asp:TextBox>
+                                                                 </td>
+                                                                 <td>
+                                                                     <b>Factura :</b><br>
+                                                                     <asp:TextBox ID="_Txt_DetalleCodigoFactura" runat="server" BorderStyle="Solid" 
+                                                                         CssClass="textoRegular" Enabled="False" Width="100px" BorderWidth="1px"></asp:TextBox>
+                                                                 </td>
+                                                                 <td>
+                                                                     <b>Vendedor :</b><br>
+                                                                     <asp:TextBox ID="_Txt_DetalleVendedor" runat="server" BorderStyle="Solid" 
+                                                                         CssClass="textoRegular" Enabled="False" Width="500px" BorderWidth="1px"></asp:TextBox>
+                                                                 </td>
+                                                            
+                                                            </table>
+                                                            
+                                                            <table class="textoRegular" cellpadding="5" width="100%">
+                                                                <tr>
+                                                                    <td rowspan="2" align="center"><b>Estatus :</b><br>
+                                                                        <img runat=server id="_Img_DetalleEstatus" width="30" height="30" vspace="5" 
+                                                                            hspace="5" src="~/images/transparente.gif" />
+                                                                        &nbsp;</td>
+                                                                    <td><b>Total cajas pedidas :</b><br>
+                                                                        <asp:TextBox Enabled="False" 
+                                                                            ID="_Txt_DetalleTotalCajasPedido" runat="server" Width="100px" 
+                                                                            CssClass="textoRegular" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox></td>
+                                                                    <td><b>Total unidades pedidas :</b><br>
+                                                                        <asp:TextBox Enabled="False" 
+                                                                            ID="_Txt_DetalleTotalUnidadesPedido" runat="server" Width="100px" 
+                                                                            CssClass="textoRegular" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox></td>
+                                                                    <td><b>Total monto pedido :</b><br>
+                                                                        <asp:TextBox Enabled="False" 
+                                                                            ID="_Txt_DetalleTotalMontoPedido" runat="server" Width="100px" 
+                                                                            CssClass="textoRegular" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox></td>
+                                                               </tr>
+                                                               <tr>
+                                                                    <td><b>Total cajas facturadas :</b><br>
+                                                                        <asp:TextBox Enabled="False" 
+                                                                            ID="_Txt_DetalleTotalCajasFactura" runat="server" Width="100px" 
+                                                                            CssClass="textoRegular" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox></td>
+                                                                    <td><b>Total unidades facturadas :</b><br>
+                                                                        <asp:TextBox Enabled="False" 
+                                                                            ID="_Txt_DetalleTotalUnidadesFactura" runat="server" Width="100px" 
+                                                                            CssClass="textoRegular" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox></td>
+                                                                    <td><b>Total monto facturado :</b><br><asp:TextBox Enabled="False" 
+                                                                            ID="_Txt_DetalleTotalMontoFactura" runat="server" Width="100px"
+                                                                            CssClass="textoRegular" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox>
+                                                                   </td>
+                                                               </tr>
+                                                            </table>
+                                                            <table class="textoRegular" cellpadding="5" width="100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <b>Observaciones :</b><br>
+                                                                        <asp:TextBox Enabled="False" ID="_Txt_DetalleObservaciones" runat="server" Height="50px"
+                                                                            Width="735px" CssClass="textoRegular" BorderStyle="Solid" 
+                                                                            BorderWidth="1px"></asp:TextBox>
+                                                                    </td>
+                                                                </tr>
+                                                                <asp:Panel ID="_Pnl_DetalleObservacionesDevolucion" runat="server">
+                                                                <tr>
+                                                                    <td>
+                                                                        <b>Observaciones devolución:</b><br>
+                                                                        <asp:TextBox Enabled="False" ID="_Txt_DetalleObservacionesDevolucion" runat="server" Height="50px"
+                                                                            Width="735px" CssClass="textoRegular" BorderStyle="Solid" 
+                                                                            BorderWidth="1px"></asp:TextBox>
+                                                                    </td>
+                                                                </tr>
+                                                                </asp:Panel>
+                                                            </table>
+                                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                                                <tr valign="top">
+                                                                    <td style="text-align: left; font-family: verdana; font-size: 8pt;" valign="top">
+                                                                        <asp:GridView ID="_Dtg_Detalle" runat="server" CellPadding="4"
+                                                                            ForeColor="#333333" Style="text-align: left" Width="100%" 
+                                                                            AutoGenerateColumns="False">
+                                                                            <AlternatingRowStyle BackColor="White" />
+                                                                            <Columns>
+                                                                                <asp:BoundField DataField="CPRODUCTO" HeaderText="Codigo">
+                                                                                    <ItemStyle HorizontalAlign="Left" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="CNAMEF" HeaderText="Producto">
+                                                                                    <ItemStyle HorizontalAlign="Left" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="CEMPAQUES" HeaderText="Cajas pedidas">
+                                                                                    <ItemStyle HorizontalAlign="Center" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="CCAJASFACTURADAS" HeaderText="Cajas facturadas">
+                                                                                    <ItemStyle HorizontalAlign="Center" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="CUNIDADES" HeaderText="Unidades pedidas">
+                                                                                    <ItemStyle HorizontalAlign="Center" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="CUNIDADESFACTURADAS" HeaderText="Unidades facturadas">
+                                                                                    <ItemStyle HorizontalAlign="Center" />
+                                                                                </asp:BoundField>
+                                                                                <asp:BoundField DataField="CPRECIOVENTAMAX" HeaderText="PMV">
+                                                                                    <ItemStyle HorizontalAlign="Right" />
+                                                                                </asp:BoundField>
+                                                                            </Columns>
+                                                                            <EditRowStyle BackColor="#2461BF" />
+                                                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                                            <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" Font-Names="Verdana"
+                                                                                Font-Size="7pt" ForeColor="Black" />
+                                                                            <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" ForeColor="White"
+                                                                                HorizontalAlign="Center" />
+                                                                            <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                                        </asp:GridView>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align=center><br>
+                                                                        <span class="textoRegular">Si desea crear un nuevo pedido para este cliente con los mismos productos que contiene el pedido que está <br>en este momento, haga clic en el botón <i>Crear nuevo pedido a partir de este</i>.</span><br><br>
+                                                                        <asp:Button ID="_Btn_CopiarPedido" runat="server" BorderColor="Black" 
+                                                                            BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                                                            Text="Crear nuevo pedido a partir de este" Style="height: 19px" 
+                                                                            onclick="_Btn_CopiarPedido_Click" Enabled="False" /><br><br>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </ContentTemplate>
+                                </ajaxToolkit:TabPanel>
+                            </ajaxToolkit:TabContainer>
+                        </asp:Panel>
+ 
+                    </td>
+                </tr>
+            </table><br />
+                <asp:Button ID="_Btn_Exportar" runat="server" BorderStyle="Solid" CssClass="textoRegular" onclick="_Btn_Exportar_Click" Text="Exportar" Visible="false" /><br /><br />
+                <asp:Panel ID="_Pnl_Nota" runat="server"><center><span class="textoRegular">Recuerde que los pedidos aparecen <b>una vez por factura</b> en este cuadro.<br>Es decir, que si un pedido tiene tres facturas, entonces aparecerá tres veces.</span></center></asp:Panel>
+            <br>
+            <table cellspacing="5">
+                <tr>
+                    <td>
+                        <table class="tablaLeyenda" cellpadding="0" cellspacing = "5" width="600px" >
+                            <tr>
+                                <th colspan="8">
+                                    Estatus</th>
+                                <tr>
+                                    <td align="center" width="15px">
+                                        <img src="logos/consulta/anulados_20.png"></img></td>
+                                    <td align="left">
+                                        ANULADO</td>
+                                    <td align="center" width="15px">
+                                        <img src="logos/consulta/backorders_20.png"></img></td>
+                                    <td align="left">
+                                        EN BACKORDER</td>
+                                    <td align="center" width="15px">
+                                        <img src="logos/consulta/encredito_20.png"></img></td>
+                                    <td align="left">
+                                        EN CRÉDITO</td>
+                                    <td align="center" width="15px">
+                                        <img src="logos/consulta/enprocesos_20.png"></img></td>
+                                    <td align="left">
+                                        EN PROCESO</td>
+                                </tr>
+                                <tr>
+                                    <td align="center" width="15px">
+                                        <img src="logos/consulta/entregado_20.png"></img></td>
+                                    <td align="left">
+                                        FACTURA ENTREGADA</td>
+                                    <td align="center" width="15px">
+                                        <img src="logos/consulta/facturado_20.png"></img></td>
+                                    <td align="left">
+                                        FACTURADO</td>
+                                    <td align="center" width="15px">
+                                        <img src="logos/consulta/gerente_20.png"></img></td>
+                                    <td align="left">
+                                        POR APROBAR GERENTE</td>
+                                    <td align="center" width="15px">
+                                        <img src="logos/consulta/incompleto_20.png"></img></td>
+                                    <td align="left">
+                                        INCOMPLETO</td>
+                                </tr>
+                                <tr>
+                                    <td align="center" width="15px">
+                                        <img src="logos/consulta/porfacturar_20.png"></img></td>
+                                    <td align="left">
+                                        POR FACTURAR</td>
+                                    <td align="center" width="15px">
+                                        <img src="logos/consulta/rechazado_20.png"></img></td>
+                                    <td align="left">
+                                        RECHAZADO</td>
+                                    <td align="center" width="15px"><img src="logos/consulta/devuelto_20.png">
+                                    </td>
+                                    <td align="left">DEVUELTO POR GERENTE                                   
+                                    
+                                    </td>
+                                    <td align="center" width="15px">
+                                    </td>
+                                    <td align="left">
+                                    </td>
+                                </tr>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="tablaLeyenda" cellpadding="0" cellspacing = "5" width="150px" >
+                            <tr>
+                                <th colspan="2">
+                                    Tipo</th>
+                                <tr>
+                                    <td align="center" width="15px">
+                                        <img src="image/web_image.gif"></img></td>
+                                    <td align="left">
+                                        PEDIDO WEB</td>
+                                </tr>
+                                <tr>
+                                    <td align="center" width="15px">
+                                        <img src="image/i_palm.gif"></img></td>
+                                    <td align="left">
+                                        PEDIDO MOBILE</td>
+                                </tr>
+                            </tr>
+                        </table>
+                        
+                    </td>
+                </tr>
+            </table>
+            </asp:Panel>
+            </ContentTemplate>
+            </asp:UpdatePanel>
+ 	     </center>
+ 	     @*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+        <asp:Button runat="server" ID="_Btn_MessageBoxHidden" Style="display: none" />
+        <ajaxToolkit:ModalPopupExtender runat="server" ID="_MPE_MessageBox" BehaviorID="_MPE_MessageBoxBehavior"
+            TargetControlID="_Btn_MessageBoxHidden" PopupControlID="_Pnl_MessageBoxPopup"
+            BackgroundCssClass="modalBackground" DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+        </ajaxToolkit:ModalPopupExtender>
+        <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_MessageBoxPopup" Style="display: none;padding: 10px" Width="700px">
+            @*bandera 3*@
+            <asp:Panel runat="Server" ID="_Pnl_MessageBox" Style="background-color: #FFFFFF; border: solid 1px Gray; color: Black; text-align: center;">
+                <asp:UpdatePanel ID="_UP_MessageBox" runat="server">
+                    <ContentTemplate>
+                        <table style="width: 100%;">
+                            <tr valign="top">
+                                <td>
+                                    <asp:Label ID="_Lbl_MessageBox" runat="server" Font-Names="Verdana" Font-Size="8pt"></asp:Label><br /><br />
+                                    <asp:Button ID="_Btn_MessageBoxAceptar" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="Aceptar" OnClick="_Btn_MessageBoxAceptar_Click" Style="height: 19px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </asp:Panel>
+        </asp:Panel>
+        @*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+
+        @*update progress ----------------------------------------------------------------------------------------------------------------------*@
+        <div style="position: fixed; z-index: 100600; font-family: verdana; font-size: 9px;
+            font-weight: bold; background-color: #FFFFFF;">
+            <asp:UpdateProgress ID="_UPR_Principal" runat="server" AssociatedUpdatePanelID="_UP_Principal"
+                DisplayAfter="1000">
+                <ProgressTemplate>
+                    <center>
+                        <div id="progressBackgroundFilter1" style="display: none" class="progressBackgroundFilter">
+                        </div>
+                        <div id="processMessage" style="border: 1px solid #000000" style="left: 34%; top: 34%">
+                            <img alt="Procesando" src="images/animated_loading.gif"><br>
+                            Procesando. Por favor espere...
+                        </div>
+                    </center>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
+        </div>
+        @*update progress ----------------------------------------------------------------------------------------------------------------------*@
+        
+        @*update progress ----------------------------------------------------------------------------------------------------------------------*@
+        <div style="position: fixed; z-index: 100600; font-family: verdana; font-size: 9px;
+            font-weight: bold; background-color: #FFFFFF;">
+            <asp:UpdateProgress ID="_UPR_Consulta" runat="server" AssociatedUpdatePanelID="_UP_Consulta"
+                DisplayAfter="0">
+                <ProgressTemplate>
+                    <center>
+                        <div id="progressBackgroundFilter2" style="display: none" class="progressBackgroundFilter">
+                        </div>
+                        <div id="processMessage" style="border: 1px solid #000000" style="left: 34%; top: 34%">
+                            <img alt="Procesando" src="images/animated_loading.gif"><br>
+                            Procesando. Por favor espere...
+                        </div>
+                    </center>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
+        </div>
+        @*update progress ----------------------------------------------------------------------------------------------------------------------*@
+        
+    
+    </center>
+    </form>
+</body>
+</html>

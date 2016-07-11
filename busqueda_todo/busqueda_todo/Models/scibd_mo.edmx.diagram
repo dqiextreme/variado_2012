@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5d69ecd357a149c0b2c96a8b281d06fa" Name="Diagrama1" ZoomLevel="83">
+        <EntityTypeShape EntityType="SCIBDModel.AccionPorProblema" Width="1.5" PointX="16.5" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.ArchivoAccion" Width="1.5" PointX="19.5" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.ArchivoAdjunto" Width="1.5" PointX="17.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.ArchivoCausa" Width="1.5" PointX="19.5" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Calendario" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.CalendarioDetalle" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Cargo" Width="1.5" PointX="6.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Categoria" Width="1.5" PointX="0.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.CategoriaPorCliente" Width="1.5" PointX="3" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.CausaPorProblema" Width="1.5" PointX="16.5" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Cliente" Width="1.5" PointX="0.75" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.DetalleGrupoEmpresa" Width="1.5" PointX="3" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.DetalleValija" Width="1.5" PointX="13.5" PointY="44.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Email" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.FormatoPorCliente" Width="1.5" PointX="3" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Frecuencia" Width="1.5" PointX="12" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.GrupoEmpresa" Width="1.5" PointX="0.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Impacto" Width="1.5" PointX="12" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Mensaje" Width="1.5" PointX="11.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Prioridad" Width="1.5" PointX="9.75" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.PrioridadPorSubcategoria" Width="1.5" PointX="12" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Problema" Width="1.5" PointX="14.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.RecursoPorProblema" Width="1.5" PointX="19.5" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Servicio" Width="1.5" PointX="3.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.ServicioPorCliente" Width="1.5" PointX="6" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.ServicioPorProblema" Width="1.5" PointX="11.25" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Solicitud" Width="1.5" PointX="11.25" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Subcategoria" Width="1.5" PointX="9.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Ticket" Width="1.5" PointX="17.25" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.TicketArchivoAdjunto" Width="1.5" PointX="19.5" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Transferencia" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Usuario" Width="1.5" PointX="9" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.Valija" Width="1.5" PointX="11.25" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.webpages_Membership" Width="1.5" PointX="11.25" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.webpages_OAuthMembership" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.webpages_Roles" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.webpages_UsersInRoles" Width="1.5" PointX="11.25" PointY="51.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.VwCalendario" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.VwExportacionInc" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.VwExportacionSol" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.VwIncidencias" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.VwProblemas" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.VwRptValija" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.VwSolicitudes" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIBDModel.VwValija" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="SCIBDModel.FK_AccionPorProblema_Problema" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_ArchivoAccion_ArchivoAdjunto" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_ArchivoAccion_Problema" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_ArchivoPorProblema_ArchivoAdjunto" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_FormatoPorCliente_ArchivoAdjunto" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_ArchivoPorProblema_Problema" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_CalendarioDetalle_Calendario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Usuario_Cargo" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_CategoriaPorCliente_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Subcategoria_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_CategoriaPorCliente_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_CausaPorProblema_Problema" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_DetalleGrupoEmpresa_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_FormatoPorCliente_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_ServicioPorCliente_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Usuario_Cliente1" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_DetalleGrupoEmpresa_GrupoEmpresa" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_DetalleValija_Valija" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_FormatoPorCliente_Subcategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Problema_Frecuencia" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Problema_Impacto" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Mensaje_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_PrioridadPorSubcategoria_Prioridad" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Solicitud_Prioridad" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_PrioridadPorSubcategoria_Subcategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Problema_PrioridadPorSubcategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Ticket_PrioridadPorSubcategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Problema_Subcategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Problema_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_RecursoPorProblema_Problema" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_ServicioPorProblema_Problema" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_RecursoPorProblema_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_ServicioPorCliente_Servicio" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_ServicioPorProblema_ServicioPorCliente" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Solicitud_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Solicitud_Usuario1" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Solicitud_Usuario2" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Ticket_Subcategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Ticket_Ticket" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Ticket_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Ticket_Usuario1" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Ticket_Usuario2" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_TicketArchivoAdjunto_Ticket" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Membership_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Rol_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Valija_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIBDModel.FK_Valija_Usuario1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,57 @@
+
+
+@{ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxtoolkit" }
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div>
+    
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Button ID="Button1" runat="server" Text="Button" onclick="Button1_Click" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
+         <asp:Button runat="server" ID="_Btn_HiddeControl_4" style="display:none"/>
+         <ajaxtoolkit:modalpopupextender runat="server" ID="ModalPopupExtender3"
+            BehaviorID="ModalPopupExtender3Behavior"
+            TargetControlID="_Btn_HiddeControl_4"
+            PopupControlID="_Pnl_Alertas" 
+            BackgroundCssClass="modalBackground"
+            DropShadow="True"
+            RepositionMode="RepositionOnWindowScroll" >
+        </ajaxtoolkit:modalpopupextender>
+        <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_Alertas" 
+            style="display:none;padding:10px" Width="700px">
+            <asp:Panel runat="Server" ID="_Pnl_AlertasDrag" Style="background-color:#FFFFFF;border:solid 1px Gray;color:Black;text-align:center;">
+                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                    <ContentTemplate>
+                        <table style="width: 100%;">
+                            <tr valign="top">
+                                <td>
+                                    <asp:Label ID="_Lbl_Mensaje" runat="server" Font-Names="Verdana" 
+                                        Font-Size="8pt"></asp:Label>
+                                    <br />
+                                    <br />
+                                    <asp:Button ID="_Btn_Aceptar" runat="server" BorderColor="Black" 
+                                        BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                        Text="Aceptar" />
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </asp:Panel>                        
+         </asp:Panel>    
+    
+    </div>
+    </form>
+</body>
+</html>

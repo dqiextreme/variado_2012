@@ -1,0 +1,79 @@
+﻿@{ ViewBag.Title = "FileUploader";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+<h2>
+    FileUploader</h2>
+@using (Html.BeginForm())
+{
+    <div id="global">
+        <div id="agregar">
+            <input type="file" name="file" id="file0" />
+            <input type="button" value=" + " id="fel" onClick="test2()" />
+        </div>
+    </div>
+    <input type="button" class="clickClass" value="Buscar"  onClick="test()" /> 
+    <div>
+        <p id="message">
+        </p>
+    </div>
+}
+<script type="text/javascript">
+    var van = 0;
+    var elim = 0;
+    function test() {
+        for (var x = 0; x <= van; x++) {
+            var formdata = null;
+            var fileInput = null;
+            
+
+            formdata = new FormData(); //FormData object
+            var filex = 'file' + x;
+            fileInput = document.getElementById(filex);
+            
+            alert(fileInput.files[0].name);
+            var guid = createGuid();
+            alert(guid);
+
+            if (fileInput.files.length > 0) {
+                //Iterating through each files selected in fileInput
+                for (i = 0; i < fileInput.files.length; i++) {
+                    //Appending each file to FormData object
+                    formdata.append(fileInput.files[i].name, fileInput.files[i]);
+                }
+                //Creating an XMLHttpRequest and sending
+                var xhr = null;
+                xhr = new XMLHttpRequest();
+                xhr.open('POST', '/Home/FileUploader');
+                xhr.send(formdata);
+                //xhr.send(guid);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        //obtengo string response 
+                        alert(xhr.responseText);
+                        var msg = "Your file was successfully uploaded";
+                        $("#message").text(msg);
+                    }
+                }
+            }
+        }
+        test3();
+        return false;
+    }
+
+    function test2() {
+        var fileInput2 = document.getElementById('file' + van);
+        if (fileInput2.files.length > 0) {
+            van++;
+            $('#fel').remove();
+            $('#agregar').append('</br><input type="file" name="file" id="file' + van + '" /><input type="button" value=" + " id="fel" onClick="test2()" />');
+        }
+    }
+
+    function test3() {
+        van = 0;
+        $('#agregar').remove();
+        $('#global').append('<div id="agregar"><input type="file" name="file" id="file0" /><input type="button" value=" + " id="fel" onClick="test2()" />');
+    }
+
+   
+</script>

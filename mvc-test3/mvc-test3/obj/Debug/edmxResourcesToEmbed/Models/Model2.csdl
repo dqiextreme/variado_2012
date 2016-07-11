@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="test_linqsql1Model1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="test_linqsql1Entities3" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="test_linqsql1Model1.Employees" />
+    <FunctionImport Name="SP_Emplo1" ReturnType="Collection(test_linqsql1Model1.SP_Emplo1_Result)">
+      <Parameter Name="valor" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="Salary" Type="Int32" Nullable="false" />
+    <Property Name="ccodsunagro" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <ComplexType Name="SP_Emplo1_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="Salary" Nullable="false" />
+    <Property Type="String" Name="ccodsunagro" Nullable="true" MaxLength="30" />
+  </ComplexType>
+</Schema>

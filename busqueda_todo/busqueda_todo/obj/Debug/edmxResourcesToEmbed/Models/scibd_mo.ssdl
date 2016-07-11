@@ -1,0 +1,1696 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SCIBDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SCIBDModelStoreContainer">
+    <EntitySet Name="AccionPorProblema" EntityType="SCIBDModel.Store.AccionPorProblema" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArchivoAccion" EntityType="SCIBDModel.Store.ArchivoAccion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArchivoAdjunto" EntityType="SCIBDModel.Store.ArchivoAdjunto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArchivoCausa" EntityType="SCIBDModel.Store.ArchivoCausa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Calendario" EntityType="SCIBDModel.Store.Calendario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CalendarioDetalle" EntityType="SCIBDModel.Store.CalendarioDetalle" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cargo" EntityType="SCIBDModel.Store.Cargo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categoria" EntityType="SCIBDModel.Store.Categoria" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoriaPorCliente" EntityType="SCIBDModel.Store.CategoriaPorCliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CausaPorProblema" EntityType="SCIBDModel.Store.CausaPorProblema" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cliente" EntityType="SCIBDModel.Store.Cliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleGrupoEmpresa" EntityType="SCIBDModel.Store.DetalleGrupoEmpresa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleValija" EntityType="SCIBDModel.Store.DetalleValija" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Email" EntityType="SCIBDModel.Store.Email" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FormatoPorCliente" EntityType="SCIBDModel.Store.FormatoPorCliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Frecuencia" EntityType="SCIBDModel.Store.Frecuencia" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GrupoEmpresa" EntityType="SCIBDModel.Store.GrupoEmpresa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Impacto" EntityType="SCIBDModel.Store.Impacto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Mensaje" EntityType="SCIBDModel.Store.Mensaje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Prioridad" EntityType="SCIBDModel.Store.Prioridad" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrioridadPorSubcategoria" EntityType="SCIBDModel.Store.PrioridadPorSubcategoria" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Problema" EntityType="SCIBDModel.Store.Problema" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecursoPorProblema" EntityType="SCIBDModel.Store.RecursoPorProblema" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Servicio" EntityType="SCIBDModel.Store.Servicio" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ServicioPorCliente" EntityType="SCIBDModel.Store.ServicioPorCliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ServicioPorProblema" EntityType="SCIBDModel.Store.ServicioPorProblema" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Solicitud" EntityType="SCIBDModel.Store.Solicitud" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Subcategoria" EntityType="SCIBDModel.Store.Subcategoria" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="SCIBDModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ticket" EntityType="SCIBDModel.Store.Ticket" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TicketArchivoAdjunto" EntityType="SCIBDModel.Store.TicketArchivoAdjunto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Transferencia" EntityType="SCIBDModel.Store.Transferencia" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuario" EntityType="SCIBDModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Valija" EntityType="SCIBDModel.Store.Valija" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_Membership" EntityType="SCIBDModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="SCIBDModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_Roles" EntityType="SCIBDModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="SCIBDModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VwCalendario" EntityType="SCIBDModel.Store.VwCalendario" store:Type="Views" store:Schema="dbo" store:Name="VwCalendario">
+      <DefiningQuery>SELECT 
+      [VwCalendario].[CalendarioId] AS [CalendarioId], 
+      [VwCalendario].[Fecha] AS [Fecha], 
+      [VwCalendario].[Tipo] AS [Tipo], 
+      [VwCalendario].[HoraDesde] AS [HoraDesde], 
+      [VwCalendario].[HoraHasta] AS [HoraHasta], 
+      [VwCalendario].[Activo] AS [Activo], 
+      [VwCalendario].[DetalleId] AS [DetalleId]
+      FROM [dbo].[VwCalendario] AS [VwCalendario]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwExportacionInc" EntityType="SCIBDModel.Store.VwExportacionInc" store:Type="Views" store:Schema="dbo" store:Name="VwExportacionInc">
+      <DefiningQuery>SELECT 
+      [VwExportacionInc].[Estado] AS [Estado], 
+      [VwExportacionInc].[Administrador] AS [Administrador], 
+      [VwExportacionInc].[Cliente] AS [Cliente], 
+      [VwExportacionInc].[TicketId] AS [TicketId], 
+      [VwExportacionInc].[Asunto] AS [Asunto], 
+      [VwExportacionInc].[Prioridad] AS [Prioridad], 
+      [VwExportacionInc].[TiempoMaximoAtencion] AS [TiempoMaximoAtencion], 
+      [VwExportacionInc].[MinsTransAten] AS [MinsTransAten], 
+      [VwExportacionInc].[TiempoMaximoSolucion] AS [TiempoMaximoSolucion], 
+      [VwExportacionInc].[MinsTransSol] AS [MinsTransSol], 
+      [VwExportacionInc].[Solicitante] AS [Solicitante], 
+      [VwExportacionInc].[Explicacion] AS [Explicacion], 
+      [VwExportacionInc].[Fecha] AS [Fecha], 
+      [VwExportacionInc].[MinutosPausado] AS [MinutosPausado], 
+      [VwExportacionInc].[Categoria] AS [Categoria], 
+      [VwExportacionInc].[Subcategoria] AS [Subcategoria], 
+      [VwExportacionInc].[AdministradorId] AS [AdministradorId], 
+      [VwExportacionInc].[FechaCerrado] AS [FechaCerrado], 
+      [VwExportacionInc].[PrioridadSubcategoriaId] AS [PrioridadSubcategoriaId], 
+      [VwExportacionInc].[ClienteId] AS [ClienteId], 
+      [VwExportacionInc].[CategoriaId] AS [CategoriaId], 
+      [VwExportacionInc].[SubcategoriaId] AS [SubcategoriaId], 
+      [VwExportacionInc].[Edu] AS [Edu], 
+      [VwExportacionInc].[Descripcion] AS [Descripcion], 
+      [VwExportacionInc].[Asignador] AS [Asignador]
+      FROM [dbo].[VwExportacionInc] AS [VwExportacionInc]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwExportacionSol" EntityType="SCIBDModel.Store.VwExportacionSol" store:Type="Views" store:Schema="dbo" store:Name="VwExportacionSol">
+      <DefiningQuery>SELECT 
+      [VwExportacionSol].[Estado] AS [Estado], 
+      [VwExportacionSol].[Administrador] AS [Administrador], 
+      [VwExportacionSol].[Cliente] AS [Cliente], 
+      [VwExportacionSol].[SolicitudId] AS [SolicitudId], 
+      [VwExportacionSol].[Asunto] AS [Asunto], 
+      [VwExportacionSol].[Prioridad] AS [Prioridad], 
+      [VwExportacionSol].[TiempoMaximoSolucion] AS [TiempoMaximoSolucion], 
+      [VwExportacionSol].[MinsTransAten] AS [MinsTransAten], 
+      [VwExportacionSol].[MinsTransSol] AS [MinsTransSol], 
+      [VwExportacionSol].[Solicitante] AS [Solicitante], 
+      [VwExportacionSol].[Explicacion] AS [Explicacion], 
+      [VwExportacionSol].[Fecha] AS [Fecha], 
+      [VwExportacionSol].[MinutosPausado] AS [MinutosPausado], 
+      [VwExportacionSol].[AdministradorId] AS [AdministradorId], 
+      [VwExportacionSol].[FechaCerrado] AS [FechaCerrado], 
+      [VwExportacionSol].[PrioridadId] AS [PrioridadId], 
+      [VwExportacionSol].[ClienteId] AS [ClienteId], 
+      [VwExportacionSol].[Descripcion] AS [Descripcion], 
+      [VwExportacionSol].[Asignador] AS [Asignador]
+      FROM [dbo].[VwExportacionSol] AS [VwExportacionSol]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwIncidencias" EntityType="SCIBDModel.Store.VwIncidencias" store:Type="Views" store:Schema="dbo" store:Name="VwIncidencias">
+      <DefiningQuery>SELECT 
+      [VwIncidencias].[TicketId] AS [TicketId], 
+      [VwIncidencias].[Cliente] AS [Cliente], 
+      [VwIncidencias].[Asunto] AS [Asunto], 
+      [VwIncidencias].[Solicitante] AS [Solicitante], 
+      [VwIncidencias].[Administrador] AS [Administrador], 
+      [VwIncidencias].[Prioridad] AS [Prioridad], 
+      [VwIncidencias].[Fecha] AS [Fecha], 
+      [VwIncidencias].[DiasTranscurridos] AS [DiasTranscurridos], 
+      [VwIncidencias].[FinAproximado] AS [FinAproximado], 
+      [VwIncidencias].[FechaAbierto] AS [FechaAbierto], 
+      [VwIncidencias].[FechaPausado] AS [FechaPausado], 
+      [VwIncidencias].[FechaCerrado] AS [FechaCerrado], 
+      [VwIncidencias].[Estado] AS [Estado], 
+      [VwIncidencias].[ClienteId] AS [ClienteId], 
+      [VwIncidencias].[CategoriaId] AS [CategoriaId], 
+      [VwIncidencias].[SubcategoriaId] AS [SubcategoriaId], 
+      [VwIncidencias].[AdministradorId] AS [AdministradorId], 
+      [VwIncidencias].[PrioridadSubcategoriaId] AS [PrioridadSubcategoriaId], 
+      [VwIncidencias].[PrioridadId] AS [PrioridadId], 
+      [VwIncidencias].[ColorRgb] AS [ColorRgb], 
+      [VwIncidencias].[Subcategoria] AS [Subcategoria], 
+      [VwIncidencias].[Categoria] AS [Categoria], 
+      [VwIncidencias].[SolicitanteId] AS [SolicitanteId], 
+      [VwIncidencias].[SolicitanteEmail] AS [SolicitanteEmail], 
+      [VwIncidencias].[AdministradorEmail] AS [AdministradorEmail], 
+      [VwIncidencias].[Descripcion] AS [Descripcion], 
+      [VwIncidencias].[Explicacion] AS [Explicacion], 
+      [VwIncidencias].[Telefono] AS [Telefono], 
+      [VwIncidencias].[FechaNacimiento] AS [FechaNacimiento], 
+      [VwIncidencias].[Edu] AS [Edu], 
+      [VwIncidencias].[Asignador] AS [Asignador]
+      FROM [dbo].[VwIncidencias] AS [VwIncidencias]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwProblemas" EntityType="SCIBDModel.Store.VwProblemas" store:Type="Views" store:Schema="dbo" store:Name="VwProblemas">
+      <DefiningQuery>SELECT 
+      [VwProblemas].[ProblemaId] AS [ProblemaId], 
+      [VwProblemas].[ClienteId] AS [ClienteId], 
+      [VwProblemas].[UsuarioId] AS [UsuarioId], 
+      [VwProblemas].[CategoriaId] AS [CategoriaId], 
+      [VwProblemas].[SubcategoriaId] AS [SubcategoriaId], 
+      [VwProblemas].[PrioridadSubcategoriaId] AS [PrioridadSubcategoriaId], 
+      [VwProblemas].[FrecuenciaId] AS [FrecuenciaId], 
+      [VwProblemas].[ImpactoId] AS [ImpactoId], 
+      [VwProblemas].[Cliente] AS [Cliente], 
+      [VwProblemas].[Usuario] AS [Usuario], 
+      [VwProblemas].[Categoria] AS [Categoria], 
+      [VwProblemas].[Subcategoria] AS [Subcategoria], 
+      [VwProblemas].[Prioridad] AS [Prioridad], 
+      [VwProblemas].[ColorRgb] AS [ColorRgb], 
+      [VwProblemas].[Frecuencia] AS [Frecuencia], 
+      [VwProblemas].[Impacto] AS [Impacto], 
+      [VwProblemas].[Titulo] AS [Titulo], 
+      [VwProblemas].[FechaRegistro] AS [FechaRegistro], 
+      [VwProblemas].[FechaEsperadaSolucion] AS [FechaEsperadaSolucion], 
+      [VwProblemas].[FechaRealSolucion] AS [FechaRealSolucion], 
+      [VwProblemas].[Solucion] AS [Solucion]
+      FROM [dbo].[VwProblemas] AS [VwProblemas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwRptValija" EntityType="SCIBDModel.Store.VwRptValija" store:Type="Views" store:Schema="dbo" store:Name="VwRptValija">
+      <DefiningQuery>SELECT 
+      [VwRptValija].[ValijaId] AS [ValijaId], 
+      [VwRptValija].[FechaEnviada] AS [FechaEnviada], 
+      [VwRptValija].[UsuarioDescDe] AS [UsuarioDescDe], 
+      [VwRptValija].[UsuarioDescPara] AS [UsuarioDescPara], 
+      [VwRptValija].[ClienteDescDe] AS [ClienteDescDe], 
+      [VwRptValija].[ClienteDescPara] AS [ClienteDescPara], 
+      [VwRptValija].[Descripcion] AS [Descripcion]
+      FROM [dbo].[VwRptValija] AS [VwRptValija]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwSolicitudes" EntityType="SCIBDModel.Store.VwSolicitudes" store:Type="Views" store:Schema="dbo" store:Name="VwSolicitudes">
+      <DefiningQuery>SELECT 
+      [VwSolicitudes].[SolicitudId] AS [SolicitudId], 
+      [VwSolicitudes].[Cliente] AS [Cliente], 
+      [VwSolicitudes].[Asunto] AS [Asunto], 
+      [VwSolicitudes].[Solicitante] AS [Solicitante], 
+      [VwSolicitudes].[Administrador] AS [Administrador], 
+      [VwSolicitudes].[Prioridad] AS [Prioridad], 
+      [VwSolicitudes].[Fecha] AS [Fecha], 
+      [VwSolicitudes].[DiasTranscurridos] AS [DiasTranscurridos], 
+      [VwSolicitudes].[FinAproximado] AS [FinAproximado], 
+      [VwSolicitudes].[FechaAbierto] AS [FechaAbierto], 
+      [VwSolicitudes].[FechaPausado] AS [FechaPausado], 
+      [VwSolicitudes].[FechaCerrado] AS [FechaCerrado], 
+      [VwSolicitudes].[Estado] AS [Estado], 
+      [VwSolicitudes].[ClienteId] AS [ClienteId], 
+      [VwSolicitudes].[AdministradorId] AS [AdministradorId], 
+      [VwSolicitudes].[PrioridadId] AS [PrioridadId], 
+      [VwSolicitudes].[ColorRgb] AS [ColorRgb], 
+      [VwSolicitudes].[SolicitanteId] AS [SolicitanteId], 
+      [VwSolicitudes].[SolicitanteEmail] AS [SolicitanteEmail], 
+      [VwSolicitudes].[AdministradorEmail] AS [AdministradorEmail], 
+      [VwSolicitudes].[Descripcion] AS [Descripcion], 
+      [VwSolicitudes].[Explicacion] AS [Explicacion], 
+      [VwSolicitudes].[Telefono] AS [Telefono], 
+      [VwSolicitudes].[FechaNacimiento] AS [FechaNacimiento], 
+      [VwSolicitudes].[FechaCulminacion] AS [FechaCulminacion], 
+      [VwSolicitudes].[Asignador] AS [Asignador]
+      FROM [dbo].[VwSolicitudes] AS [VwSolicitudes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwValija" EntityType="SCIBDModel.Store.VwValija" store:Type="Views" store:Schema="dbo" store:Name="VwValija">
+      <DefiningQuery>SELECT 
+      [VwValija].[ValijaId] AS [ValijaId], 
+      [VwValija].[UsuarioIdDe] AS [UsuarioIdDe], 
+      [VwValija].[UsuarioIdPara] AS [UsuarioIdPara], 
+      [VwValija].[ClienteIdDe] AS [ClienteIdDe], 
+      [VwValija].[ClienteIdPara] AS [ClienteIdPara], 
+      [VwValija].[UsuarioDescDe] AS [UsuarioDescDe], 
+      [VwValija].[UsuarioDescPara] AS [UsuarioDescPara], 
+      [VwValija].[ClienteDescDe] AS [ClienteDescDe], 
+      [VwValija].[ClienteDescPara] AS [ClienteDescPara], 
+      [VwValija].[FechaEnviada] AS [FechaEnviada], 
+      [VwValija].[FechaRecibida] AS [FechaRecibida], 
+      [VwValija].[Recibida] AS [Recibida], 
+      [VwValija].[Enviada] AS [Enviada]
+      FROM [dbo].[VwValija] AS [VwValija]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_AccionPorProblema_Problema" Association="SCIBDModel.Store.FK_AccionPorProblema_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="AccionPorProblema" EntitySet="AccionPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArchivoAccion_ArchivoAdjunto" Association="SCIBDModel.Store.FK_ArchivoAccion_ArchivoAdjunto">
+      <End Role="ArchivoAdjunto" EntitySet="ArchivoAdjunto" />
+      <End Role="ArchivoAccion" EntitySet="ArchivoAccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArchivoAccion_Problema" Association="SCIBDModel.Store.FK_ArchivoAccion_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="ArchivoAccion" EntitySet="ArchivoAccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArchivoPorProblema_ArchivoAdjunto" Association="SCIBDModel.Store.FK_ArchivoPorProblema_ArchivoAdjunto">
+      <End Role="ArchivoAdjunto" EntitySet="ArchivoAdjunto" />
+      <End Role="ArchivoCausa" EntitySet="ArchivoCausa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArchivoPorProblema_Problema" Association="SCIBDModel.Store.FK_ArchivoPorProblema_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="ArchivoCausa" EntitySet="ArchivoCausa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CalendarioDetalle_Calendario" Association="SCIBDModel.Store.FK_CalendarioDetalle_Calendario">
+      <End Role="Calendario" EntitySet="Calendario" />
+      <End Role="CalendarioDetalle" EntitySet="CalendarioDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoriaPorCliente_Categoria" Association="SCIBDModel.Store.FK_CategoriaPorCliente_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="CategoriaPorCliente" EntitySet="CategoriaPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoriaPorCliente_Cliente" Association="SCIBDModel.Store.FK_CategoriaPorCliente_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="CategoriaPorCliente" EntitySet="CategoriaPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CausaPorProblema_Problema" Association="SCIBDModel.Store.FK_CausaPorProblema_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="CausaPorProblema" EntitySet="CausaPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleGrupoEmpresa_Cliente" Association="SCIBDModel.Store.FK_DetalleGrupoEmpresa_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="DetalleGrupoEmpresa" EntitySet="DetalleGrupoEmpresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleGrupoEmpresa_GrupoEmpresa" Association="SCIBDModel.Store.FK_DetalleGrupoEmpresa_GrupoEmpresa">
+      <End Role="GrupoEmpresa" EntitySet="GrupoEmpresa" />
+      <End Role="DetalleGrupoEmpresa" EntitySet="DetalleGrupoEmpresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleValija_Valija" Association="SCIBDModel.Store.FK_DetalleValija_Valija">
+      <End Role="Valija" EntitySet="Valija" />
+      <End Role="DetalleValija" EntitySet="DetalleValija" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormatoPorCliente_ArchivoAdjunto" Association="SCIBDModel.Store.FK_FormatoPorCliente_ArchivoAdjunto">
+      <End Role="ArchivoAdjunto" EntitySet="ArchivoAdjunto" />
+      <End Role="FormatoPorCliente" EntitySet="FormatoPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormatoPorCliente_Cliente" Association="SCIBDModel.Store.FK_FormatoPorCliente_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="FormatoPorCliente" EntitySet="FormatoPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormatoPorCliente_Subcategoria" Association="SCIBDModel.Store.FK_FormatoPorCliente_Subcategoria">
+      <End Role="Subcategoria" EntitySet="Subcategoria" />
+      <End Role="FormatoPorCliente" EntitySet="FormatoPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Membership_Usuario" Association="SCIBDModel.Store.FK_Membership_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="webpages_Membership" EntitySet="webpages_Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mensaje_Usuario" Association="SCIBDModel.Store.FK_Mensaje_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Mensaje" EntitySet="Mensaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrioridadPorSubcategoria_Prioridad" Association="SCIBDModel.Store.FK_PrioridadPorSubcategoria_Prioridad">
+      <End Role="Prioridad" EntitySet="Prioridad" />
+      <End Role="PrioridadPorSubcategoria" EntitySet="PrioridadPorSubcategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrioridadPorSubcategoria_Subcategoria" Association="SCIBDModel.Store.FK_PrioridadPorSubcategoria_Subcategoria">
+      <End Role="Subcategoria" EntitySet="Subcategoria" />
+      <End Role="PrioridadPorSubcategoria" EntitySet="PrioridadPorSubcategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Problema_Frecuencia" Association="SCIBDModel.Store.FK_Problema_Frecuencia">
+      <End Role="Frecuencia" EntitySet="Frecuencia" />
+      <End Role="Problema" EntitySet="Problema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Problema_Impacto" Association="SCIBDModel.Store.FK_Problema_Impacto">
+      <End Role="Impacto" EntitySet="Impacto" />
+      <End Role="Problema" EntitySet="Problema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Problema_PrioridadPorSubcategoria" Association="SCIBDModel.Store.FK_Problema_PrioridadPorSubcategoria">
+      <End Role="PrioridadPorSubcategoria" EntitySet="PrioridadPorSubcategoria" />
+      <End Role="Problema" EntitySet="Problema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Problema_Subcategoria" Association="SCIBDModel.Store.FK_Problema_Subcategoria">
+      <End Role="Subcategoria" EntitySet="Subcategoria" />
+      <End Role="Problema" EntitySet="Problema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Problema_Usuario" Association="SCIBDModel.Store.FK_Problema_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Problema" EntitySet="Problema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecursoPorProblema_Problema" Association="SCIBDModel.Store.FK_RecursoPorProblema_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="RecursoPorProblema" EntitySet="RecursoPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecursoPorProblema_Usuario" Association="SCIBDModel.Store.FK_RecursoPorProblema_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="RecursoPorProblema" EntitySet="RecursoPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rol_Usuario" Association="SCIBDModel.Store.FK_Rol_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioPorCliente_Cliente" Association="SCIBDModel.Store.FK_ServicioPorCliente_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="ServicioPorCliente" EntitySet="ServicioPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioPorCliente_Servicio" Association="SCIBDModel.Store.FK_ServicioPorCliente_Servicio">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="ServicioPorCliente" EntitySet="ServicioPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioPorProblema_Problema" Association="SCIBDModel.Store.FK_ServicioPorProblema_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="ServicioPorProblema" EntitySet="ServicioPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioPorProblema_ServicioPorCliente" Association="SCIBDModel.Store.FK_ServicioPorProblema_ServicioPorCliente">
+      <End Role="ServicioPorCliente" EntitySet="ServicioPorCliente" />
+      <End Role="ServicioPorProblema" EntitySet="ServicioPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Prioridad" Association="SCIBDModel.Store.FK_Solicitud_Prioridad">
+      <End Role="Prioridad" EntitySet="Prioridad" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Usuario" Association="SCIBDModel.Store.FK_Solicitud_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Usuario1" Association="SCIBDModel.Store.FK_Solicitud_Usuario1">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Usuario2" Association="SCIBDModel.Store.FK_Solicitud_Usuario2">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subcategoria_Categoria" Association="SCIBDModel.Store.FK_Subcategoria_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Subcategoria" EntitySet="Subcategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_PrioridadPorSubcategoria" Association="SCIBDModel.Store.FK_Ticket_PrioridadPorSubcategoria">
+      <End Role="PrioridadPorSubcategoria" EntitySet="PrioridadPorSubcategoria" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Subcategoria" Association="SCIBDModel.Store.FK_Ticket_Subcategoria">
+      <End Role="Subcategoria" EntitySet="Subcategoria" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Ticket" Association="SCIBDModel.Store.FK_Ticket_Ticket">
+      <End Role="Ticket" EntitySet="Ticket" />
+      <End Role="Ticket1" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Usuario" Association="SCIBDModel.Store.FK_Ticket_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Usuario1" Association="SCIBDModel.Store.FK_Ticket_Usuario1">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Usuario2" Association="SCIBDModel.Store.FK_Ticket_Usuario2">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketArchivoAdjunto_Ticket" Association="SCIBDModel.Store.FK_TicketArchivoAdjunto_Ticket">
+      <End Role="Ticket" EntitySet="Ticket" />
+      <End Role="TicketArchivoAdjunto" EntitySet="TicketArchivoAdjunto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Cargo" Association="SCIBDModel.Store.FK_Usuario_Cargo">
+      <End Role="Cargo" EntitySet="Cargo" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Cliente1" Association="SCIBDModel.Store.FK_Usuario_Cliente1">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Valija_Usuario" Association="SCIBDModel.Store.FK_Valija_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Valija" EntitySet="Valija" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Valija_Usuario1" Association="SCIBDModel.Store.FK_Valija_Usuario1">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Valija" EntitySet="Valija" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AccionPorProblema">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" Nullable="false" MaxLength="140" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="FechaEstimadaSolucion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArchivoAccion">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="int" Nullable="false" />
+    <Property Name="ArchivoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArchivoAdjunto">
+    <Key>
+      <PropertyRef Name="ArchivoId" />
+    </Key>
+    <Property Name="ArchivoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Url" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Tipo" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ArchivoCausa">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="int" Nullable="false" />
+    <Property Name="ArchivoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Calendario">
+    <Key>
+      <PropertyRef Name="CalendarioId" />
+    </Key>
+    <Property Name="CalendarioId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CalendarioDetalle">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CalendarioId" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="HoraDesde" Type="datetime" Nullable="false" />
+    <Property Name="HoraHasta" Type="datetime" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cargo">
+    <Key>
+      <PropertyRef Name="CargoId" />
+    </Key>
+    <Property Name="CargoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Abreviacion" Type="varchar" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="CategoriaId" />
+    </Key>
+    <Property Name="CategoriaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CategoriaPorCliente">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CategoriaId" Type="int" Nullable="false" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CausaPorProblema">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" Nullable="false" MaxLength="140" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClienteId" />
+    </Key>
+    <Property Name="ClienteId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DetalleGrupoEmpresa">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="GrupoEmpresaId" Type="int" Nullable="false" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleValija">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ValijaId" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="Recibido" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="EmailId" />
+    </Key>
+    <Property Name="EmailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmailDe" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="EmailPara" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Asunto" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Cuerpo" Type="text" Nullable="false" />
+    <Property Name="Enviado" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormatoPorCliente">
+    <Key>
+      <PropertyRef Name="FormatoId" />
+    </Key>
+    <Property Name="FormatoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+    <Property Name="SubcategoriaId" Type="int" Nullable="false" />
+    <Property Name="ArchivoId" Type="int" />
+    <Property Name="Nota" Type="text" />
+  </EntityType>
+  <EntityType Name="Frecuencia">
+    <Key>
+      <PropertyRef Name="FrecuenciaId" />
+    </Key>
+    <Property Name="FrecuenciaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="GrupoEmpresa">
+    <Key>
+      <PropertyRef Name="GrupoEmpresaId" />
+    </Key>
+    <Property Name="GrupoEmpresaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Impacto">
+    <Key>
+      <PropertyRef Name="ImpactoId" />
+    </Key>
+    <Property Name="ImpactoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Mensaje">
+    <Key>
+      <PropertyRef Name="MensajeId" />
+    </Key>
+    <Property Name="MensajeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="int" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="Mensaje" Type="varchar(max)" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="TipoTicket" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prioridad">
+    <Key>
+      <PropertyRef Name="PrioridadId" />
+    </Key>
+    <Property Name="PrioridadId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ColorRgb" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="PrioridadPorSubcategoria">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SubcategoriaId" Type="int" Nullable="false" />
+    <Property Name="PrioridadId" Type="int" Nullable="false" />
+    <Property Name="TiempoMaximoAtencion" Type="int" Nullable="false" />
+    <Property Name="TiempoMaximoSolucion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Problema">
+    <Key>
+      <PropertyRef Name="ProblemaId" />
+    </Key>
+    <Property Name="ProblemaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="varchar" Nullable="false" MaxLength="140" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="SubcategoriaId" Type="int" Nullable="false" />
+    <Property Name="ImpactoId" Type="int" Nullable="false" />
+    <Property Name="FrecuenciaId" Type="int" Nullable="false" />
+    <Property Name="PrioridadSubcategoriaId" Type="int" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="FechaEsperadaSolucion" Type="datetime" Nullable="false" />
+    <Property Name="Solucion" Type="varchar(max)" />
+    <Property Name="FechaRealSolucion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RecursoPorProblema">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="int" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Servicio">
+    <Key>
+      <PropertyRef Name="ServicioId" />
+    </Key>
+    <Property Name="ServicioId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ServicioPorCliente">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ServicioId" Type="int" Nullable="false" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServicioPorProblema">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="int" Nullable="false" />
+    <Property Name="ServicioPorClienteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Solicitud">
+    <Key>
+      <PropertyRef Name="SolicitudId" />
+    </Key>
+    <Property Name="SolicitudId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Asunto" Type="varchar" Nullable="false" MaxLength="140" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Adjunto" Type="image" />
+    <Property Name="UsuarioAsignadoId" Type="int" />
+    <Property Name="Estado" Type="tinyint" Nullable="false" />
+    <Property Name="FechaAsignado" Type="datetime" />
+    <Property Name="FechaAbierto" Type="datetime" />
+    <Property Name="FechaCerrado" Type="datetime" />
+    <Property Name="FechaPausado" Type="datetime" />
+    <Property Name="MinutosPausado" Type="numeric" />
+    <Property Name="Explicacion" Type="varchar(max)" />
+    <Property Name="PrioridadId" Type="int" />
+    <Property Name="FechaCulminacion" Type="datetime" />
+    <Property Name="UsuarioAsignadorId" Type="int" />
+  </EntityType>
+  <EntityType Name="Subcategoria">
+    <Key>
+      <PropertyRef Name="SubcategoriaId" />
+    </Key>
+    <Property Name="SubcategoriaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CategoriaId" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="TicketId" />
+    </Key>
+    <Property Name="TicketId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SubcategoriaId" Type="int" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="PrioridadSubcategoriaId" Type="int" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Asunto" Type="varchar" Nullable="false" MaxLength="140" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Adjunto" Type="image" />
+    <Property Name="UsuarioAsignadoId" Type="int" />
+    <Property Name="Estado" Type="tinyint" Nullable="false" />
+    <Property Name="FechaAsignado" Type="datetime" />
+    <Property Name="FechaAbierto" Type="datetime" />
+    <Property Name="FechaCerrado" Type="datetime" />
+    <Property Name="FechaPausado" Type="datetime" />
+    <Property Name="MinutosPausado" Type="numeric" />
+    <Property Name="Explicacion" Type="varchar(max)" />
+    <Property Name="Edu" Type="bit" />
+    <Property Name="UsuarioAsignadorId" Type="int" />
+  </EntityType>
+  <EntityType Name="TicketArchivoAdjunto">
+    <Key>
+      <PropertyRef Name="TicketArchivoAdjuntoId" />
+    </Key>
+    <Property Name="TicketArchivoAdjuntoId" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Url" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Transferencia">
+    <Key>
+      <PropertyRef Name="TransferenciaId" />
+    </Key>
+    <Property Name="TransferenciaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="int" Nullable="false" />
+    <Property Name="UsuarioDeId" Type="int" Nullable="false" />
+    <Property Name="UsuarioParaId" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="TipoTicket" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioId" />
+    </Key>
+    <Property Name="UsuarioId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="56" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Apellido" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+    <Property Name="Sexo" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Telefono" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+    <Property Name="InformacionGeneral" Type="varchar" MaxLength="255" />
+    <Property Name="AccesoDem" Type="bit" />
+    <Property Name="AccesoValija" Type="bit" />
+    <Property Name="UsuarioSD" Type="int" />
+    <Property Name="UltimoAcceso" Type="datetime" />
+    <Property Name="CargoId" Type="int" />
+  </EntityType>
+  <EntityType Name="Valija">
+    <Key>
+      <PropertyRef Name="ValijaId" />
+    </Key>
+    <Property Name="ValijaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioIdDe" Type="int" Nullable="false" />
+    <Property Name="UsuarioIdPara" Type="int" Nullable="false" />
+    <Property Name="FechaEnviada" Type="datetime" />
+    <Property Name="FechaRecibida" Type="datetime" />
+    <Property Name="Recibida" Type="bit" Nullable="false" />
+    <Property Name="Enviada" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="LastPasswordFailureDate" Type="datetime" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordChangedDate" Type="datetime" />
+    <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'SCIBD.dbo.VwCalendario' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="VwCalendario">
+    <Key>
+      <PropertyRef Name="CalendarioId" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Tipo" />
+      <PropertyRef Name="HoraDesde" />
+      <PropertyRef Name="HoraHasta" />
+      <PropertyRef Name="Activo" />
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="CalendarioId" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="HoraDesde" Type="datetime" Nullable="false" />
+    <Property Name="HoraHasta" Type="datetime" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="DetalleId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'SCIBD.dbo.VwExportacionInc' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="VwExportacionInc">
+    <Key>
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="Cliente" />
+      <PropertyRef Name="TicketId" />
+      <PropertyRef Name="Asunto" />
+      <PropertyRef Name="Solicitante" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Categoria" />
+      <PropertyRef Name="Subcategoria" />
+      <PropertyRef Name="ClienteId" />
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="SubcategoriaId" />
+      <PropertyRef Name="Edu" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Asignador" />
+    </Key>
+    <Property Name="Estado" Type="tinyint" Nullable="false" />
+    <Property Name="Administrador" Type="varchar" MaxLength="101" />
+    <Property Name="Cliente" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="TicketId" Type="int" Nullable="false" />
+    <Property Name="Asunto" Type="varchar" Nullable="false" MaxLength="140" />
+    <Property Name="Prioridad" Type="varchar" MaxLength="50" />
+    <Property Name="TiempoMaximoAtencion" Type="int" />
+    <Property Name="MinsTransAten" Type="numeric" Scale="2" />
+    <Property Name="TiempoMaximoSolucion" Type="int" />
+    <Property Name="MinsTransSol" Type="numeric" Scale="2" />
+    <Property Name="Solicitante" Type="varchar" Nullable="false" MaxLength="101" />
+    <Property Name="Explicacion" Type="varchar(max)" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="MinutosPausado" Type="numeric" Scale="2" />
+    <Property Name="Categoria" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Subcategoria" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AdministradorId" Type="int" />
+    <Property Name="FechaCerrado" Type="datetime" />
+    <Property Name="PrioridadSubcategoriaId" Type="int" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+    <Property Name="CategoriaId" Type="int" Nullable="false" />
+    <Property Name="SubcategoriaId" Type="int" Nullable="false" />
+    <Property Name="Edu" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Asignador" Type="varchar" Nullable="false" MaxLength="101" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'SCIBD.dbo.VwExportacionSol' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="VwExportacionSol">
+    <Key>
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="Cliente" />
+      <PropertyRef Name="SolicitudId" />
+      <PropertyRef Name="Asunto" />
+      <PropertyRef Name="Solicitante" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="ClienteId" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Asignador" />
+    </Key>
+    <Property Name="Estado" Type="tinyint" Nullable="false" />
+    <Property Name="Administrador" Type="varchar" MaxLength="101" />
+    <Property Name="Cliente" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="SolicitudId" Type="int" Nullable="false" />
+    <Property Name="Asunto" Type="varchar" Nullable="false" MaxLength="140" />
+    <Property Name="Prioridad" Type="varchar" MaxLength="50" />
+    <Property Name="TiempoMaximoSolucion" Type="numeric" Scale="2" />
+    <Property Name="MinsTransAten" Type="numeric" Scale="2" />
+    <Property Name="MinsTransSol" Type="numeric" Scale="2" />
+    <Property Name="Solicitante" Type="varchar" Nullable="false" MaxLength="101" />
+    <Property Name="Explicacion" Type="varchar(max)" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="MinutosPausado" Type="numeric" Scale="2" />
+    <Property Name="AdministradorId" Type="int" />
+    <Property Name="FechaCerrado" Type="datetime" />
+    <Property Name="PrioridadId" Type="int" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Asignador" Type="varchar" Nullable="false" MaxLength="101" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'SCIBD.dbo.VwIncidencias' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="VwIncidencias">
+    <Key>
+      <PropertyRef Name="TicketId" />
+      <PropertyRef Name="Cliente" />
+      <PropertyRef Name="Asunto" />
+      <PropertyRef Name="Solicitante" />
+      <PropertyRef Name="Administrador" />
+      <PropertyRef Name="Prioridad" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="ClienteId" />
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="SubcategoriaId" />
+      <PropertyRef Name="Subcategoria" />
+      <PropertyRef Name="Categoria" />
+      <PropertyRef Name="SolicitanteId" />
+      <PropertyRef Name="SolicitanteEmail" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Telefono" />
+      <PropertyRef Name="FechaNacimiento" />
+      <PropertyRef Name="Asignador" />
+    </Key>
+    <Property Name="TicketId" Type="int" Nullable="false" />
+    <Property Name="Cliente" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Asunto" Type="varchar" Nullable="false" MaxLength="140" />
+    <Property Name="Solicitante" Type="varchar" Nullable="false" MaxLength="101" />
+    <Property Name="Administrador" Type="varchar" Nullable="false" MaxLength="101" />
+    <Property Name="Prioridad" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="DiasTranscurridos" Type="int" />
+    <Property Name="FinAproximado" Type="varchar" MaxLength="40" />
+    <Property Name="FechaAbierto" Type="datetime" />
+    <Property Name="FechaPausado" Type="datetime" />
+    <Property Name="FechaCerrado" Type="datetime" />
+    <Property Name="Estado" Type="tinyint" Nullable="false" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+    <Property Name="CategoriaId" Type="int" Nullable="false" />
+    <Property Name="SubcategoriaId" Type="int" Nullable="false" />
+    <Property Name="AdministradorId" Type="int" />
+    <Property Name="PrioridadSubcategoriaId" Type="int" />
+    <Property Name="PrioridadId" Type="int" />
+    <Property Name="ColorRgb" Type="varchar" MaxLength="20" />
+    <Property Name="Subcategoria" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Categoria" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="SolicitanteId" Type="int" Nullable="false" />
+    <Property Name="SolicitanteEmail" Type="nvarchar" Nullable="false" MaxLength="56" />
+    <Property Name="AdministradorEmail" Type="nvarchar" MaxLength="56" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Explicacion" Type="varchar(max)" />
+    <Property Name="Telefono" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+    <Property Name="Edu" Type="bit" />
+    <Property Name="Asignador" Type="varchar" Nullable="false" MaxLength="101" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'SCIBD.dbo.VwProblemas' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="VwProblemas">
+    <Key>
+      <PropertyRef Name="ProblemaId" />
+      <PropertyRef Name="ClienteId" />
+      <PropertyRef Name="UsuarioId" />
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="SubcategoriaId" />
+      <PropertyRef Name="PrioridadSubcategoriaId" />
+      <PropertyRef Name="FrecuenciaId" />
+      <PropertyRef Name="ImpactoId" />
+      <PropertyRef Name="Cliente" />
+      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="Categoria" />
+      <PropertyRef Name="Subcategoria" />
+      <PropertyRef Name="Prioridad" />
+      <PropertyRef Name="Frecuencia" />
+      <PropertyRef Name="Impacto" />
+      <PropertyRef Name="Titulo" />
+      <PropertyRef Name="FechaRegistro" />
+      <PropertyRef Name="FechaEsperadaSolucion" />
+    </Key>
+    <Property Name="ProblemaId" Type="int" Nullable="false" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="CategoriaId" Type="int" Nullable="false" />
+    <Property Name="SubcategoriaId" Type="int" Nullable="false" />
+    <Property Name="PrioridadSubcategoriaId" Type="int" Nullable="false" />
+    <Property Name="FrecuenciaId" Type="int" Nullable="false" />
+    <Property Name="ImpactoId" Type="int" Nullable="false" />
+    <Property Name="Cliente" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Usuario" Type="varchar" Nullable="false" MaxLength="101" />
+    <Property Name="Categoria" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Subcategoria" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Prioridad" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ColorRgb" Type="varchar" MaxLength="20" />
+    <Property Name="Frecuencia" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Impacto" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Titulo" Type="varchar" Nullable="false" MaxLength="140" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="FechaEsperadaSolucion" Type="datetime" Nullable="false" />
+    <Property Name="FechaRealSolucion" Type="datetime" />
+    <Property Name="Solucion" Type="varchar(max)" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'SCIBD.dbo.VwRptValija' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="VwRptValija">
+    <Key>
+      <PropertyRef Name="ValijaId" />
+      <PropertyRef Name="FechaEnviada" />
+      <PropertyRef Name="UsuarioDescDe" />
+      <PropertyRef Name="UsuarioDescPara" />
+      <PropertyRef Name="ClienteDescDe" />
+      <PropertyRef Name="ClienteDescPara" />
+      <PropertyRef Name="Descripcion" />
+    </Key>
+    <Property Name="ValijaId" Type="int" Nullable="false" />
+    <Property Name="FechaEnviada" Type="datetime" Nullable="false" />
+    <Property Name="UsuarioDescDe" Type="varchar" Nullable="false" MaxLength="102" />
+    <Property Name="UsuarioDescPara" Type="varchar" Nullable="false" MaxLength="102" />
+    <Property Name="ClienteDescDe" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ClienteDescPara" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="500" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'SCIBD.dbo.VwSolicitudes' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="VwSolicitudes">
+    <Key>
+      <PropertyRef Name="SolicitudId" />
+      <PropertyRef Name="Cliente" />
+      <PropertyRef Name="Asunto" />
+      <PropertyRef Name="Solicitante" />
+      <PropertyRef Name="Administrador" />
+      <PropertyRef Name="Prioridad" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="ClienteId" />
+      <PropertyRef Name="SolicitanteId" />
+      <PropertyRef Name="SolicitanteEmail" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Telefono" />
+      <PropertyRef Name="FechaNacimiento" />
+      <PropertyRef Name="Asignador" />
+    </Key>
+    <Property Name="SolicitudId" Type="int" Nullable="false" />
+    <Property Name="Cliente" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Asunto" Type="varchar" Nullable="false" MaxLength="140" />
+    <Property Name="Solicitante" Type="varchar" Nullable="false" MaxLength="101" />
+    <Property Name="Administrador" Type="varchar" Nullable="false" MaxLength="101" />
+    <Property Name="Prioridad" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="DiasTranscurridos" Type="int" />
+    <Property Name="FinAproximado" Type="varchar" MaxLength="32" />
+    <Property Name="FechaAbierto" Type="datetime" />
+    <Property Name="FechaPausado" Type="datetime" />
+    <Property Name="FechaCerrado" Type="datetime" />
+    <Property Name="Estado" Type="tinyint" Nullable="false" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+    <Property Name="AdministradorId" Type="int" />
+    <Property Name="PrioridadId" Type="int" />
+    <Property Name="ColorRgb" Type="varchar" MaxLength="20" />
+    <Property Name="SolicitanteId" Type="int" Nullable="false" />
+    <Property Name="SolicitanteEmail" Type="nvarchar" Nullable="false" MaxLength="56" />
+    <Property Name="AdministradorEmail" Type="nvarchar" MaxLength="56" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Explicacion" Type="varchar(max)" />
+    <Property Name="Telefono" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+    <Property Name="FechaCulminacion" Type="datetime" />
+    <Property Name="Asignador" Type="varchar" Nullable="false" MaxLength="101" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'SCIBD.dbo.VwValija' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="VwValija">
+    <Key>
+      <PropertyRef Name="ValijaId" />
+      <PropertyRef Name="UsuarioIdDe" />
+      <PropertyRef Name="UsuarioIdPara" />
+      <PropertyRef Name="ClienteIdDe" />
+      <PropertyRef Name="ClienteIdPara" />
+      <PropertyRef Name="UsuarioDescDe" />
+      <PropertyRef Name="UsuarioDescPara" />
+      <PropertyRef Name="ClienteDescDe" />
+      <PropertyRef Name="ClienteDescPara" />
+      <PropertyRef Name="Recibida" />
+      <PropertyRef Name="Enviada" />
+    </Key>
+    <Property Name="ValijaId" Type="int" Nullable="false" />
+    <Property Name="UsuarioIdDe" Type="int" Nullable="false" />
+    <Property Name="UsuarioIdPara" Type="int" Nullable="false" />
+    <Property Name="ClienteIdDe" Type="int" Nullable="false" />
+    <Property Name="ClienteIdPara" Type="int" Nullable="false" />
+    <Property Name="UsuarioDescDe" Type="varchar" Nullable="false" MaxLength="102" />
+    <Property Name="UsuarioDescPara" Type="varchar" Nullable="false" MaxLength="102" />
+    <Property Name="ClienteDescDe" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ClienteDescPara" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="FechaEnviada" Type="datetime" />
+    <Property Name="FechaRecibida" Type="datetime" />
+    <Property Name="Recibida" Type="bit" Nullable="false" />
+    <Property Name="Enviada" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AccionPorProblema_Problema">
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="1" />
+    <End Role="AccionPorProblema" Type="SCIBDModel.Store.AccionPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="AccionPorProblema">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArchivoAccion_ArchivoAdjunto">
+    <End Role="ArchivoAdjunto" Type="SCIBDModel.Store.ArchivoAdjunto" Multiplicity="1" />
+    <End Role="ArchivoAccion" Type="SCIBDModel.Store.ArchivoAccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArchivoAdjunto">
+        <PropertyRef Name="ArchivoId" />
+      </Principal>
+      <Dependent Role="ArchivoAccion">
+        <PropertyRef Name="ArchivoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArchivoAccion_Problema">
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="1" />
+    <End Role="ArchivoAccion" Type="SCIBDModel.Store.ArchivoAccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="ArchivoAccion">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArchivoPorProblema_ArchivoAdjunto">
+    <End Role="ArchivoAdjunto" Type="SCIBDModel.Store.ArchivoAdjunto" Multiplicity="1" />
+    <End Role="ArchivoCausa" Type="SCIBDModel.Store.ArchivoCausa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArchivoAdjunto">
+        <PropertyRef Name="ArchivoId" />
+      </Principal>
+      <Dependent Role="ArchivoCausa">
+        <PropertyRef Name="ArchivoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArchivoPorProblema_Problema">
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="1" />
+    <End Role="ArchivoCausa" Type="SCIBDModel.Store.ArchivoCausa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="ArchivoCausa">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CalendarioDetalle_Calendario">
+    <End Role="Calendario" Type="SCIBDModel.Store.Calendario" Multiplicity="1" />
+    <End Role="CalendarioDetalle" Type="SCIBDModel.Store.CalendarioDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendario">
+        <PropertyRef Name="CalendarioId" />
+      </Principal>
+      <Dependent Role="CalendarioDetalle">
+        <PropertyRef Name="CalendarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoriaPorCliente_Categoria">
+    <End Role="Categoria" Type="SCIBDModel.Store.Categoria" Multiplicity="1" />
+    <End Role="CategoriaPorCliente" Type="SCIBDModel.Store.CategoriaPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="CategoriaId" />
+      </Principal>
+      <Dependent Role="CategoriaPorCliente">
+        <PropertyRef Name="CategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoriaPorCliente_Cliente">
+    <End Role="Cliente" Type="SCIBDModel.Store.Cliente" Multiplicity="1" />
+    <End Role="CategoriaPorCliente" Type="SCIBDModel.Store.CategoriaPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="CategoriaPorCliente">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CausaPorProblema_Problema">
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="1" />
+    <End Role="CausaPorProblema" Type="SCIBDModel.Store.CausaPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="CausaPorProblema">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleGrupoEmpresa_Cliente">
+    <End Role="Cliente" Type="SCIBDModel.Store.Cliente" Multiplicity="1" />
+    <End Role="DetalleGrupoEmpresa" Type="SCIBDModel.Store.DetalleGrupoEmpresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="DetalleGrupoEmpresa">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleGrupoEmpresa_GrupoEmpresa">
+    <End Role="GrupoEmpresa" Type="SCIBDModel.Store.GrupoEmpresa" Multiplicity="1" />
+    <End Role="DetalleGrupoEmpresa" Type="SCIBDModel.Store.DetalleGrupoEmpresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GrupoEmpresa">
+        <PropertyRef Name="GrupoEmpresaId" />
+      </Principal>
+      <Dependent Role="DetalleGrupoEmpresa">
+        <PropertyRef Name="GrupoEmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleValija_Valija">
+    <End Role="Valija" Type="SCIBDModel.Store.Valija" Multiplicity="1" />
+    <End Role="DetalleValija" Type="SCIBDModel.Store.DetalleValija" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Valija">
+        <PropertyRef Name="ValijaId" />
+      </Principal>
+      <Dependent Role="DetalleValija">
+        <PropertyRef Name="ValijaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormatoPorCliente_ArchivoAdjunto">
+    <End Role="ArchivoAdjunto" Type="SCIBDModel.Store.ArchivoAdjunto" Multiplicity="0..1" />
+    <End Role="FormatoPorCliente" Type="SCIBDModel.Store.FormatoPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArchivoAdjunto">
+        <PropertyRef Name="ArchivoId" />
+      </Principal>
+      <Dependent Role="FormatoPorCliente">
+        <PropertyRef Name="ArchivoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormatoPorCliente_Cliente">
+    <End Role="Cliente" Type="SCIBDModel.Store.Cliente" Multiplicity="1" />
+    <End Role="FormatoPorCliente" Type="SCIBDModel.Store.FormatoPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="FormatoPorCliente">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormatoPorCliente_Subcategoria">
+    <End Role="Subcategoria" Type="SCIBDModel.Store.Subcategoria" Multiplicity="1" />
+    <End Role="FormatoPorCliente" Type="SCIBDModel.Store.FormatoPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategoria">
+        <PropertyRef Name="SubcategoriaId" />
+      </Principal>
+      <Dependent Role="FormatoPorCliente">
+        <PropertyRef Name="SubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Membership_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="1" />
+    <End Role="webpages_Membership" Type="SCIBDModel.Store.webpages_Membership" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="webpages_Membership">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mensaje_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="1" />
+    <End Role="Mensaje" Type="SCIBDModel.Store.Mensaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Mensaje">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrioridadPorSubcategoria_Prioridad">
+    <End Role="Prioridad" Type="SCIBDModel.Store.Prioridad" Multiplicity="1" />
+    <End Role="PrioridadPorSubcategoria" Type="SCIBDModel.Store.PrioridadPorSubcategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prioridad">
+        <PropertyRef Name="PrioridadId" />
+      </Principal>
+      <Dependent Role="PrioridadPorSubcategoria">
+        <PropertyRef Name="PrioridadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrioridadPorSubcategoria_Subcategoria">
+    <End Role="Subcategoria" Type="SCIBDModel.Store.Subcategoria" Multiplicity="1" />
+    <End Role="PrioridadPorSubcategoria" Type="SCIBDModel.Store.PrioridadPorSubcategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategoria">
+        <PropertyRef Name="SubcategoriaId" />
+      </Principal>
+      <Dependent Role="PrioridadPorSubcategoria">
+        <PropertyRef Name="SubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Problema_Frecuencia">
+    <End Role="Frecuencia" Type="SCIBDModel.Store.Frecuencia" Multiplicity="1" />
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Frecuencia">
+        <PropertyRef Name="FrecuenciaId" />
+      </Principal>
+      <Dependent Role="Problema">
+        <PropertyRef Name="FrecuenciaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Problema_Impacto">
+    <End Role="Impacto" Type="SCIBDModel.Store.Impacto" Multiplicity="1" />
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Impacto">
+        <PropertyRef Name="ImpactoId" />
+      </Principal>
+      <Dependent Role="Problema">
+        <PropertyRef Name="ImpactoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Problema_PrioridadPorSubcategoria">
+    <End Role="PrioridadPorSubcategoria" Type="SCIBDModel.Store.PrioridadPorSubcategoria" Multiplicity="1" />
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrioridadPorSubcategoria">
+        <PropertyRef Name="DetalleId" />
+      </Principal>
+      <Dependent Role="Problema">
+        <PropertyRef Name="PrioridadSubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Problema_Subcategoria">
+    <End Role="Subcategoria" Type="SCIBDModel.Store.Subcategoria" Multiplicity="1" />
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategoria">
+        <PropertyRef Name="SubcategoriaId" />
+      </Principal>
+      <Dependent Role="Problema">
+        <PropertyRef Name="SubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Problema_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="1" />
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Problema">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecursoPorProblema_Problema">
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="1" />
+    <End Role="RecursoPorProblema" Type="SCIBDModel.Store.RecursoPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="RecursoPorProblema">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecursoPorProblema_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="1" />
+    <End Role="RecursoPorProblema" Type="SCIBDModel.Store.RecursoPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="RecursoPorProblema">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rol_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="SCIBDModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioPorCliente_Cliente">
+    <End Role="Cliente" Type="SCIBDModel.Store.Cliente" Multiplicity="1" />
+    <End Role="ServicioPorCliente" Type="SCIBDModel.Store.ServicioPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="ServicioPorCliente">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioPorCliente_Servicio">
+    <End Role="Servicio" Type="SCIBDModel.Store.Servicio" Multiplicity="1" />
+    <End Role="ServicioPorCliente" Type="SCIBDModel.Store.ServicioPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="ServicioId" />
+      </Principal>
+      <Dependent Role="ServicioPorCliente">
+        <PropertyRef Name="ServicioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioPorProblema_Problema">
+    <End Role="Problema" Type="SCIBDModel.Store.Problema" Multiplicity="1" />
+    <End Role="ServicioPorProblema" Type="SCIBDModel.Store.ServicioPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="ServicioPorProblema">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioPorProblema_ServicioPorCliente">
+    <End Role="ServicioPorCliente" Type="SCIBDModel.Store.ServicioPorCliente" Multiplicity="1" />
+    <End Role="ServicioPorProblema" Type="SCIBDModel.Store.ServicioPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicioPorCliente">
+        <PropertyRef Name="DetalleId" />
+      </Principal>
+      <Dependent Role="ServicioPorProblema">
+        <PropertyRef Name="ServicioPorClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Prioridad">
+    <End Role="Prioridad" Type="SCIBDModel.Store.Prioridad" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="SCIBDModel.Store.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prioridad">
+        <PropertyRef Name="PrioridadId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="PrioridadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="1" />
+    <End Role="Solicitud" Type="SCIBDModel.Store.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Usuario1">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="SCIBDModel.Store.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="UsuarioAsignadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Usuario2">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="SCIBDModel.Store.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="UsuarioAsignadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subcategoria_Categoria">
+    <End Role="Categoria" Type="SCIBDModel.Store.Categoria" Multiplicity="1" />
+    <End Role="Subcategoria" Type="SCIBDModel.Store.Subcategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="CategoriaId" />
+      </Principal>
+      <Dependent Role="Subcategoria">
+        <PropertyRef Name="CategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_PrioridadPorSubcategoria">
+    <End Role="PrioridadPorSubcategoria" Type="SCIBDModel.Store.PrioridadPorSubcategoria" Multiplicity="0..1" />
+    <End Role="Ticket" Type="SCIBDModel.Store.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrioridadPorSubcategoria">
+        <PropertyRef Name="DetalleId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="PrioridadSubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Subcategoria">
+    <End Role="Subcategoria" Type="SCIBDModel.Store.Subcategoria" Multiplicity="1" />
+    <End Role="Ticket" Type="SCIBDModel.Store.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategoria">
+        <PropertyRef Name="SubcategoriaId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="SubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Ticket">
+    <End Role="Ticket" Type="SCIBDModel.Store.Ticket" Multiplicity="1" />
+    <End Role="Ticket1" Type="SCIBDModel.Store.Ticket" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Ticket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="Ticket1">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="0..1" />
+    <End Role="Ticket" Type="SCIBDModel.Store.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="UsuarioAsignadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Usuario1">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="1" />
+    <End Role="Ticket" Type="SCIBDModel.Store.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Usuario2">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="0..1" />
+    <End Role="Ticket" Type="SCIBDModel.Store.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="UsuarioAsignadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketArchivoAdjunto_Ticket">
+    <End Role="Ticket" Type="SCIBDModel.Store.Ticket" Multiplicity="1" />
+    <End Role="TicketArchivoAdjunto" Type="SCIBDModel.Store.TicketArchivoAdjunto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ticket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="TicketArchivoAdjunto">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Cargo">
+    <End Role="Cargo" Type="SCIBDModel.Store.Cargo" Multiplicity="0..1" />
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargo">
+        <PropertyRef Name="CargoId" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="CargoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Cliente1">
+    <End Role="Cliente" Type="SCIBDModel.Store.Cliente" Multiplicity="1" />
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Valija_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="1" />
+    <End Role="Valija" Type="SCIBDModel.Store.Valija" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Valija">
+        <PropertyRef Name="UsuarioIdDe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Valija_Usuario1">
+    <End Role="Usuario" Type="SCIBDModel.Store.Usuario" Multiplicity="1" />
+    <End Role="Valija" Type="SCIBDModel.Store.Valija" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Valija">
+        <PropertyRef Name="UsuarioIdPara" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SpMinutosTranscurridos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaInicial" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFinal" Type="datetime" Mode="In" />
+    <Parameter Name="MinutosPausados" Type="numeric" Mode="In" />
+  </Function>
+</Schema>

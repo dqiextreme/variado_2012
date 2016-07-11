@@ -1,0 +1,308 @@
+
+@{ Register assembly="Anthem" namespace="Anthem" tagprefix="anthem" }
+
+@{ Register src="controles/Menu.ascx" tagname="Menu" tagprefix="uc1" }
+
+@{ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" }
+
+@{ Register src="controles/CloseSession.ascx" tagname="CloseSession" tagprefix="uc2" }
+
+
+@{ Register src="controles/Ctr_Usuario_Vendedor.ascx" tagname="Ctr_Usuario_Vendedor" tagprefix="uc3" }
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title></title>
+    
+    <style type="text/css">
+         .modalBackground
+        {
+            background-color: #000000;
+            filter: alpha(opacity=60);
+            opacity: 0.5; 
+            z-index:9999; 
+        }
+         .modalBackground_2
+        {
+            background-color: #000000;
+            filter: alpha(opacity=60);
+            opacity: 0.5; 
+            z-index:20000; 
+        }
+     .progressBackgroundFilter {
+            position:fixed; 
+            top:0px; 
+            bottom:0px; 
+            left:0px;
+            right:0px;
+            overflow:hidden; 
+            padding:0; 
+            margin:0; 
+            background-color:#000; 
+            filter:alpha(opacity=60); 
+            opacity:0.5; 
+            z-index:10000; 
+        }
+        #processMessage  
+        {
+        	background-color: #FFFFFF; border: 30px solid #000000;
+        	position:fixed; 
+            top:30%; 
+            left:43%;
+            padding:10px; 
+            width:30%; 
+            background-color:#fff;
+            font-family: Verdana;
+            font-size:12px;
+            z-index:10003; 
+        }
+         .modalPopup
+        {
+            background-color: #ffffdd;
+            border-width: 3px;
+            border-style: solid;
+            border-color: Gray;
+            padding: 3px;
+            width: 500px;
+             z-index:9998;
+        }
+        .modalPopup_2
+        {
+            background-color: #ffffdd;
+            border-width: 3px;
+            border-style: solid;
+            border-color: Gray;
+            padding: 3px;
+            width: 500px;
+             z-index:19000;
+        }
+        .textoRegular
+        {
+	        font-family: verdana, sans-serif;
+	        font-size:8pt;
+        }
+        </style>
+
+    <script type="text/javascript" language="javascript">
+        function _Mtd_Onload() {
+            document.getElementById('progressBackgroundFilter1').style.display = "block";
+            document.getElementById('progressBackgroundFilter2').style.display = "block";
+        }
+    </script>
+</head>
+<body topmargin='0' onload="_Mtd_Onload();">
+    <form id="form1" runat="server">
+    <div align="center">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"
+            EnableScriptLocalization="False" />
+        <table style="width: 780px" cellpadding="0" cellspacing="0">
+                    <tr>
+                <td align="center">
+                    <uc1:Menu ID="Menu1" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td align="left" bgcolor="#BBD4F8" style="border: 1px solid #3b619c">
+                <font face="Verdana" size="1"><strong><span>
+                        <table width="100%">
+                            <tr>
+                                <td width="5">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton4" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                </td>
+                                <td width="45">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:UpdatePanel ID="_Upd_PanelBoton" runat="server" UpdateMode="Conditional">
+                                            <ContentTemplate>
+                                                <asp:ImageButton ID="_Img_Nuevo" runat="server" ImageUrl="image/new.gif" CausesValidation="False"
+                                                    OnClick="_Img_Nuevo_Click" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Nuevo_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="Desea generar un nuevo pedido?" Enabled="True" TargetControlID="_Img_Nuevo">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                                <asp:ImageButton ID="_Img_Guardar" runat="server" ImageUrl="image/save.gif" ValidationGroup="GuardarPedido"
+                                                    OnClick="_Img_Guardar_Click" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Guardar_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="Desea terminar el pedido actual?" Enabled="True" TargetControlID="_Img_Guardar">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </span></strong></font>
+                                </td>
+                                <td width="10%">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton5" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                    <uc2:CloseSession ID="CloseSession1" runat="server" />
+                                </td>
+                                <td style="text-align: right">
+                                    <uc3:Ctr_Usuario_Vendedor ID="Ctr_Usuario_Vendedor1" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                    </span></strong></font>    
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    <br />
+                    <asp:UpdatePanel ID="_Upd_ConsultStatus" runat="server" UpdateMode=Conditional>
+                    <ContentTemplate>
+                     <table class="textoRegular" width="780px">
+                        <tr>
+                            <td align="left" width="120">
+                                <b>Fecha Consulta:</b>
+                            </td>
+                            <td align="left">
+                                <asp:TextBox ID="_Txt_Fecha" runat="server" Width="148px" 
+                                    AutoCallBack="True" oncopy="return false" onpaste="return false" 
+                                    BorderWidth="1px" Font-Size="8pt"></asp:TextBox>
+                                <ajaxToolkit:CalendarExtender ID="MiCalendario_CalendarExtender" runat="server" Enabled="True"
+                                    TargetControlID="_Txt_Fecha" PopupButtonID="_Img_CalendarioH0">
+                                </ajaxToolkit:CalendarExtender>
+                                <asp:ImageButton ID="_Img_CalendarioH0" runat="server" ImageUrl="~/images/calendario.gif"
+                                    Style="height: 12px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" colspan="2" style="text-align: center">
+                                <asp:Button ID="_Btn_Consultar" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                    BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_CerrarPn1_Click"
+                                    Text="Consultar" />
+                                </td>
+                        </tr>
+                         <tr>
+                             <td align="left" colspan="2" style="text-align: left">
+                                 <asp:Label ID="_Lbl_UltUsuarios_1" runat="server" Font-Bold="True" 
+                                     Font-Names="Verdana" Font-Size="15pt"></asp:Label>
+                             </td>
+                         </tr>
+                        <tr>
+                            <td align="left" colspan="2" style="text-align: center">
+                                <asp:UpdatePanel ID="_Upd_PanelUserStats" runat="server" 
+                                    UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:GridView ID="_Dtg_StatsUsers" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                                            CellPadding="4" Font-Names="Verdana" Font-Size="7pt" ForeColor="#333333" 
+                                            GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging" Width="100%"
+                                            Font-Bold="False" 
+                                            onselectedindexchanged="_Dtg_StatsUsers_SelectedIndexChanged" 
+                                            PageSize="100">
+                                            <RowStyle BackColor="White" ForeColor="Black" />
+                                            <Columns>
+                                                <asp:CommandField ShowSelectButton="True">
+                                                    <ItemStyle Width="80px" />
+                                                </asp:CommandField>
+                                                <asp:BoundField DataField="fecha" HeaderText="Fecha" ReadOnly="True">
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="hora" HeaderText="Hora" ReadOnly="True">
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="usuarios" HeaderText="Usuarios" />
+                                                <asp:BoundField DataField="H1" HeaderText="H1" />
+                                            </Columns>
+                                            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                            <HeaderStyle BackColor="#BBD4F8" Font-Bold="True" ForeColor="Black" BorderColor="Black" />
+                                            <EditRowStyle BackColor="#999999" />
+                                            <AlternatingRowStyle BackColor="White" ForeColor="Black" />
+                                        </asp:GridView>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                                </td>
+                        </tr>
+                    </table>
+                    </ContentTemplate>
+                    </asp:UpdatePanel>
+                   
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    <br />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="_Upd_PanelUserStats"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter1' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>   
+      <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="_Upd_ConsultStatus"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter2' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>   
+    
+        <asp:Button runat="server" ID="_Btn_HiddeControl" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender runat="server" ID="programmaticModalPopup" BehaviorID="programmaticModalPopupBehavior"
+        TargetControlID="_Btn_HiddeControl" PopupControlID="_Pnl_PanelUsuarios" BackgroundCssClass="modalBackground"
+        DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_PanelUsuarios" Style="display: block;
+        padding: 10px" Width="700px">
+        <asp:Panel runat="Server" ID="_Pnl_PanelClienteDrag" Style="background-color: #FFFFFF;
+            border: solid 1px Gray; color: Black; text-align: center;">
+            <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr valign="top">
+                            <td>
+                                <asp:GridView ID="_Dtg_Usuarios" runat="server" AllowPaging="True" 
+                                    CellPadding="4" ForeColor="#333333" GridLines="None" Style="text-align: left" 
+                                    Width="100%" onpageindexchanging="_Dtg_Usuarios_PageIndexChanging" 
+                                    PageSize="20">
+                                    <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" 
+                                        ForeColor="White" HorizontalAlign="Center" />
+                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                    <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" 
+                                        Font-Names="Verdana" Font-Size="7pt" ForeColor="Black" />
+                                    <EditRowStyle BackColor="#2461BF" />
+                                    <AlternatingRowStyle BackColor="White" />
+                                </asp:GridView>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                <asp:Button ID="_Btn_CerrarPn1" runat="server" BorderColor="Black" 
+                                    BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                    OnClick="_Btn_CerrarPn1_Click1" Text="Cerrar" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:Panel>
+    </asp:Panel>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
+        ShowSummary="False" />
+    <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True"
+        ShowSummary="False" ValidationGroup="GuardarPedido" />
+    </form>
+</body>
+</html>

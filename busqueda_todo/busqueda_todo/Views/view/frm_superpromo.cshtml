@@ -1,0 +1,457 @@
+
+
+
+@{ Register Src="controles/Menu.ascx" TagName="Menu" TagPrefix="uc1" }
+@{ Register Src="controles/CloseSession.ascx" TagName="CloseSession" TagPrefix="uc2" }
+@{ Register Src="controles/Ctr_Usuario.ascx" TagName="Ctr_Usuario" TagPrefix="uc3" }
+@{ Register Assembly="Anthem" Namespace="Anthem" TagPrefix="anthem" }
+@{ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>T3Web - Carga de Supervisores y Promotores</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+    <style type="text/css">
+        .cuerpo
+        {
+            background-color: White;
+            margin-top: 0;
+        }
+        .barra
+        {
+            height: 21px;
+            width: 775px;
+            background-color: #bbd4f8;
+            border-left: #3b619c 1px solid;
+            border-right: #3b619c 1px solid;
+        }
+        .titulo
+        {
+            padding: 6px;
+            font-family: Verdana;
+            font-size: x-small;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background-color: #666666;
+            color: White;
+            text-align: center;
+            width: 773px;
+        }
+        .contenedor
+        {
+            text-align: left;
+        }
+        .etiquetas
+        {
+            text-align: right;
+            width: 120px;
+            padding: 8px 0px 8px 0px;
+        }
+        .campos
+        {
+            width: 250px;
+            padding-left: 10px;
+            padding-top: 3px;
+        }
+        .advertencia
+        {
+            margin-left: 320px;
+            padding-top: 35px;
+        }
+        .style1
+        {
+            width: 279px;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        function _Mtd_KeyPress(e) {
+            if (((e.keyCode >= 64) && (e.keyCode <= 90)) ||
+            ((e.keyCode >= 97) && (e.keyCode <= 122)) ||
+            ((e.keyCode >= 48) && (e.keyCode <= 57)) || (e.keyCode == 209) || (e.keyCode == 241) || (e.keyCode == 32) || (e.keyCode == 46)) {
+                return true;
+            }
+            return false;
+        }
+
+        function _Mtd_Onload() {
+            document.getElementById('progressBackgroundFilter').style.display = "block";
+        }
+
+    </script>
+
+</head>
+<body topmargin="0" class="cuerpo" onload="_Mtd_Onload();">
+    <center>
+        <form id="Frm_PromoSuper" runat="server">
+        <asp:ScriptManager ID="Manejador" runat="server" EnableScriptGlobalization="True"
+            EnableScriptLocalization="False">
+        </asp:ScriptManager>
+        <asp:UpdatePanel ID="_UP_Menu" runat="server">
+            <ContentTemplate>
+                <table style="width: 773px; height: 49px;" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td align="center">
+                            <uc1:Menu ID="Menu1" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table width="99.99%" class="barra">
+                                <tr>
+                                    <td width="5">
+                                        <font face="Verdana" size="1"><strong><span>
+                                            <asp:ImageButton Style="cursor: default" ID="ImageButton1" runat="server" ImageUrl="image/separator.gif" />
+                                        </span></strong></font>
+                                    </td>
+                                    <td width="45">
+                                        <font face="Verdana" size="1"><strong><span>
+                                            <asp:UpdatePanel ID="MnuPrincipal" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:ImageButton ID="_Btn_Nuevo" runat="server" ImageUrl="image/new.gif" Enabled="true"
+                                                        OnClick="_Btn_Nuevo_Click" OnClientClick="" />
+                                                    <asp:ImageButton ID="_Btn_Guardar" runat="server" ImageUrl="image/save.gif" Enabled="false"
+                                                        OnClick="_Btn_Guardar_Click" />
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                        </span></strong></font>
+                                    </td>
+                                    <td width="10%">
+                                        <font face="Verdana" size="1"><strong><span>
+                                            <asp:ImageButton Style="cursor: default" ID="ImageButton6" runat="server" ImageUrl="image/separator.gif" />
+                                        </span></strong></font>
+                                        <uc2:CloseSession ID="CloseSession2" runat="server" />
+                                    </td>
+                                    <td style="text-align: right">
+                                        <uc3:Ctr_Usuario ID="Ctr_Usuario1" runat="server" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <asp:UpdatePanel ID="_UP_Datos" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="titulo">
+                            Administración de promotores y supervisores
+                        </td>
+                    </tr>
+                </table>
+                <asp:Panel ID="_Pnl_Compañia" runat="server">
+                    <table>
+                        <tr>
+                            <td style="text-align: right;">
+                                <asp:Label ID="_Lbl_Compañia" runat="server" Font-Bold="true" Font-Names="Verdana"
+                                    Font-Size="7pt">Compañía : </asp:Label>
+                            </td>
+                            <td style="text-align: left;">
+                                <asp:DropDownList ID="_Cmb_Compañia" runat="server" CssClass="textoRegular" Width="400"
+                                    AutoPostBack="true" OnSelectedIndexChanged="_Cmb_Compañia_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+                <br />
+                <br />
+                <asp:Panel ID="_Pnl_TabContainer" runat="server" Visible="true">
+                    <ajaxToolkit:TabContainer ID="_Tab_Principal" runat="server" ActiveTabIndex="1" Width="773px"
+                        AutoPostBack="True" CssClass="ajax__tab_yuitabview-theme contenedor" OnActiveTabChanged="_Tab_Principal_ActiveTabChanged">
+                        <ajaxToolkit:TabPanel ID="_TP_Consulta" runat="server" HeaderText="Consulta">
+                            <HeaderTemplate>
+                                Consulta
+                            </HeaderTemplate>
+                            <ContentTemplate>
+                                <div style="margin-top: 10px; margin-bottom: 10px; margin-left: 5px;">
+                                    <asp:Label ID="_Lbl_Filtro" runat="server" CssClass="textoRegular">Filtrar por : </asp:Label>
+                                    <asp:DropDownList ID="_Cmb_Filtro" runat="server" CssClass="textoRegular" AutoPostBack="True"
+                                        OnSelectedIndexChanged="_Cmb_Filtro_SelectedIndexChanged">
+                                        <asp:ListItem Text="SUPERVISORES" Value="0"></asp:ListItem>
+                                        <asp:ListItem Text="PROMOTORES" Value="1"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                <asp:Panel ID="Resultado" runat="server">
+                                    <asp:GridView ID="_Dtg_Detalle" runat="server" CellPadding="4" ForeColor="#333333"
+                                        AutoGenerateColumns="False" Font-Bold="False" Font-Names="Verdana" Font-Size="7pt"
+                                        OnPageIndexChanging="_Dtg_Detalle_PageIndexChanging" AllowPaging="True" BorderColor="Black"
+                                        BorderWidth="1px" OnRowCommand="_Dtg_Detalle_RowCommand">
+                                        <AlternatingRowStyle BackColor="White" />
+                                        <Columns>
+                                            <asp:TemplateField ShowHeader="False">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Modificar"
+                                                        Text="Modificar" CommandArgument="@{ # ((GridViewRow) Container).RowIndex}
+"><img                                                                                                          
+                                                        src="logos/iconos/editar.gif" border='0'/></asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField ShowHeader="False">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="cdetalle" CommandName="Consultar" Text="Consultar" CommandArgument="@{ # ((GridViewRow) Container).RowIndex}
+"
+                                                        runat="server" ImageUrl="logos/ver.gif" OnClientClick="_Bol_Cambiar = true;" />
+                                                </ItemTemplate>
+                                                <ItemStyle HorizontalAlign="Center" Width="50px" />
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="cpromotor" HeaderText="Código" Visible="False">
+                                                <ItemStyle HorizontalAlign="Center" Width="50px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="csupervisor" HeaderText="Código" Visible="False" />
+                                            <asp:BoundField DataField="cnombre" HeaderText="Nombre">
+                                                <ItemStyle HorizontalAlign="Left" Width="150px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="capellido" HeaderText="Apellido">
+                                                <ItemStyle HorizontalAlign="Left" Width="150px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="ccedula" HeaderText="Cédula">
+                                                <ItemStyle HorizontalAlign="Center" Width="100px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="cdescripcion" HeaderText="Cargo">
+                                                <ItemStyle HorizontalAlign="Left" Width="200px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="ccargo" HeaderText="IdCargo" Visible="False">
+                                                <ItemStyle HorizontalAlign="Center" Width="50px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="cproveedor" HeaderText="IdProveedor" Visible="False">
+                                                <ItemStyle HorizontalAlign="Left" Width="50px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="cactivo" HeaderText="Estatus" Visible="False">
+                                                <ItemStyle HorizontalAlign="Left" Width="50px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="csexo" HeaderText="Sexo" Visible="False">
+                                                <ItemStyle HorizontalAlign="Left" Width="50px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="cemail" HeaderText="Email" Visible="False">
+                                                <ItemStyle HorizontalAlign="Left" Width="50px" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="ctelefono" HeaderText="Teléfono" Visible="False">
+                                                <ItemStyle HorizontalAlign="Left" Width="50px" />
+                                            </asp:BoundField>
+                                        </Columns>
+                                        <EditRowStyle BackColor="#2461BF" />
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" Font-Names="Verdana"
+                                            Font-Size="7pt" ForeColor="Black" />
+                                        <PagerSettings PageButtonCount="4" />
+                                        <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" ForeColor="White"
+                                            HorizontalAlign="Center" />
+                                        <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                    </asp:GridView>
+                                    <asp:Label ID="_Lbl_Advertencia" runat="server" Font-Bold="True" ForeColor="Black"
+                                        Font-Names="Verdana" Font-Size="7pt" CssClass="advertencia" Height="50px" Visible="False">No hay datos disponibles. 
+                                    </asp:Label>
+                                </asp:Panel>
+                            </ContentTemplate>
+                        </ajaxToolkit:TabPanel>
+                        <ajaxToolkit:TabPanel ID="_TP_Detalle" runat="server" HeaderText="Detalle">
+                            <HeaderTemplate>
+                                Detalle
+                            </HeaderTemplate>
+                            <ContentTemplate>
+                                <table style="margin-left: 26px; margin-top: 10px; margin-bottom: 10px;">
+                                    <tr>
+                                        <td colspan="4">
+                                            <asp:Label ID="_Lbl_Codigo" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="8pt"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="_Lbl_Cargo" runat="server" Font-Bold="True" Font-Names="Verdana" Font-Size="8pt">Cargo: </asp:Label>
+                                        </td>
+                                        <td style="width: 300px;">
+                                            <asp:DropDownList ID="_Cmb_Cargo" runat="server" CssClass="textoRegular" Width="250px">
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="_Lbl_Sexo" runat="server" Font-Bold="True" Font-Names="Verdana" Font-Size="8pt">Sexo: </asp:Label>
+                                        </td>
+                                        <td style="width: 300px;">
+                                            <asp:DropDownList ID="_Cmb_Sexo" runat="server" CssClass="textoRegular" Width="250px">
+                                                <asp:ListItem Value="M">MASCULINO</asp:ListItem>
+                                                <asp:ListItem Value="F">FEMENINO</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="_Lbl_Nombre" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="8pt">Nombre: </asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="_Txt_Nombre" runat="server" CssClass="textoRegular" MaxLength="50"
+                                                onkeypress="return _Mtd_KeyPress(event)" Width="250px"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="_Lbl_Estado" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="8pt">Estado: </asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="_Cmb_Estado" runat="server" CssClass="textoRegular" Width="250px">
+                                                <asp:ListItem Value="1">ACTIVO</asp:ListItem>
+                                                <asp:ListItem Value="0">INACTIVO</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="_Lbl_Apellido" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="8pt">Apellido: </asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="_Txt_Apellido" runat="server" CssClass="textoRegular" MaxLength="50"
+                                                onkeypress="return _Mtd_KeyPress(event)" Width="250px"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="_Lbl_Email" runat="server" Font-Bold="True" Font-Names="Verdana" Font-Size="8pt">Email: </asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="_Txt_Email" runat="server" CssClass="textoRegular" MaxLength="100"
+                                                onkeypress="return _Mtd_KeyPress(event)" Width="250px"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="_Lbl_Cedula" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="8pt">Cédula: </asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="_Txt_Cedula" runat="server" CssClass="textoRegular" MaxLength="8"
+                                                onkeypress="return _Mtd_KeyPress(event)" Width="250px"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="_Lbl_Telefono" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="8pt">Teléfono: </asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="_Txt_Telefono" runat="server" CssClass="textoRegular" MaxLength="100"
+                                                onkeypress="return _Mtd_KeyPress(event)" Width="250px"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="_Lbl_Supervisor" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="8pt">Supervisor: </asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="_Cmb_Supervisor" runat="server" CssClass="textoRegular" Width="250px">
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="_Lbl_Proveedor" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="8pt">Proveedor: </asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="_Cmb_Proveedor" runat="server" CssClass="textoRegular" Width="250px">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    </colgroup>
+                                </table>
+                                <table style="margin-left: 29px; margin-top: 10px; margin-bottom: 10px;">
+                                    <tr>
+                                        <td class="style1" style="vertical-align: top;">
+                                            <asp:Label ID="_Lbl_VendedoresDisponibles" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="7pt" Visible="False">Vendedores
+                                            </asp:Label>
+                                            <asp:ListBox ID="_Lbox_VendedoresDisponibles" runat="server" BackColor="Silver" Font-Names="Verdana"
+                                                Font-Size="8pt" Height="200px" Width="327px" Visible="False" SelectionMode="Multiple">
+                                            </asp:ListBox>
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="_Btn_AsociarVendedor" runat="server" Text="&gt;&gt;" OnClick="_Btn_AsociarVendedor_Click"
+                                                Visible="False" />
+                                            <br />
+                                            <asp:Button ID="_Btn_DesasociarVendedor" runat="server" Text="&lt;&lt;" OnClick="_Btn_DesasociarVendedor_Click"
+                                                Visible="False" />
+                                        </td>
+                                        <td style="vertical-align: top;">
+                                            <asp:Label ID="_Lbl_VendedoresAsociados" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="7pt" Visible="False">Vendedores asociados
+                                            </asp:Label>
+                                            <asp:ListBox ID="_Lbox_VendedoresAsociados" runat="server" BackColor="Silver" Font-Names="Verdana"
+                                                Font-Size="8pt" Height="200px" Width="327px" Visible="False" SelectionMode="Multiple">
+                                            </asp:ListBox>
+                                            <br />
+                                            <asp:Label ID="_Lbl_PieVendedoresAsociados" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="7pt" ForeColor="Red" Visible="False">Los vendedores del cuadro de la derecha son los que están asociados al promotor 
+                                            </asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="text-align: center; padding-top: 40px; padding-left: 8px;">
+                                            <asp:Label ID="_Lbl_Comentario" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                                Font-Size="7pt" ForeColor="Red">Recuerde que para 
+                                        guardar cualquier modificación debe utilizar el botón 'Guardar' que se encuentra en la parte superior izquierda. 
+                                            </asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ContentTemplate>
+                        </ajaxToolkit:TabPanel>
+                    </ajaxToolkit:TabContainer>
+                </asp:Panel>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        @*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+        <asp:Button runat="server" ID="_Btn_MessageBoxHidden" Style="display: none" />
+        <ajaxToolkit:ModalPopupExtender runat="server" ID="_MPE_MessageBox" BehaviorID="_MPE_MessageBoxBehavior"
+            TargetControlID="_Btn_MessageBoxHidden" PopupControlID="_Pnl_MessageBoxPopup"
+            BackgroundCssClass="modalBackground" DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+        </ajaxToolkit:ModalPopupExtender>
+        <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_MessageBoxPopup" Style="display: none;
+            padding: 10px" Width="700px">
+            @*bandera 3*@
+            <asp:Panel runat="Server" ID="_Pnl_MessageBox" Style="background-color: #FFFFFF;
+                border: solid 1px Gray; color: Black; text-align: center;">
+                <asp:UpdatePanel ID="_UP_MessageBox" runat="server">
+                    <ContentTemplate>
+                        <table style="width: 100%;">
+                            <tr valign="top">
+                                <td>
+                                    <asp:Label ID="_Lbl_MessageBox" runat="server" Font-Names="Verdana" Font-Size="8pt"></asp:Label><br />
+                                    <br />
+                                    <asp:Button ID="_Btn_MessageBoxAceptar" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                        BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="Aceptar" OnClick="_Btn_MessageBoxAceptar_Click"
+                                        Style="height: 19px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </asp:Panel>
+        </asp:Panel>
+        @*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+        @*update progress -----------------------------------------------------------------------------------------------------------------*@
+        <div style="position: fixed; z-index: 100600; font-family: verdana; font-size: 9px;
+            font-weight: bold; background-color: #FFFFFF;">
+            <asp:UpdateProgress ID="_UPR_Login" runat="server" AssociatedUpdatePanelID="_UP_Datos"
+                DisplayAfter="1000">
+                <ProgressTemplate>
+                    <center>
+                        @*bandera 1*@
+                        <div id="progressBackgroundFilter" style="display: none">
+                        </div>
+                        <div id="processMessage" style="border: 1px solid #000000" style="left: 34%; top: 34%">
+                            <img alt="Procesando" src="images/animated_loading.gif"><br>
+                            Procesando. Por favor espere...
+                        </div>
+                    </center>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
+        </div>
+        @*update progress -----------------------------------------------------------------------------------------------------------------*@
+        </form>
+    </center>
+</body>
+</html>

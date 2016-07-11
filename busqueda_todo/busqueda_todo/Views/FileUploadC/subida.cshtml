@@ -1,0 +1,52 @@
+﻿@using busqueda_todo.Clases
+@*@model busqueda_todo.Models.STEP_1_Result
+@{
+    //var res5 = result1.ObtenerTodos2("2");
+    //var test = result1.ObtenerTodosSql();
+    //var test3 = test;
+}*@
+<h2 style="text-align: center"></h2>
+
+    @using (Html.BeginForm())
+{
+            <input type="text" id="busqueda" />
+            <input type="button" class="clickClass" value="Buscarfghf" onClick="test()" />
+}
+<div style="text-align: center">
+    <table id="nueva" style="width:100%; text-align: center; border-collapse:collapse; border-spacing:15px; border:1px solid black;">
+    </table>
+</div>
+<div id="cargimg" style="text-align :center; display: none;" >
+    @*<img src="~/Images/spinner.gif" alt="Smiley face" height="42" width="42">*@
+    <p align='center'><img src='~/Images/spinner.gif' height="80" width="80"/></p>
+</div>
+
+
+
+    
+<script type="text/javascript">
+    function test() {
+        var a = $("#busqueda").val();
+        $('#nueva tr').remove();
+        $('#cargimg').show();
+            $.ajax()
+            var turl = '../FileUploadC/json1';
+            var json = "{ Archivo:'" + a + "' }";
+            $.ajax(
+            {
+                type: "POST",
+                url: turl,
+                data: json,
+                dataType: 'json',
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {},
+                success: function (data) {
+                    $('#cargimg').hide('slow');
+                    $.each(data, function (index, item) {
+                        $('#nueva').append("<tr id='elim'><td style='border:1px solid black; text-align: left;'>" + item + "</td></tr>");
+                    });
+                }
+            })
+    }
+</script>

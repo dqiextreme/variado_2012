@@ -1,0 +1,61 @@
+
+
+@{ Register assembly="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" }
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>@{ Response.Write(_Str_TituloReporte);}
+</title>
+    <script language="javascript">
+    var loading = document.createElement("div");
+    function clavar(obj, posic)
+    {
+        loading.style.cursor = 'default';
+       //document.form1.disabled=true;		
+		loading.id = "loading";
+		loading.style.color = "black";
+		loading.style.backgroundColor = "#FFFFC0";
+		//loading.style.backgroundColor = "#f00606";
+		loading.style.paddingLeft = "5px";
+		//document.getElementById('').style.
+		//alert(document.body.scrollTop);
+		loading.style.paddingRight = "5px";
+		loading.style.borderColor="#000000";
+		loading.style.borderWidth="1px";
+		loading.style.borderStyle="solid";
+		loading.style.position = "absolute";
+		loading.style.right = "1px";
+		var tope=(navigator.appName == 'Netscape') ? document.body.scrollTop : document.body.scrollTop;
+		loading.style.top = String(tope)+ "px";
+		loading.style.zIndex = "9999";
+		loading.style.fontFamily="verdana";
+		loading.style.fontSize="11px";
+		loading.innerHTML = "<div id='div_cerrar' onclick='window.close();'>Cerrar Reporte</div>";
+		window.status="Reporte Generado";
+		document.body.appendChild(loading);
+    }
+    function _Mtd_ScrollTop()
+		{
+			try
+			{			    
+				loading.position='absolute';
+				var scrollarriba=document.body.scrollTop;
+				loading.style.top = scrollarriba + "px";
+			}
+			catch(e)
+			{
+			}
+		}
+    </script>    
+</head>
+<body topmargin=0 leftmargin=0 onload="clavar('cuadro', 100);" onscroll="_Mtd_ScrollTop();">
+    <form id="form1" runat="server">
+    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="562px" 
+        Width="815px" ShowParameterPrompts="False">
+        <ServerReport ReportServerUrl="" />
+    </rsweb:ReportViewer>
+    </form>
+</body>
+</html>

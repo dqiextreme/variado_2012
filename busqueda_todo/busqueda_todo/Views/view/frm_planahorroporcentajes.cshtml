@@ -1,0 +1,325 @@
+
+@{ Register Src="controles/Menu.ascx" TagName="Menu" TagPrefix="uc1" }
+@{ Register Assembly="Anthem" Namespace="Anthem" TagPrefix="anthem" }
+@{ Register Src="controles/CloseSession.ascx" TagName="CloseSession" TagPrefix="uc2" }
+@{ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" }
+@{ Register src="controles/Ctr_Usuario.ascx" tagname="Ctr_Usuario" tagprefix="uc3" }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+	<title>@{ Response.Write(_Str_TituloPantalla);}
+</title>
+	
+	<link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+
+	<script language="javascript">
+		function clientActiveTabChanged(sender, args) 
+		{
+			if (sender.get_activeTabIndex() == 1 || sender.get_activeTabIndex() == 2) 
+			{
+				sender.set_activeTabIndex(0);
+			}
+
+        }
+function _Mtd_Onload() {
+    document.getElementById('progressBackgroundFilter1').style.display = "block";
+    document.getElementById('progressBackgroundFilter2').style.display = "block";
+}
+</script>
+
+</head>
+<body topmargin="0" onload="_Mtd_Onload();">
+    <form id="form1" runat="server">
+    <center>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"
+            EnableScriptLocalization="False">
+        </asp:ScriptManager>
+        <table style="width: 780px;" cellpadding="0" cellspacing="0">
+            <tr>
+                <td align="center">
+                    <uc1:Menu ID="Menu1" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td align="left" bgcolor="#BBD4F8" style="border: 1px solid #3b619c">
+                    <font face="Verdana" size="1"><strong><span>
+                        <table width="100%">
+                            <tr>
+                                <td width="5">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton1" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                </td>
+                                <td width="45">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:UpdatePanel ID="_UP_MenuPrincipal" runat="server">
+                                            <ContentTemplate>
+                                                <asp:ImageButton ID="_Img_Nuevo" runat="server" ImageUrl="image/new.gif" CausesValidation="False"
+                                                    OnClick="_Img_Nuevo_Click" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Nuevo_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="¿Desea crear un nuevo registro?" Enabled="True" TargetControlID="_Img_Nuevo">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                                <asp:ImageButton ID="_Img_Guardar" runat="server" ImageUrl="image/save.gif" OnClick="_Img_Guardar_Click"
+                                                    ValidationGroup="Guardar" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Guardar_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="¿Desea guardar el registro?" Enabled="True" TargetControlID="_Img_Guardar">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </span></strong></font>
+                                </td>
+                                <td width="10%">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton6" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                    <uc2:CloseSession ID="CloseSession2" runat="server" />
+                                </td>
+                                <td style="text-align: right">
+                                    <uc3:Ctr_Usuario ID="Ctr_Usuario1" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                    </span></strong></font>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#666666">
+                    <asp:Label ID="_Lbl_TituloReporte" runat="server" Text="Título del reporte" Font-Bold="True"
+                        Font-Names="Verdana" Font-Size="8pt" ForeColor="White"></asp:Label>
+                </td>
+            </tr>
+        </table>
+        <table width="780px" bgcolor="white">
+            <tr>
+                <td align="left">
+                    <br />
+                    <asp:UpdatePanel ID="_UP_TabContainer" runat="server">
+                        <ContentTemplate>
+                            <ajaxToolkit:TabContainer ID="TabContainer1" CssClass="ajax__tab_yuitabview-theme"
+                                runat="server" ActiveTabIndex="1" EnableTheming="True" OnClientActiveTabChanged="clientActiveTabChanged"
+                                Font-Names="Verdana" Font-Size="8pt" 
+                                OnActiveTabChanged="TabContainer1_ActiveTabChanged">
+                                <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Consulta">
+                                    <HeaderTemplate>
+                                        Consulta
+                                    </HeaderTemplate>
+                                    <ContentTemplate>
+                                        <table width="770PX">
+                                            <tr>
+                                                <td>
+                                                    <asp:UpdatePanel ID="_UP_Param" runat="server">
+                                                        <ContentTemplate>
+                                                            <table style="font-family: Verdana; font-size: 8pt; font-weight: bold;" width="100%">
+                                                                <tr>
+                                                                    <td align="left" width="100">
+                                                                        <asp:Label ID="_Lbl_Compania" runat="server" Text="Compañia :"></asp:Label>
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <asp:DropDownList ID="_Cmb_ConsultaCompania" runat="server" AutoCallBack="True" Font-Names="Verdana"
+                                                                            Font-Size="8pt" Width="390px" OnSelectedIndexChanged="_Cb_ConsultaCompania_SelectedIndexChanged"
+                                                                            AutoPostBack="True">
+                                                                        </asp:DropDownList>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
+                                                    <asp:Panel runat="server" ID="_Pnl_GridPrincipal" Style="background-color: #FFFFFF;
+                                                        border: solid 1px Gray; color: Black; text-align: center;">
+                                                        <asp:UpdatePanel ID="_UP_GridPrincipal" runat="server">
+                                                            <ContentTemplate>
+                                                                <table width="100%">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table width="100%">
+                                                                                <tr valign="top">
+                                                                                    <td style="text-align: left; font-family: verdana; font-size: 8pt;" valign="top">
+                                                                                        <asp:GridView ID="_Dtg_Principal" runat="server" AllowPaging="True" CellPadding="4"
+                                                                                            ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="_Dtg_Principal_SelectedIndexChanged"
+                                                                                            Style="text-align: left" Width="100%" AutoGenerateColumns="False" OnRowDeleting="_Dtg_Principal_RowDeleting"
+                                                                                            OnPageIndexChanging="_Dtg_Principal_PageIndexChanging">
+                                                                                            <AlternatingRowStyle BackColor="White" />
+                                                                                            <Columns>
+                                                                                                <asp:TemplateField ShowHeader="False">
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Select"
+                                                                                                            Text="Seleccionar"><img src="logos/iconos/editar.gif" border='0'/></asp:LinkButton>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+                                                                                                <asp:TemplateField ShowHeader="False">
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete"
+                                                                                                            Text=""><img src="logos/papelera.gif" border='0'/></asp:LinkButton>
+                                                                                                        <ajaxToolkit:ConfirmButtonExtender ID="LinkButton1_ConfirmButtonExtender" runat="server"
+                                                                                                            ConfirmText="¿Desea eliminar el registro seleccionado?" Enabled="True" TargetControlID="LinkButton1">
+                                                                                                        </ajaxToolkit:ConfirmButtonExtender>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+                                                                                                <asp:BoundField DataField="CIDPLANAHORRO" HeaderText="ID" />
+                                                                                                <asp:BoundField DataField="CNAME" HeaderText="Compañia" />
+                                                                                                <asp:BoundField DataField="CPORCENTAJE" HeaderText="Porcentaje" />
+                                                                                            </Columns>
+                                                                                            <EditRowStyle BackColor="#2461BF" />
+                                                                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                                                            <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" Font-Names="Verdana"
+                                                                                                Font-Size="7pt" ForeColor="Black" />
+                                                                                            <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" ForeColor="White"
+                                                                                                HorizontalAlign="Center" />
+                                                                                            <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                                                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                                                        </asp:GridView>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </ContentTemplate>
+                                                        </asp:UpdatePanel>
+                                                    </asp:Panel>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </ajaxToolkit:TabPanel>
+                                <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Detalles" TabIndex="1">
+                                    <HeaderTemplate>
+                                        Detalles
+                                    </HeaderTemplate>
+                                    <ContentTemplate>
+                                        <table width="770PX">
+                                            <tr>
+                                                <td width="100px" style="font-family: Verdana; font-size: 8pt;" align="left">
+                                                    <b>ID:</b></td>
+                                                <td align="left">
+                                                    <asp:TextBox ID="_Txt_Id" runat="server" Enabled="False" Font-Names="Verdana" 
+                                                        Font-Size="8pt" ValidationGroup="Guardar" Width="62px"></asp:TextBox>
+                                                </td>
+                                                <tr>
+                                                    <td align="left" style="font-family: Verdana; font-size: 8pt;" width="100px">
+                                                        <b>Compañia:</b>
+                                                    </td>
+                                                    <td align="left">
+                                                        <asp:DropDownList ID="_Cmb_Compania" runat="server" AutoCallBack="True" 
+                                                            Font-Names="Verdana" Font-Size="8pt" ValidationGroup="Guardar" Width="390px">
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="_Cmb_Compania"
+                                                            ErrorMessage="Seleccione una compañia" ValidationGroup="Guardar" 
+                                                            InitialValue="Seleccione uno">*</asp:RequiredFieldValidator>
+                                                    </td>
+                                                    <tr>
+                                                        <td align="left" style="font-family: Verdana; font-size: 8pt;" width="100px">
+                                                            <b>Porcentaje:</b>
+                                                        </td>
+                                                        <td align="left">
+                                                            <asp:TextBox ID="_Txt_Porcentaje" runat="server" Font-Names="Verdana" 
+                                                                Font-Size="8pt" ValidationGroup="Guardar" Width="62px"></asp:TextBox>
+                                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_Porcentaje_MaskedEditExtender" 
+                                                                runat="server" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                                                                CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                                                CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                                                Mask="99.99" MaskType="Number" TargetControlID="_Txt_Porcentaje">
+                                                            </ajaxToolkit:MaskedEditExtender>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                                                ControlToValidate="_Txt_Porcentaje" 
+                                                                ErrorMessage="'Porcentaje' no puede estar vacío." ValidationGroup="Guardar">*</asp:RequiredFieldValidator>
+                                                        </td>
+                                                    </tr>
+                                                </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </ajaxToolkit:TabPanel>
+                            </ajaxToolkit:TabContainer>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="_Img_Guardar" EventName="Click" />
+                            <asp:AsyncPostBackTrigger ControlID="_Img_Nuevo" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
+        ShowSummary="False" ValidationGroup="Guardar" />
+    
+    @*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+    <asp:Button runat="server" ID="_Btn_MessageBoxHidden" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender runat="server" ID="_MPE_MessageBox" BehaviorID="_MPE_MessageBoxBehavior"
+        TargetControlID="_Btn_MessageBoxHidden" PopupControlID="_Pnl_MessageBoxPopup"
+        BackgroundCssClass="modalBackground" DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_MessageBoxPopup" Style="display: block;
+        padding: 10px" Width="700px">
+        @*bandera 3*@
+        <asp:Panel runat="Server" ID="_Pnl_MessageBox" Style="background-color: #FFFFFF;
+            border: solid 1px Gray; color: Black; text-align: center;">
+            <asp:UpdatePanel ID="_UP_MessageBox" runat="server">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr valign="top">
+                            <td>
+                                <asp:Label ID="_Lbl_MessageBox" runat="server" Font-Names="Verdana" Font-Size="8pt"></asp:Label>
+                                <br />
+                                <br />
+                                <asp:Button ID="_Btn_MessageBoxAceptar" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                    BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="Aceptar" OnClick="_Btn_MessageBoxAceptar_Click"
+                                    Style="height: 19px" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:Panel>
+    </asp:Panel>
+    @*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+    @*<div style="position: fixed; left: 40%; top: 40%; width: 200; height: 200; z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+		<asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="_UP_TabContainer" DisplayAfter="20">
+			<ProgressTemplate>
+				<div id='progressBackgroundFilter' Style="display: none"> bandera 1
+				</div>
+				<div id="processMessage" style="border: 1px solid #000000" style="left: 34%; top: 34%">
+					Procesando la solicitud, espere por favor..!!<br />
+					<br />
+					<img alt="Loading" src="images/animated_loading.gif" />
+				</div>
+			</ProgressTemplate>
+		</asp:UpdateProgress>
+	</div>*@
+    <div style="position: fixed; z-index: 100600; font-family: verdana; font-size: 9px;
+        font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="_UP_TabContainer"
+            DisplayAfter="20">
+            <ProgressTemplate>
+                <div id="progressBackgroundFilter2" class="progressBackgroundFilter" style="display: none">
+                    @*bandera 1*@
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000" style="left: 34%; top: 34%">
+                    Procesando, por favor espere...<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    <div style="position: fixed; z-index: 100600; font-family: verdana; font-size: 9px;
+        font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="_UP_MenuPrincipal"
+            DisplayAfter="20">
+            <ProgressTemplate>
+                <div id="progressBackgroundFilter1" class="progressBackgroundFilter" style="display: none">
+                    @*bandera 1*@
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000" style="left: 34%; top: 34%">
+                    Procesando, por favor espere...<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    @*búsqueda ---------------------------------------------------------------------------------------------------------------------*@
+    </form>
+</body>
+</html>
+

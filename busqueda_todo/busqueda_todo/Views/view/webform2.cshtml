@@ -1,0 +1,296 @@
+
+
+@{ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" }
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title></title>
+    <style>
+    @*#progressBackgroundFilter {
+            position:fixed; 
+            top:0px; 
+            bottom:0px; 
+            left:0px;
+            right:0px;
+            overflow:hidden; 
+            padding:0; 
+            margin:0; 
+            background-color:#000; 
+            filter:alpha(opacity=60); 
+            opacity:0.5; 
+            z-index:1000; 
+        }*@
+        #processMessage  
+        {
+        	background-color: #FFFFFF; border: 30px solid #000000;
+        	position:fixed; 
+            top:30%; 
+            left:43%;
+            padding:10px; 
+            width:30%; 
+            z-index:1001; 
+            background-color:#fff;
+            font-family: Verdana;
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <table style="width: 100%;">
+                <tr>
+                    <td colspan="4" style="font-family: Verdana; font-size: 10px; font-weight: 700">
+                        <asp:RadioButton ID="_Rbt_Grupo" runat="server" AutoPostBack="True" 
+                            GroupName="Busqueda" oncheckedchanged="_Rbt_Grupo_CheckedChanged" 
+                            Text="Por Grupo" />
+                        <asp:RadioButton ID="_Rbt_PorProducto" runat="server" AutoPostBack="True" 
+                            GroupName="Busqueda" oncheckedchanged="_Rbt_PorProducto_CheckedChanged" 
+                            Text="Por Producto" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="font-family: Verdana; font-size: 10px; font-weight: 700">
+                        <asp:Panel ID="_Pnl_PorGrupo" runat="server" Visible="False">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td width="10%">
+                                        Proveedor:</td>
+                                    <td>
+                                        <asp:DropDownList ID="_Ddl_Proveedor" runat="server" AutoPostBack="True" 
+                                            Font-Names="Verdana" Font-Size="7pt" 
+                                            onselectedindexchanged="_Ddl_Proveedor_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">
+                                        Grupo:</td>
+                                    <td>
+                                        <asp:DropDownList ID="_Ddl_Grupo" runat="server" AutoPostBack="True" 
+                                            Font-Names="Verdana" Font-Size="7pt" 
+                                            onselectedindexchanged="_Ddl_Grupo_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                        <asp:Panel ID="_Pnl_PorProducto" runat="server" Visible="False">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td width="10%">
+                                        Buscar:</td>
+                                    <td>
+                                        <asp:TextBox ID="_Txt_Buscar" runat="server" BorderWidth="1px" 
+                                            Font-Names="Verdana" Font-Size="8pt"></asp:TextBox>
+                                        &nbsp;<asp:Button ID="_Btn_BuscarCod" runat="server" BorderWidth="1px" 
+                                            Font-Names="Verdana" Font-Size="8pt" onclick="_Btn_Buscar_Click" 
+                                            Text="Por Código" />
+                                        &nbsp;<asp:Button ID="_Btn_BuscarDesc" runat="server" BorderWidth="1px" 
+                                            Font-Names="Verdana" Font-Size="8pt" onclick="_Btn_BuscarDesc_Click" 
+                                            Text="Por Descripción" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <asp:GridView ID="_Dtg_GridProductos" runat="server" AllowPaging="True" 
+                            AutoGenerateColumns="False" CellPadding="4" Font-Names="Verdana" 
+                            Font-Size="7pt" ForeColor="#333333" GridLines="None" 
+                            onpageindexchanged="GridView1_PageIndexChanged" 
+                            onpageindexchanging="GridView1_PageIndexChanging" 
+                            onrowediting="GridView1_RowEditing" onrowupdating="GridView1_RowUpdating" 
+                            PageSize="20" Width="100%">
+                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                            <Columns>
+                                <asp:CommandField EditText="Cargar" InsertVisible="False" 
+                                    ShowCancelButton="False" ShowEditButton="True" UpdateText="Terminar">
+                                    <HeaderStyle Width="10%" />
+                                </asp:CommandField>
+                                <asp:BoundField DataField="cproducto" HeaderText="Producto" ReadOnly="True">
+                                    <HeaderStyle Width="10%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="cnamefc" HeaderText="Descripción" ReadOnly="True">
+                                    <HeaderStyle Width="30%" />
+                                </asp:BoundField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label1" runat="server" Text='@{ # Bind("campo1")}
+'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="_Txt_Cajas" runat="server" BorderStyle="Solid" 
+                                            BorderWidth="1px" Font-Names="Verdana" Font-Size="7pt" 
+                                            Text='@{ # Bind("campo1")}
+' Width="35px"></asp:TextBox>
+                                        <cc1:MaskedEditExtender ID="TextBox1_MaskedEditExtender" runat="server" 
+                                            AutoComplete="False" CultureAMPMPlaceholder="" 
+                                            CultureCurrencySymbolPlaceholder="" CultureDateFormat="" 
+                                            CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                            CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                            Mask="999" MaskType="Number" TargetControlID="_Txt_Cajas">
+                                        </cc1:MaskedEditExtender>
+                                        <asp:RangeValidator ID="RangeValidator5" runat="server" 
+                                            ControlToValidate="_Txt_Cajas" ErrorMessage="No puede sobrepasar de 2" 
+                                            MaximumValue="999" MinimumValue="0">*</asp:RangeValidator>
+                                    </EditItemTemplate>
+                                    <HeaderStyle Width="10%" />
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label2" runat="server" Text='@{ # Bind("campo2")}
+'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="_Txt_Und" runat="server" BorderStyle="Solid" BorderWidth="1px" 
+                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("campo2")}
+' Width="35px"></asp:TextBox>
+                                        <cc1:MaskedEditExtender ID="_Txt_Und_MaskedEditExtender" runat="server" 
+                                            AutoComplete="False" CultureAMPMPlaceholder="" 
+                                            CultureCurrencySymbolPlaceholder="" CultureDateFormat="" 
+                                            CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                            CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                            Mask="999" MaskType="Number" TargetControlID="_Txt_Und">
+                                        </cc1:MaskedEditExtender>
+                                        <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                                            ControlToValidate="_Txt_Und" ErrorMessage="No puede sobrepasar de 2" 
+                                            MaximumValue="2" MinimumValue="0">*</asp:RangeValidator>
+                                    </EditItemTemplate>
+                                    <HeaderStyle Width="10%" />
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label3" runat="server" Text='@{ # Bind("campo3")}
+'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="_Txt_Desc1" runat="server" BorderStyle="Solid" 
+                                            BorderWidth="1px" Font-Names="Verdana" Font-Size="7pt" 
+                                            Text='@{ # Bind("campo3")}
+' Width="35px"></asp:TextBox>
+                                        <cc1:MaskedEditExtender ID="_Txt_Desc1_MaskedEditExtender" runat="server" 
+                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                                            CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                            CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                            Mask="99.99" MaskType="Number" TargetControlID="_Txt_Desc1">
+                                        </cc1:MaskedEditExtender>
+                                        <asp:RangeValidator ID="RangeValidator2" runat="server" 
+                                            ControlToValidate="_Txt_Desc1" ErrorMessage="No puede sobrepasar de 2" 
+                                            MaximumValue="2,25" MinimumValue="0" Type="Double">*</asp:RangeValidator>
+                                    </EditItemTemplate>
+                                    <HeaderStyle Width="10%" />
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label4" runat="server" Text='@{ # Bind("campo4")}
+'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="_Txt_Desc2" runat="server" BorderStyle="Solid" 
+                                            BorderWidth="1px" Font-Names="Verdana" Font-Size="7pt" 
+                                            Text='@{ # Bind("campo4")}
+' Width="35px"></asp:TextBox>
+                                        <cc1:MaskedEditExtender ID="_Txt_Desc2_MaskedEditExtender" runat="server" 
+                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                                            CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                            CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                            Mask="99.99" MaskType="Number" TargetControlID="_Txt_Desc2">
+                                        </cc1:MaskedEditExtender>
+                                        <asp:RangeValidator ID="RangeValidator3" runat="server" 
+                                            ControlToValidate="_Txt_Desc2" ErrorMessage="No puede sobrepasar de 2" 
+                                            MaximumValue="2,25" MinimumValue="0" Type="Double">*</asp:RangeValidator>
+                                    </EditItemTemplate>
+                                    <HeaderStyle Width="10%" />
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label5" runat="server" Text='@{ # Bind("campo5")}
+'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="_Txt_Desc3" runat="server" BorderStyle="Solid" 
+                                            BorderWidth="1px" Font-Names="Verdana" Font-Size="7pt" 
+                                            Text='@{ # Bind("campo5")}
+' Width="35px"></asp:TextBox>
+                                        <cc1:MaskedEditExtender ID="_Txt_Desc3_MaskedEditExtender" runat="server" 
+                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" 
+                                            CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" 
+                                            CultureThousandsPlaceholder="" CultureTimePlaceholder="" Enabled="True" 
+                                            Mask="99.99" MaskType="Number" TargetControlID="_Txt_Desc3">
+                                        </cc1:MaskedEditExtender>
+                                        <asp:RangeValidator ID="RangeValidator4" runat="server" 
+                                            ControlToValidate="_Txt_Desc3" ErrorMessage="No puede sobrepasar de 2" 
+                                            MaximumValue="2,25" MinimumValue="0" Type="Double">*</asp:RangeValidator>
+                                    </EditItemTemplate>
+                                    <HeaderStyle Width="10%" />
+                                </asp:TemplateField>
+                            </Columns>
+                            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                            <EditRowStyle BackColor="#999999" />
+                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                        </asp:GridView>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+            
+        </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="_Dtg_GridProductos" 
+                    EventName="PageIndexChanging" />
+            </Triggers>
+        </asp:UpdatePanel>
+    </div>
+    
+       <asp:UpdateProgress ID="UpdateProgress2" runat="server" 
+                    AssociatedUpdatePanelID="UpdatePanel1" DisplayAfter="50">
+       <progresstemplate>
+       <div id='progressBackgroundFilter'>
+            <div id="processMessage" style="border: 1px solid #000000"> Procesando la solicitud, espere por favor..!!<br /><br />
+                 <img alt="Loading" src="images/animated_loading.gif" />
+            </div>
+               </div>
+        </progresstemplate>
+       </asp:UpdateProgress>
+ 
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
+        ShowMessageBox="True" ShowSummary="False" />
+    </form>
+</body>
+</html>

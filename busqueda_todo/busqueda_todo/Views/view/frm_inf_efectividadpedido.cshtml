@@ -1,0 +1,405 @@
+
+@{ Register Src="controles/Menu.ascx" TagName="Menu" TagPrefix="uc1" }
+@{ Register Assembly="Anthem" Namespace="Anthem" TagPrefix="anthem" }
+@{ Register Src="controles/CloseSession.ascx" TagName="CloseSession" TagPrefix="uc2" }
+@{ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" }
+@{ Register src="controles/Ctr_Usuario.ascx" tagname="Ctr_Usuario" tagprefix="uc3" }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>
+        @{ Response.Write(_Str_TituloReporte);}
+</title>
+    <style type="text/css">
+        .modalBackground
+        {
+            background-color: #000000;
+            filter: alpha(opacity=60); 
+            opacity: 0.5;
+        }
+        .modalPopup
+        {
+            background-color: #ffffdd;
+            border-width: 3px;
+            border-style: solid;
+            border-color: Gray;
+            padding: 3px;
+            width: 500px;
+        }
+        .progressBackgroundFilter
+        {
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            background-color: #000000;
+            filter: alpha(opacity=60);
+            opacity: 0.5;
+            z-index: 100601;
+        }
+        #processMessage
+        {
+            background-color: #FFFFFF;
+            border: 30px solid #000000;
+            position: fixed;
+            top: 30%;
+            left: 43%;
+            padding: 10px;
+            width: 30%;
+            z-index: 100602;
+            background-color: #fff;
+            font-family: Verdana;
+            font-size: 12px;
+        }
+    </style>
+    <script type="text/javascript">
+        function _Mtd_ValidarFechas() {
+            var bolvalido = true;
+            if (document.getElementById('_Rb_ConsultaPorMes').checked) {
+                if (document.getElementById('_Cb_Ano').selectedIndex > 0 && document.getElementById('_Cb_Mes').selectedIndex > 0) {
+                    alert('Seleccione mes y año antes de seguir');
+                    bolvalido = false;
+                }
+                if (document.getElementById('_Cb_Ano').selectedIndex < 0 && document.getElementById('_Cb_Mes').selectedIndex < 0) {
+                    alert('Seleccione mes y año antes de seguir');
+                    bolvalido = false;
+                }
+            }
+            else {
+                if (document.getElementById('_Txt_FechaDesde').value == "" || document.getElementById('_Txt_FechaHasta').value == "") {
+                    alert('Seleccione una fecha inicial y una fecha final antes de seguir');
+                    bolvalido = false;
+                }
+                else {
+                    var cfechai = document.getElementById('_Txt_FechaDesde').value;
+                    var cfechaf = document.getElementById('_Txt_FechaHasta').value;
+                    var cfechaiv = cfechai.split('/');
+                    var cfechafv = cfechaf.split('/');
+                    var cdatei = new Date(cfechaiv[2], cfechaiv[1], cfechaiv[0]);
+                    var cdatef = new Date(cfechafv[2], cfechafv[1], cfechafv[0]);
+                    if (cdatei > cdatef) {
+                        alert('La fecha inicial no puede ser mayor que la fecha final');
+                        bolvalido = false;
+                    }
+                }
+            }
+            return bolvalido;
+        }
+
+        function _Mtd_ValidarParametros() {
+            return _Mtd_ValidarFechas();
+        }
+        function _Mtd_Onload() {
+            document.getElementById('progressBackgroundFilter1').style.display = "block";
+            document.getElementById('progressBackgroundFilter2').style.display = "block";
+            //document.getElementById('progressBackgroundFilter3').style.display = "block";
+        }
+    </script>
+</head>
+<body topmargin="0" onload="_Mtd_Onload();">
+    <form id="form1" runat="server">
+    <center>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="False">
+        </asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+        <ContentTemplate>
+        <table style="width: 780px;" cellpadding="0" cellspacing="0">
+          <tr>
+                <td align="center">
+                    <uc1:Menu ID="Menu1" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td align="left" bgcolor="#BBD4F8" style="border: 1px solid #3b619c">
+<table width="100%">
+                            <tr>
+                                <td width="5">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton1" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                </td>
+                                <td width="45">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:UpdatePanel ID="_UP_MenuPrincipal" runat="server">
+                                            <ContentTemplate>
+                                                <asp:ImageButton ID="_Img_Nuevo" runat="server" ImageUrl="image/new.gif" 
+                                                    CausesValidation="False" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Nuevo_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="¿Desea crear un nuevo registro?" Enabled="True" TargetControlID="_Img_Nuevo">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                                <asp:ImageButton ID="_Img_Guardar" runat="server" ImageUrl="image/save.gif"
+                                                    ValidationGroup="Guardar" OnClick="_Img_Guardar_Click" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Guardar_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="¿Desea guardar el registro?" Enabled="True" TargetControlID="_Img_Guardar">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </span></strong></font>
+                                </td>
+                                <td width="10%">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton6" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                    <uc2:CloseSession ID="CloseSession2" runat="server" />
+                                </td>
+                                <td style="text-align: right">
+                                    <uc3:Ctr_Usuario ID="Ctr_Usuario1" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#666666">
+                    <asp:Label ID="_Lbl_TituloReporte" runat="server" Text="Título del reporte" Font-Bold="True" Font-Names="Verdana" Font-Size="8pt" ForeColor="White"></asp:Label>
+                </td>
+            </tr>
+        </table>
+        </ContentTemplate>
+        </asp:UpdatePanel>        
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <table style="width: 780px;">
+                    <tr style="vertical-align: middle">
+                        <td width="50%" align="left">
+                                <asp:RadioButton ID="_Rb_ConsultaPorMes" runat="server" Font-Bold="True" Font-Names="Verdana" Font-Size="8pt" OnCheckedChanged="RadioButton1_CheckedChanged" Text="Consulta por mes" GroupName="Consulta" AutoCallBack="True" AutoPostBack="True" /><br>
+                                <asp:RadioButton ID="_Rb_ConsultaPorRango" runat="server" Font-Bold="True" Font-Names="Verdana" Font-Size="8pt" OnCheckedChanged="_Rb_ConsultaPorRango_CheckedChanged" Text="Consulta por rango de fechas" GroupName="Consulta" AutoCallBack="True" AutoPostBack="True" />                            <asp:Panel ID="_Pnl_ConsultaPorMes" runat="server">
+                                <table style="width: 100%; font-size: 8pt; font-family: Verdana; font-weight: bold;">
+                                    
+                                    
+                                    <tr>
+                                        <td align="left" width="100">
+                                            Año :
+                                        </td>
+                                        <td align="left">
+                                            <asp:DropDownList ID="_Cb_Ano" runat="server" Font-Names="Verdana" Font-Size="8pt" Width="150px" onselectedindexchanged="_Cb_Ano_SelectedIndexChanged">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" width="100">
+                                            Mes :
+                                        </td>
+                                        <td align="left">
+                                            <asp:DropDownList ID="_Cb_Mes" runat="server" Font-Names="Verdana" Font-Size="8pt" Width="150px">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </asp:Panel>
+                            <asp:Panel ID="_Pnl_ConsultaPorRango" runat="server">
+                                <table style="width: 100%; font-size: 8pt; font-family: Verdana; font-weight: bold;">
+                                    <tr>
+                                        <td align="left" width="100">
+                                            Desde :
+                                        </td>
+                                        <td align="left">
+                                            <asp:TextBox ID="_Txt_FechaDesde" runat="server" ReadOnly="false" Enabled=false Width="148px" AutoCallBack="True"></asp:TextBox>
+                                            <ajaxToolkit:CalendarExtender ID="MiCalendario_CalendarExtender" runat="server" Enabled="True" TargetControlID="_Txt_FechaDesde" PopupButtonID="_Img_CalendarioH0">
+                                            </ajaxToolkit:CalendarExtender>
+                                            <asp:ImageButton ID="_Img_CalendarioH0" runat="server" ImageUrl="~/images/calendario.gif" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" width="100">
+                                            Hasta :
+                                        </td>
+                                        <td align="left">
+                                            <asp:TextBox ID="_Txt_FechaHasta" runat="server" ReadOnly="false" Enabled=false Width="148px" AutoCallBack="True"></asp:TextBox>
+                                            <ajaxToolkit:CalendarExtender ID="_Txt_FechaHasta_CalendarExtender" runat="server" Enabled="True" TargetControlID="_Txt_FechaHasta" PopupButtonID="_Img_CalendarioH1">
+                                            </ajaxToolkit:CalendarExtender>
+                                            <asp:ImageButton ID="_Img_CalendarioH1" runat="server" ImageUrl="~/images/calendario.gif" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </asp:Panel>
+                        </td>
+                        
+                    </tr>
+                </table>
+                <table style="width: 780px; font-family: Verdana; font-size: 8pt; font-weight: bold;">
+                    <tr>
+                        <td align="left" width="100">
+                            <asp:Label ID="_Lbl_Compania" runat="server" Text="Compañia :"></asp:Label>
+                        </td>
+                        <td align="left"><asp:DropDownList ID="_Cb_Compania" runat="server" Font-Names="Verdana" Font-Size="8pt" Width="150px" AutoCallBack="True" AutoPostBack="True"></asp:DropDownList></td>
+                        <td align="left" width="200">&nbsp;</td>
+                    </tr>
+                    
+                     <tr>
+                        <td align="left" width="100">
+                            Vendedor :
+                            <td align="left" width="200">
+                                <asp:TextBox ID="_Txt_Vendedor" runat="server" Font-Names="Verdana" Font-Size="8pt" Width="150px" ReadOnly="True"></asp:TextBox>
+                                <asp:Button ID="_Btn_BuscarVendedor" runat="server" Font-Names="Verdana" Font-Size="8pt" Text="..." OnClick="_Btn_BuscarVendedor_Click" />
+                            </td>
+                            <td align="left">
+                                <asp:CheckBox ID="_Chk_Vendedor" runat="server" Font-Names="Verdana" Font-Size="8pt" oncheckedchanged="_Chk_Vendedor_CheckedChanged" Text="Todos los vendedores" AutoPostBack="True" />
+                            </td>
+                    </tr>
+                    <tr>
+                        <td align="left" width="100">
+                            Cliente :
+                        </td>
+                        <td align="left">
+                            <asp:TextBox ID="_Txt_Cliente" runat="server" Font-Names="Verdana" Font-Size="8pt" Width="150px" ReadOnly="True"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </asp:TextBox>
+                            <asp:Button ID="_Btn_BuscarCliente" runat="server" Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_BuscarCliente_Click" Text="..." />
+                        </td>
+                        <td align="left" width="200">
+                            <asp:CheckBox ID="_Chk_Cliente" runat="server" Font-Names="verdana" Font-Size="8pt" oncheckedchanged="_Chk_Cliente_CheckedChanged" Text="Todos los clientes" AutoPostBack="True" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" width="100">
+                            Pedido :
+                        </td>
+                        <td align="left">
+                            <asp:TextBox ID="_Txt_Pedido" runat="server" Font-Names="Verdana" Font-Size="8pt" Width="150px" ReadOnly="True"></asp:TextBox>
+                            <asp:Button ID="_Btn_BuscarPedido" runat="server" Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_BuscarPedido_Click" Text="..." />
+                        </td>
+                        <td align="left" width="200">
+                            <asp:CheckBox ID="_Chk_Pedido" runat="server" Font-Names="Verdana" Font-Size="8pt" oncheckedchanged="_Chk_Pedido_CheckedChanged" Text="Todos los pedidos" AutoPostBack="True" />
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td align="left" width="110">
+                            <asp:RadioButton ID="_Rb_Pedido" runat="server" Font-Names="Verdana" Font-Size="8pt" Text="Por pedido" Font-Bold="True" GroupName="detalleReporte" /><br>
+                            <asp:RadioButton ID="_Rb_Grupo" runat="server" Font-Names="Verdana" Font-Size="8pt" Text="Por grupo" Font-Bold="True" GroupName="detalleReporte" /><br>
+                            <asp:RadioButton ID="_Rb_Producto" runat="server" Font-Names="Verdana" Font-Size="8pt" Text="Por producto" Font-Bold="True" GroupName="detalleReporte" />
+                        </td>
+                    </tr>
+                </table>
+                
+                <table style="width: 780px; font-size: 8pt; font-family: Verdana; font-weight: bold;">
+                    <tr>
+                        <td>
+                            <anthem:Button ID="_Btn_Consultar" runat="server" BorderStyle="Solid" Font-Names="Verdana" Font-Size="8pt" Text="Consultar" OnClick="_Btn_Consultar_Click" AutoUpdateAfterCallBack="True" style="height: 21px"></anthem:Button>&nbsp;
+                        </td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+         <asp:Button runat="server" ID="_Btn_HiddeControl" style="display:none"/>
+        <ajaxToolkit:ModalPopupExtender runat="server" ID="programmaticModalPopup"
+            BehaviorID="programmaticModalPopupBehavior"
+            TargetControlID="_Btn_HiddeControl"
+            PopupControlID="_Pnl_PanelBusqueda" 
+            BackgroundCssClass="modalBackground"
+            DropShadow="True"
+            RepositionMode="RepositionOnWindowScroll" >
+        </ajaxToolkit:ModalPopupExtender>
+        <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_PanelBusqueda" Style="display: block; padding: 10px" Width="700px">
+            <asp:Panel runat="Server" ID="_Pnl_PanelBusquedaDrag" Style="background-color: #FFFFFF; border: solid 1px Gray; color: Black; text-align: center;">
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <table style="width: 100%;">
+                            <tr valign="top">
+                                
+                                <td style="text-align: left; font-family: verdana; font-size: 8pt;" valign="top">
+                                    Buscar:<br>
+                                    <asp:TextBox ID="_Txt_Buscar" runat="server" BorderColor="#000001" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="248px" Height="16px"></asp:TextBox>
+                                    &nbsp;<asp:Button ID="_Btn_BuscarPorCodigo" runat="server" Text="Código" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" onclick="_Btn_BuscarPorCodigo_Click" />
+                                    &nbsp;<asp:Button ID="_Btn_BuscarPorDescripcion" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" onclick="_Btn_BuscarPorDescripcion_Click" Text="Descripción" />
+                                    <asp:GridView ID="_Dtg_Grid" runat="server" AllowPaging="True" CellPadding="4" ForeColor="#333333" GridLines="None" onpageindexchanging="_Dtg_Grid_PageIndexChanging" onselectedindexchanged="_Dtg_Grid_SelectedIndexChanged" Style="text-align: left" Width="100%">
+                                        <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                        <Columns>
+                                            <asp:TemplateField ShowHeader="False">
+                                                <ItemTemplate>
+                                                    <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Select" Text="Seleccionar" />
+                                                </ItemTemplate>
+                                                <ControlStyle BorderColor="Black" BorderWidth="1px" Font-Names="Verdana" Font-Size="7pt" />
+                                                <ItemStyle Width="50px" />
+                                            </asp:TemplateField>
+                                        </Columns>
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" ForeColor="White" HorizontalAlign="Center" />
+                                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" Font-Names="Verdana" Font-Size="7pt" ForeColor="Black" />
+                                        <EditRowStyle BackColor="#2461BF" />
+                                        <AlternatingRowStyle BackColor="White" />
+                                    </asp:GridView>
+                                   
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr valign="top">
+                                <td>
+                                    <asp:Button ID="_Btn_CerrarPn1" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="Cerrar" onclick="_Btn_CerrarPn1_Click" style="height: 19px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </asp:Panel>
+        </asp:Panel>
+         <asp:Button runat="server" ID="_Btn_HiddeControl_2" style="display:none"/>
+         <ajaxToolkit:ModalPopupExtender runat="server" ID="ModalPopupExtender1"
+            BehaviorID="ModalPopupExtender1Behavior"
+            TargetControlID="_Btn_HiddeControl_2"
+            PopupControlID="_Pnl_Alertas" 
+            BackgroundCssClass="modalBackground"
+            DropShadow="True"
+            RepositionMode="RepositionOnWindowScroll" >
+        </ajaxToolkit:ModalPopupExtender>
+         <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_Alertas" 
+            Style="display: block;padding:10px" Width="700px">
+            <asp:Panel runat="Server" ID="_Pnl_AlertasDrag" Style="background-color:#FFFFFF;border:solid 1px Gray;color:Black;text-align:center;">
+                <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                    <ContentTemplate>
+                        <table style="width: 100%;">
+                            <tr valign="top">
+                                <td>
+                                    <asp:Label ID="_Lbl_Mensaje" runat="server" Font-Names="Verdana" 
+                                        Font-Size="8pt"></asp:Label>
+                                    <br />
+                                    <br />
+                                    <asp:Button ID="_Btn_Aceptar" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="Aceptar" OnClick="_Btn_Aceptar_Click" />
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </asp:Panel>                        
+         </asp:Panel> 
+         <div style="position: fixed; left: 40%; top: 40%; width: 200; height: 200; z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="UpdatePanel1" DisplayAfter="20">
+            <ProgressTemplate>
+            <div id='progressBackgroundFilter1' style="display:none;" class="progressBackgroundFilter">
+                
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000" style="left:34%;top:34%">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div> 
+    
+    <div style="position: fixed; z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel2" DisplayAfter="20">
+            <ProgressTemplate>
+                <div id="progressBackgroundFilter2" style="display:none;" class="progressBackgroundFilter">
+                </div>
+                
+                <div id="processMessage" style="border: 1px solid #000000" style="left:34%;top:34%">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                 </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div> 
+   
+    </center>
+    </form>
+</body>
+</html>

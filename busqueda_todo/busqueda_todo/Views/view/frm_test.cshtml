@@ -1,0 +1,116 @@
+
+
+@{ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+
+    <script language="javascript">
+        function clientActiveTabChanged(sender, args) {
+            if (sender.get_activeTabIndex() == 1 || sender.get_activeTabIndex() == 2) {
+                sender.set_activeTabIndex(0);
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <cc1:TabContainer ID="TabContainer1" CssClass="ajax__tab_technorati-theme" runat="server"
+                ActiveTabIndex="0" OnActiveTabChanged="TabContainer1_ActiveTabChanged" OnClientActiveTabChanged="clientActiveTabChanged"
+                EnableTheming="True">
+                <cc1:TabPanel runat="server" HeaderText="TabPanel1" ID="TabPanel1" Width="100%">
+                    <ContentTemplate>
+                        <table width="796px">
+                            <tr>
+                                <td>
+                                    <asp:Button ID="Button1" runat="server" Text="Button" onclick="Button1_Click" />
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </cc1:TabPanel>
+                <cc1:TabPanel ID="TabPanel2" runat="server" HeaderText="TabPanel2">
+                    <ContentTemplate>
+                        <table width="796px">
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </cc1:TabPanel>
+                <cc1:TabPanel ID="TabPanel3" runat="server" HeaderText="TabPanel3">
+                    <ContentTemplate>
+                        asdasdasdasdasdasdasdasdsdasddddddddddddddddddddddddd
+                    </ContentTemplate>
+                </cc1:TabPanel>
+            </cc1:TabContainer>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    </form>
+</body>
+</html>

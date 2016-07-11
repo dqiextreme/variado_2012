@@ -1,0 +1,132 @@
+
+@{ Register Src="controles/Menu.ascx" TagName="Menu" TagPrefix="uc1" }
+@{ Register Src="controles/CloseSession.ascx" TagName="CloseSession" TagPrefix="uc2" }
+@{ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" }
+
+@{ Register src="controles/Ctr_Usuario.ascx" tagname="Ctr_Usuario" tagprefix="uc3" }
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+	<title>T3Web - @{ Response.Write(_Str_TituloPantalla);}
+</title>
+	<link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+</head>
+
+<body topmargin="0" bgcolor='white'>
+	<form id="form1" runat="server">
+	<center>
+		<asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="False"></asp:ScriptManager>
+		<table style="width: 780px;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td align="left">
+					<uc1:Menu ID="Menu1" runat="server" />
+				</td>
+			</tr>
+			<tr>
+				<td align="left" bgcolor="#BBD4F8" style="border: 1px solid #3b619c">
+					<font face="Verdana" size="1"><strong><span>
+						<table width="100%">
+                            <tr>
+                                <td width="5">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton4" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                </td>
+                                <td width="45">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:UpdatePanel ID="_Upd_PanelBoton" runat="server" UpdateMode="Conditional">
+                                            <ContentTemplate>
+                                                <asp:ImageButton ID="_Img_Nuevo" runat="server" ImageUrl="image/new.gif" 
+                                                    CausesValidation="False" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Nuevo_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="Desea generar un nuevo pedido?" Enabled="True" TargetControlID="_Img_Nuevo">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                                <asp:ImageButton ID="_Img_Guardar" runat="server" ImageUrl="image/save.gif" 
+                                                    ValidationGroup="GuardarPedido" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Guardar_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="Desea terminar el pedido actual?" Enabled="True" TargetControlID="_Img_Guardar">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </span></strong></font>
+                                </td>
+                                <td width="10%">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton5" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                    <uc2:CloseSession ID="CloseSession1" runat="server" />
+                                </td>
+                                <td style="text-align: right">
+                                    <uc3:Ctr_Usuario ID="Ctr_Usuario1" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+						
+					</span></strong></font>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" bgcolor="#666666">
+					<asp:Label ID="_Lbl_TituloReporte" runat="server" Text="Título de la pantalla" Font-Bold="True" Font-Names="Verdana" Font-Size="8pt" ForeColor="White"></asp:Label>
+				</td>
+			</tr>
+		</table>
+		
+		<table style="width: 780px;">
+			<tr>
+				<td>
+					<asp:UpdatePanel ID="_UP_Reporte" runat="server" UpdateMode="Conditional">
+						<ContentTemplate>
+				            <asp:Panel ID="_Pnl_Ayuda" runat="server">
+							    <table width="100%" class="textoRegular">
+								    <tr>
+									    <td align="center">
+									        <a  target="_blank" href="ayuda/pedidos.pdf">Carga de pedidos (PDF)</a><br><br>
+                                            <asp:ImageButton ID="_Btn_VerTutorialPedidos" runat="server" ImageUrl="images/icono_video.jpg" onclick="_Btn_VerTutorialPedidos_Click" />
+                                            
+									    </td>
+									    <td>
+                                            <a target="_blank" href="ayuda/relaciones_cobranza.pdf">Carga de relaciones de cobranza (PDF)</a><br><br>
+									        <asp:ImageButton ID="_Btn_VerTutorialCobranza" runat="server" 
+                                                ImageUrl="images/icono_video.jpg" onclick="_Btn_VerTutorialCobranza_Click" />
+                                        </td>
+								    </tr>							
+							    </table>
+							    <table>
+							        <tr>
+							        <td>
+							            <asp:Panel ID="_Pnl_Pedidos" runat="server" Visible="False">
+                                            <object width="780" height="600">
+                                            <param name="movie" value="./ayuda/CARGA_PEDIDOS_T3WEB_demo.swf">
+                                            <embed src="./ayuda/CARGA_PEDIDOS_T3WEB_demo.swf" width="780" height="600">
+                                            </embed>
+                                            </object>
+                                        </asp:Panel>
+                                        <asp:Panel ID="_Pnl_Cobranza" runat="server" Visible="False">
+                                            <object width="780" height="600">
+                                            <param name="movie" value="./ayuda/carga_relaciones_cobranza_demo.swf">
+                                            <embed src="./ayuda/carga_relaciones_cobranza_demo.swf" width="780" height="600">
+                                            </embed>
+                                            </object>
+                                        </asp:Panel>
+							
+							        </td>
+							        </tr>
+							    </table>
+							</asp:Panel>							
+						</ContentTemplate>
+					</asp:UpdatePanel>
+						
+					
+				</td>
+			</tr>
+		</table>
+	</center>
+
+ 	
+
+	</form>
+</body>
+</html>

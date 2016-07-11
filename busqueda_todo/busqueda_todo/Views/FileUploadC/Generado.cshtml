@@ -1,0 +1,35 @@
+﻿@*@using ServicioClienteInterno.Clases*@
+@using busqueda_todo.Clases
+@*@model ServicioClienteInterno.Models.TicketModel*@
+@model busqueda_todo.Models.STEP_1_Result
+@{
+    Layout = ServicioClienteInterno.Models.LoginModel.ObtenerLayout(WebSecurity.CurrentUserName);
+    var strTipoTicket = (Enumeradores.TipoTicket) Model.TipoTicket.GetValueOrDefault() == Enumeradores.TipoTicket.Incidencia ? "Solicitud" : "Sugerencia";
+}
+<h2 style="text-align: center">La operación ha sido realizada correctamente.</h2>
+
+@if (Model.FormatoModel != null)
+{
+    if (!string.IsNullOrWhiteSpace(Model.FormatoModel.Nota))
+    {
+        <div style="width:700px;margin:auto">
+            <h2 style="text-align: center">NOTA:</h2>
+            <p style="text-align: center;font-size:x-large">
+                @Model.FormatoModel.Nota
+            </p>
+        </div>
+    }
+    if (Model.FormatoModel.ArchivoId != null)
+    {
+        <h2 style="text-align: center">Por favor! descargue el formato de la solicitud aquí</h2>
+        <a href="@Url.Action("DescargarArchivo", "Ticket", new {pArchivoId = Model.FormatoModel.ArchivoId})" target="_blank">
+            <img alt="Descarga" style="position: relative; left: 50%; margin-left: -32px" src="@Url.Content("~/Images/descarga-icono.png")"/>
+        </a>
+        <div style="text-align: center">
+            @Html.ActionLink(@Model.FormatoModel.NombreArchivo, "DescargarArchivo", "Ticket", new {pArchivoId = @Model.FormatoModel.ArchivoId}, new {target = "_blank"})
+        </div>
+    <div style="text-align: center">
+             @Html.Partial("~/Views/Ticket/FileUpload.cshtml")
+    </div>
+    }
+}

@@ -1,0 +1,308 @@
+
+@*@{ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" }*@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<title>T3Web</title>
+	<link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+	<style type=text/css> 
+		body,td,div,p,a,font,span {font-family: verdana,sans-serif;font-size:8pt;}
+		body {margin-top:2}
+		.SPRITE_corner_bl {background:no-repeat url(images/t3web-login2008-esquinas.png) 0 0; width: 4px; height: 4px; font-size:2px }
+		.SPRITE_corner_br {background:no-repeat url(images/t3web-login2008-esquinas.png) -4px 0; width: 4px; height: 4px; font-size:2px }
+		.SPRITE_corner_tl {background:no-repeat url(images/t3web-login2008-esquinas.png) 0 -4px; width: 4px; height: 4px; font-size:2x }
+		.SPRITE_corner_tr {background:no-repeat url(images/t3web-login2008-esquinas.png) -4px -4px; width: 4px; height: 4px; font-size:2px }
+		.loginBox {background-color:#E8EEFA;width:'100%';height:'100%';font-family: verdana,sans-serif;font-size:10pt;text-align:center;} 
+		.loginBoxWrapper {width:280px;height:150px;border-width: 2px;border-spacing: ;border-style: solid;border-color:#E8EEFA;border-collapse: separate;background-color: white} 
+	</style> 	
+	
+	<script language="JavaScript">
+		// maximiza la ventana
+		window.moveTo(0,0);
+		window.resizeTo(screen.width,screen.height);
+	</script>
+	<script language="Javascript1.2">
+		//desactiva el botón derecho del mouse
+		
+		// (C) 2003 CodeLifter.com
+		// Source: CodeLifter.com
+		// Do not remove this header
+
+		// Set the message for the alert box
+		am = "Esta función está deshabilitada.";
+
+		// do not edit below this line
+		// ===========================
+		bV  = parseInt(navigator.appVersion)
+		bNS = navigator.appName=="Netscape"
+		bIE = navigator.appName=="Microsoft Internet Explorer"
+
+		function nrc(e) {
+			 if (bNS && e.which > 1){
+					alert(am)
+					return false
+			 } else if (bIE && (event.button >1)) {
+				 alert(am)
+				 return false;
+			 }
+		}
+
+		document.onmousedown = nrc;
+		if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+		if (bNS && bV<5) window.onmousedown = nrc;
+
+	</script>
+	<script type="text/javascript">
+		// hace 'trim', 'ltrim' y 'rtrim', que no son nativos de javascript
+		function trim(stringToTrim) { return stringToTrim.replace(/^\s+|\s+$/g,""); }
+		function ltrim(stringToTrim) { return stringToTrim.replace(/^\s+/,""); }
+		function rtrim(stringToTrim) { return stringToTrim.replace(/\s+$/,""); }
+		
+		// devuelve true si la cadena tiene algun caracter invalido
+		function _Mtd_TieneCaracteresInvalidos(cadena)
+		{
+			var invalido = false;
+			
+			if (cadena.indexOf("-") != -1) invalido = true;
+			if (cadena.indexOf("*") != -1) invalido = true;
+			if (cadena.indexOf("'") != -1) invalido = true;
+			if (cadena.indexOf("=") != -1) invalido = true;
+			if (cadena.indexOf("%") != -1) invalido = true;
+			if (cadena.indexOf("´") != -1) invalido = true;
+			if (cadena.indexOf("`") != -1) invalido = true;
+			if (cadena.indexOf("\"") != -1) invalido = true;
+			
+			return invalido;
+		}
+		
+		// hace las validaciones del login
+		function _Mtd_ValidarLogin()
+		{
+			var _Str_Login = trim(document.getElementById('_Txt_Login').value);
+			var _Str_Password = trim(document.getElementById('_Txt_Password').value);
+			
+			if(_Str_Login == '' || _Str_Password == '')
+			{
+			  alert('Ni el nombre de usuario, ni la contraseña pueden estar en blanco. Verifique.');
+				return false;
+			}
+			
+			if(_Mtd_TieneCaracteresInvalidos(_Str_Login) || _Mtd_TieneCaracteresInvalidos(_Str_Password))
+			{
+			  alert('El nombre de usuario o la contraseña tienen caracteres inválidos. Verifique.');
+				return false;
+			}
+			
+			return true;
+		}
+
+		// hace las validaciones del reseteo de clave
+		function _Mtd_ValidarEstablecerPassword()
+		{
+			var _Str_Password1 = trim(document.getElementById('_Txt_NuevoPassword1').value);
+			var _Str_Password2 = trim(document.getElementById('_Txt_NuevoPassword2').value);
+			
+			if(_Str_Password1 == '' || _Str_Password2 == '')
+			{
+			  alert('La clave no puede estar en blanco. Verifique.');
+				return false;
+			}
+			
+			if(_Mtd_TieneCaracteresInvalidos(_Str_Password1) || _Mtd_TieneCaracteresInvalidos(_Str_Password2))
+			{
+			  alert('La clave tiene caracteres inválidos. Verifique.');
+				return false;
+			}
+			
+			if(_Str_Password1 != _Str_Password2)
+			{
+			  alert('La clave nueva y su confirmación no coinciden. Verifique.');
+				return false;
+			}
+			
+			if(_Str_Password1.length < 4 || _Str_Password2.length < 4)
+			{
+			  alert('La clave no puede tener menos de 4 caracteres. Verifique.');
+				return false;
+			}
+						
+			return true;
+		}
+		
+		function _Mtd_ConvertirLoginMayusculas()
+		{
+			document.getElementById('_Txt_Login').value = document.getElementById('_Txt_Login').value.toUpperCase();
+		}
+	</script>
+</head>
+<body style="font-family:verdana;background-color:white">
+	<form id="form1" runat="server">
+		<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+		<table width='95%' align='center' cellpadding='0px' cellspacing='0px' style="margin-top:4px;margin-left:30px;margin-right:30px;">
+			<tr valign='center'>
+				<td>
+					<!----------------------------------------------------------------------------------->
+					<table width='100%' cellpadding='0px' cellspacing='0px' border=0>
+						<tr>
+							<td width='104px'><img src='images/t3web-login2008-logo.jpg'></td>
+							<!-- <td width='104px'><img src='images/t3web-login2008-logo-navidad.jpg'></td> -->
+							<td>
+								<table width='100%' cellpadding=0 cellspacing=0 bgcolor=#C3D9FF>
+									<tr height='30px'> 
+									<td class="bubble tl" align=left valign=top><div class="SPRITE_corner_tl" /></td> 
+									<td class=bubble rowspan=2><span class="textoTitulo">Bienvenido a T3Web</span></td> 
+									<td class="bubble tr" align=right valign=top><div class="SPRITE_corner_tr" /></td> 
+									</tr> 
+									<tr> 
+									<td class="bubble bl" align=left valign=bottom><div class="SPRITE_corner_bl" /></td> 
+									<td class="bubble br" align=right valign=bottom><div class="SPRITE_corner_br" /></td> 
+									</tr> 
+								</table> 
+							</td>
+						</tr>
+					</table>
+					<!----------------------------------------------------------------------------------->
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!----------------------------------------------------------------------------------->
+					<table width='100%' cellpadding='0px' cellspacing='0px'> 
+						<tr>
+							<td>
+								<table width='100%' cellpadding='10px' cellspacing='10px'> 
+									<tr><td><span class="textoTitulo">Interfaz web del sistema T3</span><br><br><b>T3</b> es un sistema automatizado que sirve como herramienta para la gestión administrativa de negocios, destinado a pequeñas y medianas empresas.</td></tr> 
+									<tr> 
+										<td>
+											<table width=100% cellpadding='5px' cellspacing='5px' bgcolor='#FFFFFF'>
+												<tr><td><img src='images/t3web-login2008-icono2.png'></td><td><b>Apoyo a procesos administrativos.</b><br>Contiene módulos para gestión de compras, ventas y cobranza, control y emisión de pagos, inventario, despacho y otros.</td></tr>
+												<tr><td><img src='images/t3web-login2008-icono3.png'></td><td><b>Notificación de tareas pendientes.</b><br>El flujo de trabajo es agilizado y apoyado automáticamente con la generación de  notificaciones de tareas pendientes que integran los módulos.</td></tr>
+												<tr><td><img src='images/t3web-login2008-icono1.png'></td><td><b>Indicadores de gestión.</b><br>A través de las diferentes consultas y reportes integrados en el sistema es posible conocer los indicadores de gestión y el estado de su empresa.</td></tr>
+											</table>
+										</td> 
+									</tr> 
+								</table> 			
+							</td>
+							<td width='375px'>
+								<asp:UpdatePanel ID="_UP_Login" runat="server">
+									<ContentTemplate>
+										<table width='100%' cellpadding='0px' cellspacing='4px' class='loginBoxWrapper'> 
+											<tr>
+												<td>
+													<table width='100%' cellpadding='8px' cellspacing='0px' class='loginBox'> 
+													<tr>
+													<td><span class="textoTitulo">Acceda a T3Web</span><br>
+														<table style='font-family: verdana,sans-serif;font-size:10pt;'  width='100%' cellpadding='4px'>
+															<tr><td width='80px' align='right'>Usuario:</td><td><asp:TextBox ID="_Txt_Login" runat="server" Width="98%" oncopy="return false" onpaste="return false" oncut="return false" AutoPostBack="False" MaxLength="80"></asp:TextBox></td><td width='4px'>&nbsp;</td></tr>
+															<tr><td width='80px' align='right'>Clave:</td><td><asp:TextBox ID="_Txt_Password" runat="server" Width="98%" TextMode="Password" oncopy="return false" onpaste="return false" oncut="return false" MaxLength="50"></asp:TextBox></td><td width='4px'>&nbsp;</td></tr>
+														</table>
+														<span class="textoRegular" style="font-size:7pt">La clave es <b>sensible a mayúsculas y minúsculas</b>.</span><br><br>
+														<asp:Button ID="_Btn_Acceder" runat="server" Text="Acceder" onclick="_Btn_Acceder_Click" BorderStyle="Solid" BorderWidth="1px" CssClass="textoRegular" /></td>
+													</tr>
+													</table> 
+												</td>
+											</tr>
+										</table> 
+									</ContentTemplate>
+								</asp:UpdatePanel>
+							</td>
+						</tr>
+					</table>
+					<!----------------------------------------------------------------------------------->
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!----------------------------------------------------------------------------------->
+					<table width=100% cellpadding=0 cellspacing=0 bgcolor=#C3D9FF style='margin-bottom:5' align='center'>
+						<tr> 
+						<td class="bubble tl" align=left valign=top><div class="SPRITE_corner_tl" /></td> 
+                        <td class=bubble rowspan=2 style="font-family:verdana;text-align:center;font-weight:bold;padding:5 0"><small>Desarrollado por <a href='http://www.conssa.com'>Consorcio de Sistemas (CONSSA), S.A.</a> © 2011 - <asp:Label ID="_Lbl_Version" runat="server" Font-Names="Verdana" Font-Size="7pt"></asp:Label></small></td> 
+						<td class="bubble tr" align=right valign=top><div class="SPRITE_corner_tr" /></td> 
+						</tr> 
+						<tr> 
+						<td class="bubble bl" align=left valign=bottom><div class="SPRITE_corner_bl" /></td> 
+						<td class="bubble br" align=right valign=bottom><div class="SPRITE_corner_br" /></td> 
+						</tr> 
+					</table>
+					<!----------------------------------------------------------------------------------->
+				</td>
+			</tr>		
+		</table>
+		
+		@*update progress ----------------------------------------------------------------------------------------------------------------------*@
+		<div style="position: fixed; z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+		<asp:UpdateProgress ID="_UPR_Login" runat="server" AssociatedUpdatePanelID="_UP_Login" DisplayAfter="20">
+			<ProgressTemplate>
+				<center>
+					@*bandera 1*@
+					<div id="progressBackgroundFilter" style="display: block"></div>
+					<div id="processMessage" style="border:1px solid #000000" style="left: 34%; top: 34%">
+						<img alt="Procesando" src="images/animated_loading.gif"><br>Procesando. Por favor espere...
+					</div>
+				</center>
+			</ProgressTemplate>
+		</asp:UpdateProgress>
+		</div>
+		@*update progress ----------------------------------------------------------------------------------------------------------------------*@
+
+
+		@*establecer password  ----------------------------------------------------------------------------------------------------------------------*@
+		<asp:Button runat="server" ID="_Btn_EstablecerPasswordHidden" Style="display: none" />
+		<ajaxToolkit:ModalPopupExtender runat="server" ID="_MPE_EstablecerPassword" BehaviorID="_MPE_EstablecerPasswordBehavior" TargetControlID="_Btn_EstablecerPasswordHidden" PopupControlID="_Pnl_EstablecerPasswordPopUp" BackgroundCssClass="modalBackground" DropShadow="True" RepositionMode="RepositionOnWindowScroll"></ajaxToolkit:ModalPopupExtender>
+		<asp:Panel runat="server" CssClass="modalPopupCeleste" ID="_Pnl_EstablecerPasswordPopUp" Style="display: block; padding: 10px" Width="700px" >
+			<asp:Panel runat="Server" ID="_Pnl_EstablecerPassword" 
+                Style="background-color: #FFFFFF; border: solid 1px Black; color: Black; text-align: center;" 
+                HorizontalAlign="Center">
+				<asp:UpdatePanel ID="_UP_EstablecerPassword" runat="server">
+					<ContentTemplate>
+						<span class="textoTitulo">¡Bienvenido a T3Web!</span><br>
+						<span class="textoRegular">Establezca su nueva clave en este momento.</span><br><br>
+						<span class="textoRegular" style="color:red">Verifique el estado de la tecla de mayúsculas en su teclado antes de proseguir.</span><br><br>
+						<table class="textoRegular" width='350px' cellpadding='4px'>
+							<tr><td width='150px' align='right'>Nueva clave:</td><td><asp:TextBox ID="_Txt_NuevoPassword1" runat="server" Width="98%" oncopy="return false" onpaste="return false" oncut="return false" MaxLength="50" TextMode="Password"></asp:TextBox></td></tr>
+							<tr><td width='150px' align='right'>Confirme nueva clave:</td><td><asp:TextBox ID="_Txt_NuevoPassword2" runat="server" Width="98%" TextMode="Password" oncopy="return false" onpaste="return false" oncut="return false" MaxLength="50"></asp:TextBox></td></tr>
+						</table>
+						<br>
+						<span class="textoRegular">¡Recuerde que la clave es <b>sensible a mayúsculas y minúsculas</b>!</span><br><br>
+						<table width='200px'>
+							<tr>
+								<td align='center'><asp:Button ID="_Btn_AceptarEstablecerPassword" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Text="Aceptar" Style="height: 19px" onclick="_Btn_AceptarEstablecerPassword_Click" CssClass="textoRegular" /></td>
+								<td align='center'><asp:Button ID="_Btn_CancelarEstablecerPassword" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Text="Cancelar" Style="height: 19px" CssClass="textoRegular" onclick="_Btn_CancelarEstablecerPassword_Click" /></td>
+							</tr>
+						</table>
+						
+					</ContentTemplate>
+				</asp:UpdatePanel>
+			</asp:Panel>
+		</asp:Panel>
+		@*establecer password ----------------------------------------------------------------------------------------------------------------------*@
+
+		@*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+		<asp:Button runat="server" ID="_Btn_MessageBoxHidden" Style="display: none" />
+		<ajaxToolkit:ModalPopupExtender runat="server" ID="_MPE_MessageBox" BehaviorID="_MPE_MessageBoxBehavior" TargetControlID="_Btn_MessageBoxHidden" PopupControlID="_Pnl_MessageBoxPopup" BackgroundCssClass="modalBackground" DropShadow="True" RepositionMode="RepositionOnWindowScroll"></ajaxToolkit:ModalPopupExtender>
+		<asp:Panel runat="server" CssClass="modalPopupCeleste" ID="_Pnl_MessageBoxPopup" Style="display: block; padding: 10px;" Width="700px">
+			<asp:Panel runat="Server" ID="_Pnl_MessageBox" Style="background-color: #FFFFFF; border: solid 1px Black; color: Black; text-align: center;">
+				<asp:UpdatePanel ID="_UP_MessageBox" runat="server">
+					<ContentTemplate>
+						<table style="width: 100%;">
+							<tr valign="top">
+								<td>
+									<asp:Label ID="_Lbl_MessageBox" runat="server" Font-Names="Verdana" Font-Size="8pt"></asp:Label>
+									<br />
+									<br />
+									<asp:Button ID="_Btn_MessageBoxAceptar" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="Aceptar" OnClick="_Btn_MessageBoxAceptar_Click" Style="height: 19px" />
+								</td>
+							</tr>
+						</table>
+					</ContentTemplate>
+				</asp:UpdatePanel>
+			</asp:Panel>
+		</asp:Panel>
+		@*messagebox ----------------------------------------------------------------------------------------------------------------------*@		
+
+	</form>
+</body>
+</html>

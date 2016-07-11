@@ -1,0 +1,67 @@
+
+@{ string s = Request.QueryString["este"].ToString();}
+            
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<title>Consulta de RIF </title>
+<link rel="stylesheet" href="http://www.seniat.gov.ve/css//estilo.css" />
+<script type="text/javascript">
+
+    function doSubmit()
+    {
+        document.consulta.busca.disabled = 'false';
+        document.consulta.action="http://contribuyente.seniat.gob.ve/BuscaRif/BuscaRif.jsp"
+        document.consulta.submit();
+    }
+
+/*
+    function validaForma() {
+        if(document.getElementById('p_rif').value != '') {
+                document.forms[0].submit();
+        }else {
+                alert('Debe introducir un rif!!!');
+                window.event.returnValue = false;
+        }
+    }
+*/
+
+</script>
+</head>
+<body background="/seniat/images/fondoseniat.gif" bgcolor="#FFFFFF" text="#000000" onLoad="doSubmit()">
+<form method="post" action="http://contribuyente.seniat.gob.ve/BuscaRif/BuscaRif.jsp" onload="doSubmit()" name="consulta" id="consulta">
+   <table width="100%" background="/seniat/images/fondoseniat.gif" border="0" class="letras">
+      <tr>
+         <td width="50%" align="left" style="padding-left: 20px;"><b>RIF</b></td>
+         <td>            
+            <input id="p_rif" name="p_rif" type="text" style="font-family: Verdana; font-size: 10;" title="Ingrese su n�mero de Rif, seg�n Ejm " onblur="javascript:this.value=this.value.toUpperCase();" onChange="javascript:this.value=this.value.toUpperCase();" maxlength="10" alt="Rif del Contribuyente" />
+         </td>
+      </tr>
+      <tr>
+         <td colspan="2">
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ejemplo del RIF: V123456789 <br><br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Verdana" size="1"> Si el RIF es menor a nueve (9) d�gitos
+             <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  complete  con ceros (0) a la izquierda </font>
+         </td>
+      </tr>
+      <tr>  
+        <td width="50%" align="center" style="padding-top: 20px;">
+            <input type="submit" value="Buscar" class="boton" name="busca" />
+        </td>
+        <td width="50%" align="center" style="padding-top: 20px;">
+            <input type="button" onclick="window.close();" value="Cancelar" class="boton" />
+         </td>
+      </tr>
+    </table>
+</form>
+<script type="text/javascript">
+
+    var id = document.getElementById('p_rif');
+    
+    id.value = "@(s)";
+
+</script>
+</body>
+</html>

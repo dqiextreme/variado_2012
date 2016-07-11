@@ -1,0 +1,529 @@
+
+
+
+@{ Register Src="controles/Menu.ascx" TagName="Menu" TagPrefix="uc1" }
+@{ Register Assembly="Anthem" Namespace="Anthem" TagPrefix="anthem" }
+@{ Register Src="controles/CloseSession.ascx" TagName="CloseSession" TagPrefix="uc2" }
+@{ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" }
+@{ Register Src="controles/Ctr_Usuario.ascx" TagName="Ctr_Usuario" TagPrefix="uc3" }
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>T3Web -
+        @{ Response.Write(_Str_TituloPantalla);}
+</title>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+
+    <script type="text/javascript">
+        function _Mtd_ValidarFechas() {
+            var bolvalido = true;
+            if (document.getElementById('_Rb_ConsultaPorMes').checked) 
+            {
+            
+            }
+            else {
+                if (document.getElementById('_Txt_FechaDesde').value == "" || document.getElementById('_Txt_FechaHasta').value == "") {
+                    alert('Seleccione una fecha inicial y una fecha final antes de seguir');
+                    bolvalido = false;
+                }
+                else {
+                    var cfechai = document.getElementById('_Txt_FechaDesde').value;
+                    var cfechaf = document.getElementById('_Txt_FechaHasta').value;
+                    var cfechaiv = cfechai.split('/');
+                    var cfechafv = cfechaf.split('/');
+                    var cdatei = new Date(cfechaiv[2], cfechaiv[1], cfechaiv[0]);
+                    var cdatef = new Date(cfechafv[2], cfechafv[1], cfechafv[0]);
+                    if (cdatei > cdatef) {
+                        alert('La fecha inicial no puede ser mayor que la fecha final');
+                        bolvalido = false;
+                    }
+                }
+            }
+            return bolvalido;
+        }
+
+        function _Mtd_ValidarParametros() {
+            return _Mtd_ValidarFechas();
+        }
+        
+        function _Mtd_Onload() {
+            document.getElementById('progressBackgroundFilter').style.display = "block";
+            //document.getElementById('progressBackgroundFilter2').style.display = "block";
+            //document.getElementById('progressBackgroundFilter3').style.display = "block";
+        }
+              
+    </script>
+
+    <style type="text/css">
+        .style1
+        {
+            height: 29px;
+        }
+    </style>
+
+</head>
+<body topmargin="0" onload="_Mtd_Onload();">
+    <form id="form1" runat="server">
+    <center>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"
+            EnableScriptLocalization="False">
+        </asp:ScriptManager>
+        <asp:UpdatePanel ID="_UP_Menu" runat="server">
+            <ContentTemplate>
+                <table style="width: 780px;" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td align="center">
+                            <uc1:Menu ID="Menu1" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" bgcolor="#BBD4F8" style="border: 1px solid #3b619c">
+                            <table width="100%">
+                                <tr>
+                                    <td width="5">
+                                        <font face="Verdana" size="1"><strong><span>
+                                            <asp:ImageButton Style="cursor: default" ID="ImageButton1" runat="server" ImageUrl="image/separator.gif" />
+                                        </span></strong></font>
+                                    </td>
+                                    <td width="45">
+                                        <font face="Verdana" size="1"><strong><span>
+                                            <asp:UpdatePanel ID="_UP_MenuPrincipal" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:ImageButton ID="_Img_Nuevo" runat="server" ImageUrl="image/new.gif" />
+                                                    <asp:ImageButton ID="_Img_Guardar" runat="server" ImageUrl="image/save.gif" />
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                        </span></strong></font>
+                                    </td>
+                                    <td width="10%">
+                                        <font face="Verdana" size="1"><strong><span>
+                                            <asp:ImageButton Style="cursor: default" ID="ImageButton6" runat="server" ImageUrl="image/separator.gif" />
+                                        </span></strong></font>
+                                        <uc2:CloseSession ID="CloseSession2" runat="server" />
+                                    </td>
+                                    <td style="text-align: right">
+                                        <uc3:Ctr_Usuario ID="Ctr_Usuario1" runat="server" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" bgcolor="#666666">
+                            <asp:Label ID="_Lbl_TituloReporte" runat="server" Text="Título del reporte" Font-Bold="True"
+                                Font-Names="Verdana" Font-Size="8pt" ForeColor="White"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <asp:UpdatePanel ID="_UP_Principal" runat="server">
+            <ContentTemplate>
+                <table width="780px" class="textoRegular">
+                    <tr>
+                        <td align="left" width="400px">
+                            <asp:Panel ID="_Pnl_ComboConfig" runat="server">
+                            <b>Configuración reporte :</b><br>
+                            <br>
+                            <asp:DropDownList ID="_Cb_Config" runat="server" Width="350px" 
+                                    CssClass="textoRegular" AutoPostBack="True" 
+                                    onselectedindexchanged="_Cb_Config_SelectedIndexChanged"></asp:DropDownList>
+                            </asp:Panel>
+                            <asp:Panel ID="_Pnl_NombreConfig" runat="server">
+                                <b>Ingrese el nombre para esta configuración :</b><br>
+                                <br>
+                                <asp:TextBox ID="_Txt_NombreConfig" runat="server" CssClass="textoRegular" 
+                                    MaxLength="255" Width="230px"></asp:TextBox>&nbsp;&nbsp;
+                                <asp:Button ID="_Btn_ConfigAceptar" runat="server" Text="Aceptar" 
+                                    BorderStyle="Solid" CssClass="textoRegular" 
+                                    onclick="_Btn_ConfigAceptar_Click" />&nbsp;&nbsp;
+                                <asp:Button ID="_Btn_ConfigCancelar" runat="server" Text="Cancelar" 
+                                    BorderStyle="Solid" CssClass="textoRegular" 
+                                    onclick="_Btn_ConfigCancelar_Click" />
+                            </asp:Panel>
+                            
+                        </td>
+                        <td>
+                               <asp:Button ID="_Btn_Guardar" runat="server" Text="Guardar esta configuración" CssClass="textoRegular"
+                                Width="200px" BorderStyle="Solid" onclick="_Btn_Guardar_Click" /><br>
+                            <br>
+                            <asp:Button ID="_Btn_Eliminar" runat="server" Text="Eliminar esta configuración"
+                                CssClass="textoRegular" Width="200px" BorderStyle="Solid" OnClick="_Btn_Eliminar_Click" />
+                            <ajaxToolkit:ConfirmButtonExtender ID="_Btn_Eliminar_ConfirmButtonExtender" runat="server"
+                                ConfirmText="¿Está seguro de que desea eliminar la configuración seleccionada actualmente?" Enabled="True" TargetControlID="_Btn_Eliminar">
+                            </ajaxToolkit:ConfirmButtonExtender>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <table width="780px">
+                    <tr>
+                        <td>
+                            <table class="textoRegular">
+                                <tr style="vertical-align: middle">
+                                    <td width="50%" align="left">
+                                        <asp:RadioButton ID="_Rb_ConsultaPorMes" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                            Font-Size="8pt" OnCheckedChanged="_Rb_ConsultaPorMes_CheckedChanged" Text="Consulta por mes"
+                                            GroupName="Consulta" AutoCallBack="True" AutoPostBack="True" /><br>
+                                        <asp:RadioButton ID="_Rb_ConsultaPorRango" runat="server" Font-Bold="True" Font-Names="Verdana"
+                                            Font-Size="8pt" OnCheckedChanged="_Rb_ConsultaPorRango_CheckedChanged" Text="Consulta por rango de fechas"
+                                            GroupName="Consulta" AutoCallBack="True" AutoPostBack="True" />
+                                        <asp:Panel ID="_Pnl_ConsultaPorMes" runat="server">
+                                            <table style="width: 100%; font-size: 8pt; font-family: Verdana; font-weight: bold;">
+                                                <tr>
+                                                    <td align="left" width="100">
+                                                        Año :
+                                                    </td>
+                                                    <td align="left">
+                                                        <asp:DropDownList ID="_Cb_Ano" runat="server" Width="150px" OnSelectedIndexChanged="_Cb_Ano_SelectedIndexChanged"
+                                                            CssClass="textoRegular" AutoPostBack="True">
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" width="100">
+                                                        Mes :
+                                                    </td>
+                                                    <td align="left">
+                                                        <asp:DropDownList ID="_Cb_Mes" runat="server" Width="150px" 
+                                                            CssClass="textoRegular" AutoPostBack="True" 
+                                                            onselectedindexchanged="_Cb_Mes_SelectedIndexChanged">
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </asp:Panel>
+                                        <asp:Panel ID="_Pnl_ConsultaPorRango" runat="server">
+                                            <table style="width: 100%; font-size: 8pt; font-family: Verdana; font-weight: bold;">
+                                                <tr>
+                                                    <td align="left" width="100">
+                                                        Desde :
+                                                    </td>
+                                                    <td align="left">
+                                                        <asp:TextBox ID="_Txt_FechaDesde" runat="server"
+                                                            Width="148px" AutoCallBack="True" AutoPostBack="True" 
+                                                            ontextchanged="_Txt_FechaDesde_TextChanged" oncopy="return false" onpaste="return false"></asp:TextBox>
+                                                        <ajaxToolkit:CalendarExtender ID="MiCalendario_CalendarExtender" runat="server" Enabled="True"
+                                                            TargetControlID="_Txt_FechaDesde" PopupButtonID="_Img_CalendarioH0">
+                                                        </ajaxToolkit:CalendarExtender>
+                                                        <asp:ImageButton ID="_Img_CalendarioH0" runat="server" ImageUrl="~/images/calendario.gif"
+                                                            Style="height: 12px" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" width="100">
+                                                        Hasta :
+                                                    </td>
+                                                    <td align="left">
+                                                        <asp:TextBox ID="_Txt_FechaHasta" runat="server" ReadOnly="false"
+                                                            Width="148px" AutoCallBack="True" AutoPostBack="True" 
+                                                            ontextchanged="_Txt_FechaHasta_TextChanged" oncopy="return false" onpaste="return false"></asp:TextBox>
+                                                        <ajaxToolkit:CalendarExtender ID="_Txt_FechaHasta_CalendarExtender" runat="server"
+                                                            Enabled="True" TargetControlID="_Txt_FechaHasta" PopupButtonID="_Img_CalendarioH1">
+                                                        </ajaxToolkit:CalendarExtender>
+                                                        <asp:ImageButton ID="_Img_CalendarioH1" runat="server" ImageUrl="~/images/calendario.gif" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </asp:Panel>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="textoRegular">
+                                <tr>
+                                    <td align="left" width="100">
+                                        <asp:Label ID="_Lbl_Compania" runat="server" Text="Compañía :"></asp:Label>
+                                    </td>
+                                    <td align="left">
+                                        <asp:DropDownList ID="_Cb_Compania" runat="server" CssClass="textoRegular" 
+                                            Width="250px" AutoPostBack="True" 
+                                            onselectedindexchanged="_Cb_Compania_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                
+                <table width="780px" class="textoRegular" border="1px">
+                    <tr>
+                        <td align="left">
+                            <table>
+                                <tr>
+                                    <td width="200px">
+                                        <span class="textoTitulo">Vendedores</span>
+                                    </td>
+                                    <td width="150px">
+                                       
+                                        <table>
+                                            <tr>
+                                                <td align="left">
+                                                    <asp:RadioButton ID="_Rb_VendedoresTodos" runat="server" CssClass="textoRegular"
+                                                        GroupName="Vendedores" Text="Todos" AutoPostBack="True" 
+                                                        oncheckedchanged="_Rb_VendedoresTodos_CheckedChanged" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left">
+                                                    <asp:RadioButton ID="_Rb_VendedoresEspecificos" runat="server" CssClass="textoRegular"
+                                                        GroupName="Vendedores" Text="Específicos" AutoPostBack="True" 
+                                                        oncheckedchanged="_Rb_VendedoresEspecificos_CheckedChanged" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                    </td>
+                                    <td width="400px">Recuerde que los vendedores que aparecen en este cuadro están <b>limitados por el período de tiempo</b> específicado más arriba. Es decir, que los vendedores que no hayan tenido ventas en ese tiempo, no aparecerán.</td>
+                                </tr>
+                            </table>
+                            <asp:Panel ID="_Pnl_Vendedores" runat="server" visible="false">
+                                <table>
+                                <tr valign="middle">
+                                    <td>
+                                        <asp:ListBox ID="_Lb_VendedoresOrigen" runat="server" CssClass="textoRegular" Height="160px"
+                                            Width="300px" Enabled="False"></asp:ListBox>
+                                    </td>
+                                    <td>
+                                        <asp:Button ID="_Btn_VendedoresAgregar" runat="server" BorderStyle="Solid" CssClass="textoRegular"
+                                            Text="&gt;&gt;" Enabled="False" onclick="_Btn_VendedoresAgregar_Click" />
+                                        <br>
+                                        <br>
+                                        <asp:Button ID="_Btn_VendedoresEliminar" runat="server" BorderStyle="Solid" CssClass="textoRegular"
+                                            Text="&lt;&lt;" Enabled="False" onclick="_Btn_VendedoresEliminar_Click" />
+                                    </td>
+                                    <td>
+                                        <asp:ListBox ID="_Lb_VendedoresDestino" runat="server" CssClass="textoRegular" Height="160px"
+                                            Width="300px" Enabled="False"></asp:ListBox>
+                                    </td>
+                                </tr>
+                            </table>
+                            </asp:Panel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            <table>
+                                <tr>
+                                    <td width="200px">
+                                        <span class="textoTitulo">Tipo de establecimiento</span>
+                                    </td>
+                                    <td width="150px">
+                                        <table>
+                                            <tr>
+                                                <td align="left" class="style1">
+                                                    <asp:RadioButton ID="_Rb_TestableTodos" runat="server" CssClass="textoRegular" GroupName="Testable"
+                                                        Text="Todos" AutoPostBack="True" 
+                                                        oncheckedchanged="_Rb_TestableTodos_CheckedChanged" />
+                                                </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td align="left">
+                                                    <asp:RadioButton ID="_Rb_TestableEspecificos" runat="server" CssClass="textoRegular"
+                                                        GroupName="Testable" Text="Específicos" AutoPostBack="True" 
+                                                        oncheckedchanged="_Rb_TestableEspecificos_CheckedChanged" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="400px">Los tipos de establecimiento que aparecen en este cuadro <b>también estan limitados por el período de tiempo</b> específicado más arriba, y además estan limitados por los <b>vendedores</b> especificados.</td>
+                                </tr>
+                            </table>
+                            <asp:Panel ID="_Pnl_Testable" runat="server" visible="false">
+                                <table>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <asp:ListBox ID="_Lb_TestableOrigen" runat="server" CssClass="textoRegular" Height="160px"
+                                                        Width="300px" Enabled="False"></asp:ListBox>
+                                                </td>
+                                                <td>
+                                                    <asp:Button ID="_Btn_TestableAgregar" runat="server" BorderStyle="Solid" CssClass="textoRegular"
+                                                        Text="&gt;&gt;" Enabled="False" onclick="_Btn_TestableAgregar_Click" />
+                                                    <br>
+                                                    <br>
+                                                    <asp:Button ID="_Btn_TestableEliminar" runat="server" BorderStyle="Solid" CssClass="textoRegular"
+                                                        Text="&lt;&lt;" Enabled="False" onclick="_Btn_TestableEliminar_Click" />
+                                                </td>
+                                                <td>
+                                                    <asp:ListBox ID="_Lb_TestableDestino" runat="server" CssClass="textoRegular" Height="160px"
+                                                        Width="300px" Enabled="False"></asp:ListBox>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            </asp:Panel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            <table>
+                                <tr>
+                                    <td width="200px">
+                                        <span class="textoTitulo">Productos</span>
+                                    </td>
+                                    <td width = "150px">
+                                        <table>
+                                            <tr>
+                                                <td align="left">
+                                                    <asp:RadioButton ID="_Rb_ProductosTodos" runat="server" CssClass="textoRegular" GroupName="Productos"
+                                                        Text="Todos" AutoPostBack="True" 
+                                                        oncheckedchanged="_Rb_ProductosTodos_CheckedChanged" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left">
+                                                    <asp:RadioButton ID="_Rb_ProductosEspecificos" runat="server" CssClass="textoRegular"
+                                                        GroupName="Productos" Text="Específicos" AutoPostBack="True" 
+                                                        oncheckedchanged="_Rb_ProductosEspecificos_CheckedChanged" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>                                       
+                                        Los productos que aparecen en este cuadro <b>también estan limitados por el período de tiempo</b> específicado más arriba, y por los <b>vendedores</b> especificados.<br><br>
+                                        <asp:Panel ID="_Pnl_ProductosCombos" runat="server" visible="false">
+                                        <table class="textoRegular">
+                                            <tr>
+                                                <td align="left" width="150">
+                                                    <b>Proveedor :</b>
+                                                </td>
+                                                <td align="left">
+                                                    <asp:DropDownList ID="_Cb_Proveedor" runat="server" CssClass="textoRegular" 
+                                                        Width="250px" AutoPostBack="True" 
+                                                        onselectedindexchanged="_Cb_Proveedor_SelectedIndexChanged" 
+                                                        Enabled="False">
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td align="left" width="100">
+                                                    <b>Grupo :</b>
+                                                </td>
+                                                <td align="left">
+                                                    <asp:DropDownList ID="_Cb_Grupo" runat="server" CssClass="textoRegular" 
+                                                        Width="250px" AutoPostBack="True" 
+                                                        onselectedindexchanged="_Cb_Grupo_SelectedIndexChanged" Enabled="False">
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
+                                                                                        <tr>
+                                                <td align="left" width="100">
+                                                    <b>Sub-grupo :</b>
+                                                </td>
+                                                <td align="left">
+                                                    <asp:DropDownList ID="_Cb_Subgrupo" runat="server" CssClass="textoRegular" 
+                                                        Width="250px" AutoPostBack="True" 
+                                                        onselectedindexchanged="_Cb_Subgrupo_SelectedIndexChanged" Enabled="False">
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        </asp:Panel>
+                                        
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                            <asp:Panel ID="_Pnl_Productos" runat="server" visible="false">
+                                <table>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <asp:ListBox ID="_Lb_ProductosOrigen" runat="server" CssClass="textoRegular" Height="160px"
+                                                        Width="300px" Enabled="False" SelectionMode="Multiple"></asp:ListBox>
+                                                </td>
+                                                <td>
+                                                    <asp:Button ID="_Btn_ProductosAgregar" runat="server" BorderStyle="Solid" CssClass="textoRegular"
+                                                        Text="&gt;&gt;" Enabled="False" onclick="_Btn_ProductosAgregar_Click" />
+                                                    <br>
+                                                    <br>
+                                                    <asp:Button ID="_Btn_ProductosEliminar" runat="server" BorderStyle="Solid" CssClass="textoRegular"
+                                                        Text="&lt;&lt;" Enabled="False" onclick="_Btn_ProductosEliminar_Click" />
+                                                </td>
+                                                <td>
+                                                    <asp:ListBox ID="_Lb_ProducotsDestino" runat="server" CssClass="textoRegular" Height="160px"
+                                                        Width="300px" Enabled="False" SelectionMode="Multiple"></asp:ListBox>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            </asp:Panel>
+                        </td>
+                     
+                    </tr>
+                </table>
+
+            </ContentTemplate>
+        </asp:UpdatePanel>
+                        <table style="width: 780px; font-size: 8pt; font-family: Verdana; font-weight: bold;">
+                    <tr>
+                        <td>
+                            <asp:Button ID="_Btn_Consultar" runat="server" BorderStyle="Solid" 
+                                CssClass="textoRegular" onclick="_Btn_Consultar_Click" 
+                                Text="Ver reporte" />
+                        </td>
+                    </tr>
+                </table>
+ 	     
+ 	     @*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+        <asp:Button runat="server" ID="_Btn_MessageBoxHidden" Style="display: none" />
+        <ajaxToolkit:ModalPopupExtender runat="server" ID="_MPE_MessageBox" BehaviorID="_MPE_MessageBoxBehavior"
+            TargetControlID="_Btn_MessageBoxHidden" PopupControlID="_Pnl_MessageBoxPopup"
+            BackgroundCssClass="modalBackground" DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+        </ajaxToolkit:ModalPopupExtender>
+        <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_MessageBoxPopup" Style="display: none;padding: 10px" Width="700px">
+            @*bandera 3*@
+            <asp:Panel runat="Server" ID="_Pnl_MessageBox" Style="background-color: #FFFFFF; border: solid 1px Gray; color: Black; text-align: center;">
+                <asp:UpdatePanel ID="_UP_MessageBox" runat="server">
+                    <ContentTemplate>
+                        <table style="width: 100%;">
+                            <tr valign="top">
+                                <td>
+                                    <asp:Label ID="_Lbl_MessageBox" runat="server" Font-Names="Verdana" Font-Size="8pt"></asp:Label><br /><br />
+                                    <asp:Button ID="_Btn_MessageBoxAceptar" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="Aceptar" OnClick="_Btn_MessageBoxAceptar_Click" Style="height: 19px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </asp:Panel>
+        </asp:Panel>
+        @*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+
+        @*update progress ----------------------------------------------------------------------------------------------------------------------*@
+        <div style="position: fixed; z-index: 100600; font-family: verdana; font-size: 9px;
+            font-weight: bold; background-color: #FFFFFF;">
+            <asp:UpdateProgress ID="_UPR_Login" runat="server" AssociatedUpdatePanelID="_UP_Principal"
+                DisplayAfter="50">
+                <ProgressTemplate>
+                    <center>
+                        @*bandera 1*@
+                        <div id="progressBackgroundFilter" style="display: none">
+                        </div>
+                        <div id="processMessage" style="border: 1px solid #000000" style="left: 34%; top: 34%">
+                            <img alt="Procesando" src="images/animated_loading.gif"><br>
+                            Procesando. Por favor espere...
+                        </div>
+                    </center>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
+        </div>
+        @*update progress ----------------------------------------------------------------------------------------------------------------------*@
+    </center>
+    </form>
+</body>
+</html>

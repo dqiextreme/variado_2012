@@ -1,0 +1,23 @@
+function Cambiar2(a) {
+    if (confirm('Descargar Archivos Adjuntos')) {
+        $.ajax()
+        var turl = '../FileUploadC/Dow_Aut_Arch_Adj';
+        var json = "{ Id:"+a+" }";
+        $.ajax(
+        {
+            type: "POST",
+            url: turl,
+            data: json,
+            dataType: 'json',
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            beforeSend: function () { },
+            success: function (data) {
+                $.each(data, function (index, item) {
+                    var a = '/FileUploadC/Download2/' + item;
+                    window.open(a);
+                });
+            }
+        })
+    }
+}

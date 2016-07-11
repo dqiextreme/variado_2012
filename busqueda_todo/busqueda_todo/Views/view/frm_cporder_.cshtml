@@ -1,0 +1,1472 @@
+
+@{ Register assembly="Anthem" namespace="Anthem" tagprefix="anthem" }
+
+@{ Register src="controles/Menu.ascx" tagname="Menu" tagprefix="uc1" }
+
+@{ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" }
+
+@{ Register src="controles/CloseSession.ascx" tagname="CloseSession" tagprefix="uc2" }
+
+
+@{ Register src="controles/Ctr_Usuario_Vendedor.ascx" tagname="Ctr_Usuario_Vendedor" tagprefix="uc3" }
+@{ OutputCache Duration="1" VaryByParam="_Ddl_FormaPago" }
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title></title>
+    
+    <style type="text/css">
+        .style1
+        {
+            font-family: Verdana;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .style2
+        {
+            font-weight: bold;
+        }
+         .modalBackground
+        {
+            background-color: #000000;
+            filter: alpha(opacity=60);
+            opacity: 0.5; 
+            z-index:9999; 
+        }
+         .modalBackground_2
+        {
+            background-color: #000000;
+            filter: alpha(opacity=60);
+            opacity: 0.5; 
+            z-index:20000; 
+        }
+     .progressBackgroundFilter {
+            position:fixed; 
+            top:0px; 
+            bottom:0px; 
+            left:0px;
+            right:0px;
+            overflow:hidden; 
+            padding:0; 
+            margin:0; 
+            background-color:#000; 
+            filter:alpha(opacity=60); 
+            opacity:0.5; 
+            z-index:10000; 
+        }
+        #processMessage  
+        {
+        	background-color: #FFFFFF; border: 30px solid #000000;
+        	position:fixed; 
+            top:30%; 
+            left:43%;
+            padding:10px; 
+            width:30%; 
+            background-color:#fff;
+            font-family: Verdana;
+            font-size:12px;
+            z-index:10003; 
+        }
+        .style3
+        {
+            font-family: Verdana;
+            font-size: 10px;
+        }
+         .modalPopup
+        {
+            background-color: #ffffdd;
+            border-width: 3px;
+            border-style: solid;
+            border-color: Gray;
+            padding: 3px;
+            width: 500px;
+             z-index:9998;
+        }
+        .modalPopup_2
+        {
+            background-color: #ffffdd;
+            border-width: 3px;
+            border-style: solid;
+            border-color: Gray;
+            padding: 3px;
+            width: 500px;
+             z-index:19000;
+        }
+        .style4
+        {
+            font-family: Verdana;
+            font-size: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+        .style5
+        {
+            font-family: Verdana;
+            font-size: small;
+            color: #CC0000;
+            font-weight: bold;
+        }
+        .style6
+        {
+            height: 24px;
+        }
+        .style7
+        {
+            font-family: Verdana;
+            font-size: xx-small;
+            font-weight: bold;
+        }
+        </style>
+
+    <script type="text/javascript" language="javascript">
+        function _Mtd_Onload() {
+            document.getElementById('progressBackgroundFilter1').style.display = "block";
+            document.getElementById('progressBackgroundFilter2').style.display = "block";
+            document.getElementById('progressBackgroundFilter3').style.display = "block";
+            document.getElementById('progressBackgroundFilter4').style.display = "block";
+            document.getElementById('progressBackgroundFilter5').style.display = "block";
+            document.getElementById('progressBackgroundFilter6').style.display = "block";
+            document.getElementById('progressBackgroundFilter7').style.display = "block";
+            document.getElementById('progressBackgroundFilter8').style.display = "block";
+            document.getElementById('progressBackgroundFilter9').style.display = "block";
+        }
+    </script>
+</head>
+<body topmargin='0' onload="_Mtd_Onload();">
+    <form id="form1" runat="server">
+    <div align="center">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"
+            EnableScriptLocalization="False" />
+        <table style="width: 780px" cellpadding="0" cellspacing="0">
+            <tr>
+                <td align="center">
+                    <uc1:Menu ID="Menu1" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td align="left" bgcolor="#BBD4F8" style="border: 1px solid #3b619c">
+                    <font face="Verdana" size="1"><strong><span>
+                        <table width="100%">
+                            <tr>
+                                <td width="5">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton4" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                </td>
+                                <td width="45">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:UpdatePanel ID="_Upd_PanelBoton" runat="server" UpdateMode="Conditional">
+                                            <ContentTemplate>
+                                                <asp:ImageButton ID="_Img_Nuevo" runat="server" ImageUrl="image/new.gif" CausesValidation="False"
+                                                    OnClick="_Img_Nuevo_Click" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Nuevo_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="Desea generar un nuevo pedido?" Enabled="True" TargetControlID="_Img_Nuevo">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                                <asp:ImageButton ID="_Img_Guardar" runat="server" ImageUrl="image/save.gif" ValidationGroup="GuardarPedido"
+                                                    OnClick="_Img_Guardar_Click" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Guardar_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="Desea terminar el pedido actual?" Enabled="True" TargetControlID="_Img_Guardar">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </span></strong></font>
+                                </td>
+                                <td width="10%">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton5" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                    <uc2:CloseSession ID="CloseSession1" runat="server" />
+                                </td>
+                                <td style="text-align: right">
+                                    <uc3:Ctr_Usuario_Vendedor ID="Ctr_Usuario_Vendedor1" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                    </span></strong></font>
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    <br />
+                    <table style="width: 100%;">
+                        <tr>
+                            <td class="style1" colspan="3">
+                                Datos del Cliente
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <asp:UpdatePanel ID="_Upd_Pedido" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td class="style1" width="20%">
+                                                    Pedidos:
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="_Txt_Pedido" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                        BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ReadOnly="True" Width="89px"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="20%">
+                                <asp:UpdatePanel ID="_Upd_Cliente" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <table style="width: 100%;">
+                                            <tr valign="top">
+                                                <td width="20%" class="style1">
+                                                    Cliente:
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="_Txt_ClientebusRap" runat="server" BorderColor="#000001" 
+                                                        BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                                        MaxLength="5" Width="33px"></asp:TextBox>
+                                                    <ajaxToolkit:FilteredTextBoxExtender ID="_Txt_ClientebusRap_FilteredTextBoxExtender" 
+                                                        runat="server" Enabled="True" FilterType="Numbers" 
+                                                        TargetControlID="_Txt_ClientebusRap">
+                                                    </ajaxToolkit:FilteredTextBoxExtender>
+                                                    &nbsp;<asp:Button ID="_Btn_BuscarRapida" runat="server" BorderWidth="1px" Font-Names="Verdana"
+                                                        Font-Size="8pt" Text=". ." OnClick="_Btn_BuscarRapida_Click" />
+                                                    &nbsp;<asp:TextBox ID="_Txt_Cliente" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                        BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="455px" 
+                                                        ReadOnly="True"></asp:TextBox>
+                                                    &nbsp;<asp:Button ID="_Btn_BuscarCliente" runat="server" BorderWidth="1px" Font-Names="Verdana"
+                                                        Font-Size="8pt" Text=". . ." OnClick="_Btn_BuscarCliente_Click" 
+                                                        style="height: 19px" />
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="_Txt_Cliente"
+                                                        ErrorMessage="Debe seleccionar un cliente" Font-Names="Verdana" Font-Size="8pt"
+                                                        ValidationGroup="GuardarPedido">*</asp:RequiredFieldValidator>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table style="width: 100%;">
+	                                        <tr valign="top">
+		                                        <td class="style1" width="10%">
+			                                        <asp:Label ID="_Lbl_ProveedoresAPDD"  runat="server" style="color: #FF0000" Text=""></asp:Label>
+		                                        </td>
+	                                        </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="20%">
+                                <asp:UpdatePanel ID="_Upd_DireccDespa" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <table style="width: 100%;">
+                                            <tr valign="top">
+                                                <td class="style1" width="20%">
+                                                    Dirección de Despacho:
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="_Txt_DireccDespa" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                        BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ReadOnly="True" TextMode="MultiLine"
+                                                        Width="539px"></asp:TextBox>
+                                                    &nbsp;<asp:Button ID="_Btn_BuscarDirDespa" runat="server" BorderWidth="1px" Font-Names="Verdana"
+                                                        Font-Size="8pt" Text=". . ." OnClick="_Btn_BuscarDirDespa_Click" 
+                                                        Enabled="False" style="height: 19px" />
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="_Txt_DireccDespa"
+                                                        ErrorMessage="Debe seleccionar una dirección de despacho" Font-Names="Verdana"
+                                                        Font-Size="8pt" ValidationGroup="GuardarPedido">*</asp:RequiredFieldValidator>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="20%">
+                             <asp:UpdatePanel ID="_Upd_TipoDePedido" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <table style="width: 100%;">
+                                            <tr valign="top">
+                                                <td class="style1" width="20%">
+                                                    Tipo de Pedido:
+                                                </td>
+                                                <td>
+                                                <asp:DropDownList ID="_Ddl_TipoPedido" runat="server" 
+                                                        Font-Names="Verdana" Font-Size="7pt" AutoPostBack="True" 
+                                                        onselectedindexchanged="_Ddl_TipoPedido_SelectedIndexChanged">
+                                                    </asp:DropDownList>
+                                                    
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" InitialValue="Seleccione uno" runat="server" ControlToValidate="_Ddl_TipoPedido"
+                                                        ErrorMessage="Debe seleccionar un tipo de pedido" Font-Names="Verdana"
+                                                        Font-Size="8pt" ValidationGroup="GuardarPedido">*</asp:RequiredFieldValidator>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>       
+                             </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" colspan="3">
+                                <asp:UpdatePanel ID="_Upd_RadioButton" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td width="20%">
+                                                    <b>
+                                                        <asp:RadioButton ID="_Rbt_Grupo" runat="server" AutoPostBack="True" CssClass="style3"
+                                                            Enabled="False" GroupName="Busqueda" OnCheckedChanged="_Rbt_Grupo_CheckedChanged"
+                                                            Text="Por Grupo" />
+                                                        <asp:RadioButton ID="_Rbt_PorProducto" runat="server" AutoPostBack="True" CssClass="style3"
+                                                            Enabled="False" GroupName="Busqueda" OnCheckedChanged="_Rbt_PorProducto_CheckedChanged"
+                                                            Text="Por Producto" />
+                                                        <asp:RadioButton ID="_Rbt_CopiarPedido" runat="server" AutoPostBack="True" CssClass="style3"
+                                                            Enabled="False" GroupName="Busqueda" 
+                                                            Text="Copiar último pedido facturado" 
+                                                        oncheckedchanged="_Rbt_CopiarPedido_CheckedChanged" />
+                                                    </b>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" colspan="3">
+                                <asp:UpdatePanel ID="_Upd_ComboFiltro" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Panel ID="_Pnl_PorGrupo" runat="server" Visible="False">
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td width="10%" class="style1">
+                                                        Proveedor:
+                                                    </td>
+                                                    <td>
+                                                        <asp:DropDownList ID="_Ddl_Proveedor" runat="server" AutoPostBack="True" Font-Names="Verdana"
+                                                            Font-Size="7pt" OnSelectedIndexChanged="_Ddl_Proveedor_SelectedIndexChanged">
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="10%" class="style1">
+                                                        Grupo:
+                                                    </td>
+                                                    <td>
+                                                        <asp:DropDownList ID="_Ddl_Grupo" runat="server" AutoPostBack="True" Font-Names="Verdana"
+                                                            Font-Size="7pt" OnSelectedIndexChanged="_Ddl_Grupo_SelectedIndexChanged">
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </asp:Panel>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" colspan="3">
+                                <asp:UpdatePanel ID="_Upd_ConsultaProducto" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Panel ID="_Pnl_PorProducto" runat="server" Visible="False">
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td width="10%" class="style1" colspan="2">
+                                                        <asp:RadioButton ID="_Rbt_ProductoRegular" runat="server" AutoPostBack="True" 
+                                                            Checked="True" GroupName="TipodeProducto" 
+                                                            oncheckedchanged="_Rbt_ProductoRegular_CheckedChanged" 
+                                                            Text="Producto Regular" />
+                                                        &nbsp;<asp:RadioButton ID="_Rbt_ComboGenerico" runat="server" AutoPostBack="True" 
+                                                            Enabled="False" GroupName="TipodeProducto" 
+                                                            oncheckedchanged="_Rbt_ComboGenerico_CheckedChanged" Text="Combo Generico" />
+                                                        &nbsp;<asp:RadioButton ID="_Rbt_ComboCompuesto" runat="server" AutoPostBack="True" 
+                                                            Enabled="False" GroupName="TipodeProducto" 
+                                                            oncheckedchanged="_Rbt_ComboCompuesto_CheckedChanged" Text="Combo Compuesto" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="style1" width="10%" colspan="2">
+                                                        <asp:Label ID="_Lbl_Obs" runat="server" style="color: #FF0000" 
+                                                            Text="Es posible cargar varios productos a la vez. Para hacerlo, introduzca los códigos separados por coma. &lt;br&gt;Ejemplo: 010114001, 010230001, 01081705"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="style1" width="10%">
+                                                        Buscar:
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="_Txt_Buscar" runat="server" BorderWidth="1px" 
+                                                            Font-Names="Verdana" Font-Size="8pt" Width="250px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                                                            ControlToValidate="_Txt_Buscar" 
+                                                            ErrorMessage="Debe ingresar algún texto para la búsqueda" Font-Names="Verdana" 
+                                                            Font-Size="8pt" ValidationGroup="BusquedaTexto">*</asp:RequiredFieldValidator>
+                                                        &nbsp;<asp:Button ID="_Btn_BuscarCod" runat="server" BorderWidth="1px" 
+                                                            Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_Buscar_Click" 
+                                                            Text="Por Código" ValidationGroup="BusquedaTexto" style="height: 19px" />
+                                                        &nbsp;<asp:Button ID="_Btn_BuscarDesc" runat="server" BorderWidth="1px" 
+                                                            Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_BuscarDesc_Click" 
+                                                            Text="Por Descripción" ValidationGroup="BusquedaTexto" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </asp:Panel>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" colspan="3">
+                                <asp:UpdatePanel ID="_Upd_CopiarPedido" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Panel ID="_Pnl_CopiarPedido" runat="server" Visible="False">
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td width="10%">
+                                                        <center>
+                                                                <span class="style3">El último pedido facturado de este cliente fue cargado el 
+                                                                    <asp:Label ID="_Lbl_CopiarPedidoFecha" runat="server" Text="Label"></asp:Label>, y tiene <asp:Label ID="_Lbl_CopiarPedidoCantidadProductos" runat="server" Text="Label"></asp:Label> productos, con un total
+                                                                de <asp:Label ID="_Lbl_CopiarPedidoCajas" runat="server" Text="Label"></asp:Label> cajas y <asp:Label ID="_Lbl_CopiarPedidoUnidades" runat="server" Text="Label"></asp:Label> unidades.<br>Si desea agregar estos productos al pedido actual haga
+                                                                clic en el botón 'Copiar último pedido facturado'.</span><br>
+                                                                <br>
+                                                                <asp:Button ID="_Btn_CopiarPedido" runat="server" BorderWidth="1px" Font-Names="Verdana"
+                                                                Font-Size="8pt" Text="Copiar último pedido facturado" 
+                                                                    onclick="_Btn_CopiarPedido_Click" />
+                                                        </center>
+                                                    </td>
+                                            </table>
+                                        </asp:Panel>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" colspan="3">
+                                <asp:UpdatePanel ID="_Upd_PanelCargaProd" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:GridView ID="_Dtg_GridProductos" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                                            CellPadding="4" Font-Names="Verdana" Font-Size="7pt" ForeColor="#333333"
+                                            OnPageIndexChanged="GridView1_PageIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging"
+                                            OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" Width="100%"
+                                            Font-Bold="False" OnSelectedIndexChanged="_Dtg_GridProductos_SelectedIndexChanged"
+                                            OnRowDataBound="_Dtg_GridProductos_RowDataBound" 
+                                            onrowdeleting="_Dtg_GridProductos_RowDeleting" 
+                                            onrowcancelingedit="_Dtg_GridProductos_RowCancelingEdit">
+                                            <RowStyle BackColor="White" ForeColor="Black" />
+                                            <Columns>
+                                                <asp:CommandField EditText="Cargar" ShowCancelButton="False" 
+                                                    ShowEditButton="True"  UpdateText="" />
+                                                <asp:BoundField DataField="cproducto" HeaderText="Producto" ReadOnly="True">
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="cnamefc" HeaderText="Descripción" ReadOnly="True">
+                                                    <HeaderStyle Width="30%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:BoundField>
+                                                <asp:TemplateField HeaderText="PMV">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="_Lbl_Campo6" runat="server"  Text='@{ # Bind("campo6")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:DropDownList ID="_Ddl_PMV" runat="server" Font-Names="Verdana" Font-Size="7pt"  AutoPostBack="True" OnSelectedIndexChanged="_Ddl_PMV_SelectedIndexChanged"></asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
+                                                            ControlToValidate="_Ddl_PMV" ErrorMessage="Debe seleccionar un PMV" 
+                                                            Font-Names="Verdana" Font-Size="8pt" InitialValue="..." 
+                                                            >*</asp:RequiredFieldValidator>
+                                                    </EditItemTemplate>
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Cajas">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label1" runat="server" Text='@{ # Bind("campo1")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <div style="vertical-align: middle"><asp:TextBox ID="_Txt_Cajas" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("campo1")}
+' Width="35px"></asp:TextBox>
+                                                        <ajaxToolkit:MaskedEditExtender ID="TextBox1_MaskedEditExtender" runat="server" AutoComplete="False"
+                                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                            CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                            CultureTimePlaceholder="" Enabled="True" Mask="9999" MaskType="Number" TargetControlID="_Txt_Cajas">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                        <asp:RangeValidator ID="RangeValidator5" runat="server" ControlToValidate="_Txt_Cajas"
+                                                            ErrorMessage="No puede sobrepasar de 9999" MaximumValue="9999" 
+                                                            MinimumValue="0" Type="Integer">*</asp:RangeValidator></div>
+                                                    </EditItemTemplate>
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Unidades">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label2" runat="server" Text='@{ # Bind("campo2")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_Und" runat="server" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana"
+                                                            Font-Size="7pt" Text='@{ # Bind("campo2")}
+' Width="35px"></asp:TextBox>
+                                                        <ajaxToolkit:MaskedEditExtender ID="_Txt_Und_MaskedEditExtender" runat="server" AutoComplete="False"
+                                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                            CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                            CultureTimePlaceholder="" Enabled="True" Mask="999" MaskType="Number" TargetControlID="_Txt_Und">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                        <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="_Txt_Und"
+                                                            ErrorMessage="No puede sobrepasar de 2" MaximumValue="2" MinimumValue="0" 
+                                                            Type="Integer">*</asp:RangeValidator>
+                                                    </EditItemTemplate>
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Desc. Fijo">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label3" runat="server" Text='@{ # Bind("campo3")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_Desc1" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("campo3")}
+' Width="35px"></asp:TextBox>
+                                                        <ajaxToolkit:MaskedEditExtender ID="_Txt_Desc1_MaskedEditExtender" runat="server"
+                                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                            CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                            CultureTimePlaceholder="" Enabled="True" Mask="99.99" MaskType="Number" TargetControlID="_Txt_Desc1">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                        <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="_Txt_Desc1"
+                                                            ErrorMessage="No puede sobrepasar de 2" MaximumValue="2,25" MinimumValue="0"
+                                                            Type="Double">*</asp:RangeValidator>
+                                                    </EditItemTemplate>
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Desc2">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label4" runat="server" Text='@{ # Bind("campo4")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_Desc2" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("campo4")}
+' Width="35px"></asp:TextBox>
+                                                        <ajaxToolkit:MaskedEditExtender ID="_Txt_Desc2_MaskedEditExtender" runat="server"
+                                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                            CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                            CultureTimePlaceholder="" Enabled="True" Mask="99.99" MaskType="Number" TargetControlID="_Txt_Desc2">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                        <asp:RangeValidator ID="RangeValidator3" runat="server" ControlToValidate="_Txt_Desc2"
+                                                            ErrorMessage="No puede sobrepasar de 2" MaximumValue="2,25" MinimumValue="0"
+                                                            Type="Double">*</asp:RangeValidator>
+                                                    </EditItemTemplate>
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Desc3">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label5" runat="server" Text='@{ # Bind("campo5")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_Desc3" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("campo5")}
+' Width="35px"></asp:TextBox>
+                                                        <ajaxToolkit:MaskedEditExtender ID="_Txt_Desc3_MaskedEditExtender" runat="server"
+                                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                            CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                            CultureTimePlaceholder="" Enabled="True" Mask="99.99" MaskType="Number" TargetControlID="_Txt_Desc3">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                        <asp:RangeValidator ID="RangeValidator4" runat="server" ControlToValidate="_Txt_Desc3"
+                                                            ErrorMessage="No puede sobrepasar de 2" MaximumValue="2,25" MinimumValue="0"
+                                                            Type="Double">*</asp:RangeValidator>
+                                                    </EditItemTemplate>
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:TemplateField>
+                                                <asp:CommandField SelectText="Ver Existencia" ShowSelectButton="True" />
+                                                <asp:TemplateField Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="_Lbl_cunidad2" runat="server" Text='@{ # Bind("cunidad2")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_cunidad2" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("cunidad2")}
+' Width="35px"></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:TemplateField>
+                                                <asp:TemplateField Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="_Lbl_cventaund2" runat="server" Text='@{ # Bind("cventaund2")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_cventaund2" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("cventaund2")}
+' Width="35px"></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:TemplateField>
+                                                <asp:TemplateField Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="_Lbl_ccontenidoma1" runat="server" Text='@{ # Bind("ccontenidoma1")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_ccontenidoma1" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("ccontenidoma1")}
+' Width="35px"></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:TemplateField>
+                                                <asp:TemplateField Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="_Lbl_ccontenidoma2" runat="server" Text='@{ # Bind("ccontenidoma2")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_ccontenidoma2" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("ccontenidoma2")}
+' Width="35px"></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:TemplateField>
+                                                <asp:CommandField EditText="" InsertVisible="False" UpdateText="[ Aceptar ]" 
+                                                    ShowEditButton="true" CancelText="[ Cancelar ]">
+                                                    <ControlStyle ForeColor="White" />
+                                                    <HeaderStyle Width="10%" />
+                                                    <ItemStyle VerticalAlign="Top" />
+                                                </asp:CommandField>
+                                            </Columns>
+                                            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                            <HeaderStyle BackColor="#BBD4F8" Font-Bold="True" ForeColor="Black" BorderColor="Black" />
+                                            <EditRowStyle BackColor="#999999" />
+                                            <AlternatingRowStyle BackColor="White" ForeColor="Black" />
+                                        </asp:GridView>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="3">
+                                <asp:UpdatePanel ID="_Upd_PanelAceptProducto" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Button ID="_Btn_AceptarProductos" runat="server" BorderWidth="1px" Font-Names="Verdana"
+                                            Font-Size="8pt" OnClick="_Btn_AceptarProductos_Click" Text="Agregar al pedido"
+                                            Enabled="False" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <asp:UpdatePanel ID="_Upd_PanelDetallePedido" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Label ID="_Lbl_ItemCant" runat="server" Font-Bold="True" 
+                                            Font-Names="Verdana" Font-Size="8pt"></asp:Label>
+                                        <br />
+                                        <asp:GridView ID="_Dtg_DetallePedido" runat="server" AutoGenerateColumns="False"
+                                            CellPadding="4" Font-Bold="False" Font-Names="Verdana" Font-Size="7pt" 
+                                            ForeColor="#333333" PageSize="15" Width="100%" OnSelectedIndexChanged="_Dtg_DetallePedido_SelectedIndexChanged"
+                                            OnRowDeleting="_Dtg_DetallePedido_RowDeleting" 
+                                            OnRowEditing="_Dtg_DetallePedido_RowEditing" AllowPaging="True" 
+                                            onpageindexchanging="_Dtg_DetallePedido_PageIndexChanging">
+                                            <RowStyle BackColor="White" ForeColor="Black" />
+                                            <Columns>
+                                                <asp:TemplateField ShowHeader="False">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete"
+                                                            Text="Eliminar"></asp:LinkButton>
+                                                        <ajaxToolkit:ConfirmButtonExtender ID="LinkButton1_ConfirmButtonExtender" runat="server"
+                                                            ConfirmText="Desea eliminar el registro seleccionado?" Enabled="True" TargetControlID="LinkButton1">
+                                                        </ajaxToolkit:ConfirmButtonExtender>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField InsertVisible="False" ShowHeader="False">
+                                                    <EditItemTemplate>
+                                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update"
+                                                            Text="Guardar"></asp:LinkButton>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Edit"
+                                                            Text="Editar"></asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField ShowHeader="False">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="LinkButton3" runat="server" CausesValidation="False" CommandName="Select"
+                                                            Text="Ver Existencia"></asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="cproducto" HeaderText="Producto" ReadOnly="True" />
+                                                <asp:BoundField DataField="cnamefc" HeaderText="Descripción" ReadOnly="True" />
+                                                <asp:BoundField DataField="campo6" HeaderText="PMV" />
+                                                <asp:BoundField DataField="precio" HeaderText="Precio Total" />
+                                                <asp:BoundField DataField="PrecioUnitario" HeaderText="Precio Unitario" />
+                                                <asp:TemplateField HeaderText="Cajas">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label6" runat="server" Text='@{ # Bind("campo1")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_Cajas0" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("campo1")}
+' Width="35px"></asp:TextBox>
+                                                        <ajaxToolkit:MaskedEditExtender ID="TextBox1_MaskedEditExtender0" runat="server"
+                                                            AutoComplete="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder=""
+                                                            CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                            CultureTimePlaceholder="" Enabled="True" Mask="999" MaskType="Number" TargetControlID="_Txt_Cajas">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                        <asp:RangeValidator ID="RangeValidator6" runat="server" ControlToValidate="_Txt_Cajas"
+                                                            ErrorMessage="No puede sobrepasar de 2" MaximumValue="999" MinimumValue="0">*</asp:RangeValidator>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Unidad">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label7" runat="server" Text='@{ # Bind("campo2")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_Und0" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("campo2")}
+' Width="35px"></asp:TextBox>
+                                                        <ajaxToolkit:MaskedEditExtender ID="_Txt_Und_MaskedEditExtender0" runat="server"
+                                                            AutoComplete="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder=""
+                                                            CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                            CultureTimePlaceholder="" Enabled="True" Mask="999" MaskType="Number" TargetControlID="_Txt_Und">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                        <asp:RangeValidator ID="RangeValidator7" runat="server" ControlToValidate="_Txt_Und"
+                                                            ErrorMessage="No puede sobrepasar de 2" MaximumValue="2" MinimumValue="0">*</asp:RangeValidator>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Desc. Fijo">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label8" runat="server" Text='@{ # Bind("campo3")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_Desc4" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("campo3")}
+' Width="35px"></asp:TextBox>
+                                                        <ajaxToolkit:MaskedEditExtender ID="_Txt_Desc1_MaskedEditExtender0" runat="server"
+                                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                            CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                            CultureTimePlaceholder="" Enabled="True" Mask="99.99" MaskType="Number" TargetControlID="_Txt_Desc1">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                        <asp:RangeValidator ID="RangeValidator8" runat="server" ControlToValidate="_Txt_Desc1"
+                                                            ErrorMessage="No puede sobrepasar de 2" MaximumValue="2,25" MinimumValue="0"
+                                                            Type="Double">*</asp:RangeValidator>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Desc 2">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label9" runat="server" Text='@{ # Bind("campo4")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_Desc5" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("campo4")}
+' Width="35px"></asp:TextBox>
+                                                        <ajaxToolkit:MaskedEditExtender ID="_Txt_Desc2_MaskedEditExtender0" runat="server"
+                                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                            CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                            CultureTimePlaceholder="" Enabled="True" Mask="99.99" MaskType="Number" TargetControlID="_Txt_Desc2">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                        <asp:RangeValidator ID="RangeValidator9" runat="server" ControlToValidate="_Txt_Desc2"
+                                                            ErrorMessage="No puede sobrepasar de 2" MaximumValue="2,25" MinimumValue="0"
+                                                            Type="Double">*</asp:RangeValidator>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Desc 3">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label10" runat="server" Text='@{ # Bind("campo5")}
+'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="_Txt_Desc6" runat="server" BorderStyle="Solid" BorderWidth="1px"
+                                                            Font-Names="Verdana" Font-Size="7pt" Text='@{ # Bind("campo5")}
+' Width="35px"></asp:TextBox>
+                                                        <ajaxToolkit:MaskedEditExtender ID="_Txt_Desc3_MaskedEditExtender0" runat="server"
+                                                            CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                            CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                            CultureTimePlaceholder="" Enabled="True" Mask="99.99" MaskType="Number" TargetControlID="_Txt_Desc3">
+                                                        </ajaxToolkit:MaskedEditExtender>
+                                                        <asp:RangeValidator ID="RangeValidator10" runat="server" ControlToValidate="_Txt_Desc3"
+                                                            ErrorMessage="No puede sobrepasar de 2" MaximumValue="2,25" MinimumValue="0"
+                                                            Type="Double">*</asp:RangeValidator>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                            <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" ForeColor="Black" />
+                                            <EditRowStyle BackColor="#999999" />
+                                            <AlternatingRowStyle BackColor="White" ForeColor="Black" />
+                                        </asp:GridView>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="style2">
+                                <asp:UpdatePanel ID="_Upd_Totalizador" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td class="style3" width="20%">
+                                                    Total Cajas<br />
+                                                    <asp:TextBox ID="_Txt_TCajas" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                        BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ReadOnly="True" Width="67px"></asp:TextBox>
+                                                </td>
+                                                <td class="style3" width="20%">
+                                                    Total unidades<br />
+                                                    <asp:TextBox ID="_Txt_TUnd" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                        BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ReadOnly="True" Width="67px"></asp:TextBox>
+                                                </td>
+                                                <td class="style3" width="20%">
+                                                    Subtotal<br />
+                                                    <asp:TextBox ID="_Txt_Subtotal" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                        BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ReadOnly="True" Width="67px"></asp:TextBox>
+                                                </td>
+                                                <td class="style3" width="20%">
+                                                    IVA<br />
+                                                    <asp:TextBox ID="_Txt_IVA" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                        BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ReadOnly="True" Width="67px"></asp:TextBox>
+                                                </td>
+                                                <td class="style3" width="20%">
+                                                    Total<br />
+                                                    <asp:TextBox ID="_Txt_Total" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                        BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ReadOnly="True" Width="67px"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                &nbsp; &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <asp:UpdatePanel ID="_Upd_FormaPago" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td class="style1" width="20%">
+                                                    Forma de Pago:
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList ID="_Ddl_FormaPago" runat="server" Font-Names="Verdana" Font-Size="7pt"
+                                                        Enabled="False">
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="_Ddl_FormaPago"
+                                                        ErrorMessage="Campo requerido!!" Font-Names="Verdana" Font-Size="8pt" InitialValue="Seleccione uno"
+                                                        ValidationGroup="GuardarPedido">*</asp:RequiredFieldValidator>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="3">
+                                <asp:UpdatePanel ID="_Upd_Observaciones" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <table style="width: 100%;">
+                                            <tr valign="top">
+                                                <td class="style1" width="20%">
+                                                    Observaciones:
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="_Txt_Observaciones" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                        BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" TextMode="MultiLine"
+                                                        Width="539px"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="style1">
+                                <asp:UpdatePanel ID="_Upd_Devolucion" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Panel ID="_Pnl_Devolucion" runat="server" Visible="False">
+                                            <table style="width: 100%;">
+                                                <tr valign="top">
+                                                    <td width="20%">
+                                                        Razón del rechazo:
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="_Txt_ObservacionesRech" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                            BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ReadOnly="True" TextMode="MultiLine"
+                                                            Width="539px"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </asp:Panel>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    <br />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="_Upd_PanelBoton"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter1' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="_Upd_PanelAceptProducto"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter2' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress3" runat="server" AssociatedUpdatePanelID="_Upd_PanelDetallePedido"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter3' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress4" runat="server" AssociatedUpdatePanelID="_Upd_PanelCargaProd"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter4' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress5" runat="server" AssociatedUpdatePanelID="UpdatePanel3"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter5' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress6" runat="server" AssociatedUpdatePanelID="_Upd_ComboFiltro"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter6' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: none;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress7" runat="server" AssociatedUpdatePanelID="_Upd_ConsultaProducto"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter7' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: none;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress8" runat="server" AssociatedUpdatePanelID="_Upd_Editar"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter8' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; display: block;
+        z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress9" runat="server" AssociatedUpdatePanelID="_Upd_TipoPedidoElegir"
+            DisplayAfter="50">
+            <ProgressTemplate>
+                <div id='progressBackgroundFilter9' class="progressBackgroundFilter" style="display: none;">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block;">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    <asp:Button runat="server" ID="_Btn_HiddeControl" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender runat="server" ID="programmaticModalPopup" BehaviorID="programmaticModalPopupBehavior"
+        TargetControlID="_Btn_HiddeControl" PopupControlID="_Pnl_PanelCliente" BackgroundCssClass="modalBackground"
+        DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_PanelCliente" Style="display: block;
+        padding: 10px" Width="700px">
+        <asp:Panel runat="Server" ID="_Pnl_PanelClienteDrag" Style="background-color: #FFFFFF;
+            border: solid 1px Gray; color: Black; text-align: center;">
+            <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr valign="top">
+                            <td class="style2" style="text-align: left" width="12%">
+                                <asp:Label ID="_Lbl_Buscar" runat="server" Font-Names="Verdana" Font-Size="10px"
+                                    Text="Buscar:"></asp:Label>
+                            </td>
+                            <td style="text-align: left" valign="top">
+                                <asp:TextBox ID="_Txt_BuscarCli" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                    BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="218px" 
+                                    Height="16px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="_Txt_BuscarCli"
+                                    ErrorMessage="Debe ingresar algún texto para la búsqueda" Font-Names="Verdana"
+                                    Font-Size="8pt" ValidationGroup="BusquedaTexto2">*</asp:RequiredFieldValidator>
+                                &nbsp;<asp:Button ID="_Btn_Buscar_Cli" runat="server" Text="Por código" BorderColor="Black"
+                                    BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_Buscar_Cli_Click"
+                                    ValidationGroup="BusquedaTexto2" />
+                                &nbsp;<asp:Button ID="_Btn_Buscar_Des" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                    BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_Buscar_Des_Click"
+                                    Text="Por descripción" Style="height: 19px" ValidationGroup="BusquedaTexto2" />
+                                &nbsp;<asp:Button ID="_Btn_Buscar_Rif" runat="server" BorderColor="Black" 
+                                    BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                    OnClick="_Btn_Buscar_Rif_Click" Style="height: 19px" Text="Por Rif" 
+                                    ValidationGroup="BusquedaTexto2" Width="82px" />
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="2">
+                                <asp:GridView ID="_Dtg_Clientes" runat="server" AllowPaging="True" CellPadding="4"
+                                    ForeColor="#333333" OnPageIndexChanging="_Dtg_Clientes_PageIndexChanging"
+                                    OnSelectedIndexChanged="_Dtg_Clientes_SelectedIndexChanged" Style="text-align: left"
+                                    Width="100%">
+                                    <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                    <Columns>
+                                        <asp:TemplateField ShowHeader="False">
+                                            <ItemTemplate>
+                                                <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Select"
+                                                    Text="Seleccionar" />
+                                            </ItemTemplate>
+                                            <ControlStyle BorderColor="Black" BorderWidth="1px" Font-Names="Verdana" Font-Size="7pt" />
+                                            <ItemStyle Width="50px" />
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" ForeColor="White"
+                                        HorizontalAlign="Center" />
+                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                    <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" Font-Names="Verdana"
+                                        Font-Size="7pt" ForeColor="Black" />
+                                    <EditRowStyle BackColor="#2461BF" />
+                                    <AlternatingRowStyle BackColor="White" />
+                                </asp:GridView>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td colspan="2">
+                                <asp:Button ID="_Btn_CerrarPn1" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                    BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_CerrarPn1_Click"
+                                    Text="Cerrar" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:Panel>
+    </asp:Panel>
+   
+    <asp:Button runat="server" ID="_Btn_HiddenControl_3" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender runat="server" ID="ModalPopupExtensor2" BehaviorID="ModalPopupExtender2Behavior"
+        TargetControlID="_Btn_HiddenControl_3" PopupControlID="_Pnl_Existencias" BackgroundCssClass="modalBackground"
+        DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_Existencias" Style="display: block;
+        padding: 10px" Width="700px">
+        <asp:Panel runat="Server" ID="Panel2" Style="background-color: #FFFFFF; border: solid 1px Gray;
+            color: Black; text-align: center;">
+            <asp:UpdatePanel ID="_Upd_Existencias" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr valign="top">
+                            <td>
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td>
+                                            <asp:GridView ID="_Dtg_Existencia" runat="server" AllowPaging="True" CellPadding="4"
+                                                ForeColor="#333333" Style="text-align: left" Width="100%">
+                                                <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                                <Columns>
+                                                </Columns>
+                                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" ForeColor="White"
+                                                    HorizontalAlign="Center" />
+                                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" Font-Names="Verdana"
+                                                    Font-Size="7pt" ForeColor="Black" />
+                                                <EditRowStyle BackColor="#2461BF" />
+                                                <AlternatingRowStyle BackColor="White" />
+                                            </asp:GridView>
+                                            <asp:Label ID="_Lbl_Existencia" runat=server Font-Names="Verdana" Font-Size="8pt">Lo sentimos, el producto que seleccionó no tiene existencias en este momento.</asp:Label>
+                                            <br><br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Button ID="_Btn_CerrarExist" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_CerrarExist_Click"
+                                                Text="Cerrar" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:Panel>
+    </asp:Panel>
+    <asp:Button runat="server" ID="_Btn_HiddenControl_4" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender runat="server" ID="ModalPopupExtender3" BehaviorID="ModalPopupExtender3Behavior"
+        TargetControlID="_Btn_HiddenControl_4" PopupControlID="_Pnl_Editar" BackgroundCssClass="modalBackground"
+        DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_Editar" Style="display: block;
+        padding: 10px" Width="700px">
+        <asp:Panel runat="Server" ID="Panel3" Style="background-color: #FFFFFF; border: solid 1px Gray;
+            color: Black; text-align: center;">
+            <asp:UpdatePanel ID="_Upd_Editar" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr valign="top">
+                            <td>
+                                <table style="width: 100%;">
+                                    <tr valign="top">
+                                        <td class="style4" width="30%">
+                                            Producto:<br />
+                                            <asp:TextBox ID="_Txt_ProductoEdit" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ReadOnly="True" Width="125px"></asp:TextBox>
+                                        </td>
+                                        <td class="style4" width="35%">
+                                            Descripción:<br />
+                                            <asp:TextBox ID="_Txt_ProductoDescEdit" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ReadOnly="True" TextMode="MultiLine"
+                                                Width="211px"></asp:TextBox>
+                                        </td>
+                                        <td width="35%" class="style4" >
+                                            PMV:<br />
+                                            <asp:DropDownList ID="_Ddl_PMVEdicion" runat="server" Font-Names="Verdana" 
+                                                Font-Size="7pt" 
+                                                OnSelectedIndexChanged="_Ddl_PMVEdicion_SelectedIndexChanged" 
+                                                AutoPostBack="True">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+                                                ControlToValidate="_Ddl_PMVEdicion" ErrorMessage="Campo requerido!!" 
+                                                Font-Names="Verdana" Font-Size="8pt" InitialValue="..." 
+                                                ValidationGroup="EditarProducto">*</asp:RequiredFieldValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="style4" width="30%">
+                                            Cajas:
+                                            <br />
+                                            <asp:TextBox ID="_Txt_CajasEdit" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="67px"></asp:TextBox>
+                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_CajasEdit_MaskedEditExtender" runat="server"
+                                                AutoComplete="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder=""
+                                                CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                CultureTimePlaceholder="" Enabled="True" Mask="999" MaskType="Number" TargetControlID="_Txt_CajasEdit">
+                                            </ajaxToolkit:MaskedEditExtender>
+                                        </td>
+                                        <td class="style4" width="35%">
+                                            Unidades:
+                                            <br />
+                                            <asp:TextBox ID="_Txt_UnidadesEdit" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="67px"></asp:TextBox>
+                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_UnidadesEdit_MaskedEditExtender" runat="server"
+                                                AutoComplete="False" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder=""
+                                                CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                CultureTimePlaceholder="" Enabled="True" Mask="999" MaskType="Number" TargetControlID="_Txt_UnidadesEdit">
+                                            </ajaxToolkit:MaskedEditExtender>
+                                            <asp:RangeValidator ID="_Rang_Und2" runat="server" ControlToValidate="_Txt_UnidadesEdit"
+                                                ErrorMessage="No puede sobrepasar de 2" MaximumValue="2" MinimumValue="0" 
+                                                ValidationGroup="EditarProducto" Type="Integer">*</asp:RangeValidator>
+                                        </td>
+                                        <td width="35%">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="style4" width="30%">
+                                            Desc. Fijo:
+                                            <br />
+                                            <asp:TextBox ID="_Txt_DescEdit1" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="67px"></asp:TextBox>
+                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_DescEdit1_MaskedEditExtender" runat="server"
+                                                CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                CultureTimePlaceholder="" Enabled="True" Mask="99.99" MaskType="Number" TargetControlID="_Txt_DescEdit1">
+                                            </ajaxToolkit:MaskedEditExtender>
+                                            <asp:RangeValidator ID="RangeValidator11" runat="server" ControlToValidate="_Txt_DescEdit1"
+                                                ErrorMessage="No puede sobrepasar de 2" MaximumValue="2" MinimumValue="0" 
+                                                ValidationGroup="EditarProducto" Type="Double">*</asp:RangeValidator>
+                                        </td>
+                                        <td class="style4" width="35%">
+                                            Desc 2:
+                                            <br />
+                                            <asp:TextBox ID="_Txt_DescEdit2" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="67px"></asp:TextBox>
+                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_DescEdit2_MaskedEditExtender" runat="server"
+                                                CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                CultureTimePlaceholder="" Enabled="True" Mask="99.99" MaskType="Number" TargetControlID="_Txt_DescEdit2">
+                                            </ajaxToolkit:MaskedEditExtender>
+                                            <asp:RangeValidator ID="RangeValidator12" runat="server" ControlToValidate="_Txt_DescEdit2"
+                                                ErrorMessage="No puede sobrepasar de 2" MaximumValue="2" MinimumValue="0" 
+                                                ValidationGroup="EditarProducto" Type="Double">*</asp:RangeValidator>
+                                        </td>
+                                        <td class="style4" width="35%">
+                                            Desc 3:
+                                            <br />
+                                            <asp:TextBox ID="_Txt_DescEdit3" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="67px"></asp:TextBox>
+                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_DescEdit3_MaskedEditExtender" runat="server"
+                                                CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                CultureTimePlaceholder="" Enabled="True" Mask="99.99" MaskType="Number" TargetControlID="_Txt_DescEdit3">
+                                            </ajaxToolkit:MaskedEditExtender>
+                                            <asp:RangeValidator ID="RangeValidator13" runat="server" ControlToValidate="_Txt_DescEdit3"
+                                                ErrorMessage="No puede sobrepasar de 2" MaximumValue="2" MinimumValue="0" 
+                                                ValidationGroup="EditarProducto" Type="Double">*</asp:RangeValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <asp:Button ID="_Btn_AceptarEdicion" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_AceptarEdicion_Click"
+                                                Text="Aceptar" ValidationGroup="EditarProducto" style="height: 19px" />
+                                            &nbsp;<asp:Button ID="_Btn_Cancelar" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_Cancelar_Click"
+                                                Text="Cancelar" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:Panel>
+    </asp:Panel>
+     <asp:Button runat="server" ID="_Btn_HiddeControl_2" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender runat="server" ID="ModalPopupExtender1" BehaviorID="ModalPopupExtender1Behavior"
+        TargetControlID="_Btn_HiddeControl_2" PopupControlID="_Pnl_Alertas" BackgroundCssClass="modalBackground_2"
+        DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel runat="server" CssClass="modalPopup_2" ID="_Pnl_Alertas" Style="display: block;
+        padding: 10px" Width="700px">
+        <asp:Panel runat="Server" ID="_Pnl_AlertasDrag" Style="background-color: #FFFFFF;
+            border: solid 1px Gray; color: Black; text-align: center;">
+            <asp:UpdatePanel ID="_Upd_Mensaje" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr valign="top">
+                            <td>
+                                <asp:Label ID="_Lbl_Mensaje" runat="server" Font-Names="Verdana" Font-Size="8pt"></asp:Label>
+                                <br />
+                                <br />
+                                <asp:HyperLink ID="HyperLink2" runat="server" Color="#3366CC" 
+                                    Enabled="False" Font-Names="Verdana" Font-Overline="False" Font-Size="8pt" 
+                                    Font-Underline="True" NavigateUrl="http://www.t3.web.ve/crp" 
+                                    Visible="False" Target="_blank">Carga Rápida de Pedido</asp:HyperLink>
+                                <br />
+                                <asp:HyperLink ID="HyperLink1" runat="server" Color="#3366CC" 
+                                    Enabled="False" Font-Names="Verdana" Font-Overline="False" Font-Size="8pt" 
+                                    Font-Underline="True" 
+                                    NavigateUrl="http://www.conssa.net.ve/t3/tutorialcrp/" Visible="False" 
+                                    Target="_blank">Tutorial CRP</asp:HyperLink>
+                                <br />
+                                <br />
+                                <asp:Button ID="_Btn_Aceptar" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                    BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" OnClick="_Btn_Aceptar_Click"
+                                    Text="Aceptar" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:Panel>
+    </asp:Panel>
+         <asp:Button runat="server" ID="_Btn_HiddenControl_5" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender runat="server" ID="ModalPopupExtender2" BehaviorID="ModalPopupExtender6Behavior"
+        TargetControlID="_Btn_HiddenControl_5" PopupControlID="_Pnl_TipoPedido" BackgroundCssClass="modalBackground_2"
+        DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel runat="server" CssClass="modalPopup_2" ID="_Pnl_TipoPedido" Style="display: block;
+        padding: 10px" Width="700px">
+        <asp:Panel runat="Server" ID="Panel4" Style="background-color: #FFFFFF;
+            border: solid 1px Gray; color: Black; text-align: center;">
+            <asp:UpdatePanel ID="_Upd_TipoPedidoElegir" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr valign="top">
+                            <td class="style5" colspan="2">
+                                Para continuar por favor seleccione el tipo de pedido. Recuerde que dependiendo 
+                                de su selección se eliminaran los items ingresados que no sean iguales al tipo 
+                                de pedido seleccionado.</td>
+                        </tr>
+                        <tr valign="top">
+                            <td align="left" class="style7" width="20%">
+                                Tipo de Pedido:</td>
+                            <td align="left" class="style6">
+                                <asp:DropDownList ID="_Ddl_TipoPedido_Elegir" runat="server" 
+                                    Font-Names="Verdana" Font-Size="7pt" ValidationGroup="TipoPedidoElegir">
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                                    ControlToValidate="_Ddl_TipoPedido_Elegir" 
+                                    ErrorMessage="Debe seleccionar un tipo de pedido" Font-Names="Verdana" 
+                                    Font-Size="8pt" InitialValue="Seleccione uno" ValidationGroup="TipoPedidoElegir">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td class="style6" colspan="2">
+                                <asp:Button ID="_Btn_AceptarTipoPedido" runat="server" BorderColor="Black" 
+                                    BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                    OnClick="_Btn_AceptarTipoPedido_Click" Text="Aceptar" style="height: 19px" 
+                                    ValidationGroup="TipoPedidoElegir" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:Panel>
+    </asp:Panel>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
+        ShowSummary="False" />
+    <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True"
+        ShowSummary="False" ValidationGroup="GuardarPedido" />
+    <asp:ValidationSummary ID="ValidationSummary3" runat="server" ShowMessageBox="True"
+        ShowSummary="False" ValidationGroup="BusquedaTexto" />
+    <asp:ValidationSummary ID="ValidationSummary4" runat="server" ShowMessageBox="True"
+        ShowSummary="False" ValidationGroup="BusquedaTexto2" />
+    <asp:ValidationSummary ID="ValidationSummary5" runat="server" ShowMessageBox="True"
+        ShowSummary="False" ValidationGroup="EditarProducto" />
+    </form>
+</body>
+</html>

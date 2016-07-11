@@ -1,0 +1,1603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SCIBDModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SCIBDEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="AccionPorProblema" EntityType="SCIBDModel.AccionPorProblema" />
+    <EntitySet Name="ArchivoAccion" EntityType="SCIBDModel.ArchivoAccion" />
+    <EntitySet Name="ArchivoAdjunto" EntityType="SCIBDModel.ArchivoAdjunto" />
+    <EntitySet Name="ArchivoCausa" EntityType="SCIBDModel.ArchivoCausa" />
+    <EntitySet Name="Calendario" EntityType="SCIBDModel.Calendario" />
+    <EntitySet Name="CalendarioDetalle" EntityType="SCIBDModel.CalendarioDetalle" />
+    <EntitySet Name="Cargo" EntityType="SCIBDModel.Cargo" />
+    <EntitySet Name="Categoria" EntityType="SCIBDModel.Categoria" />
+    <EntitySet Name="CategoriaPorCliente" EntityType="SCIBDModel.CategoriaPorCliente" />
+    <EntitySet Name="CausaPorProblema" EntityType="SCIBDModel.CausaPorProblema" />
+    <EntitySet Name="Cliente" EntityType="SCIBDModel.Cliente" />
+    <EntitySet Name="DetalleGrupoEmpresa" EntityType="SCIBDModel.DetalleGrupoEmpresa" />
+    <EntitySet Name="DetalleValija" EntityType="SCIBDModel.DetalleValija" />
+    <EntitySet Name="Email" EntityType="SCIBDModel.Email" />
+    <EntitySet Name="FormatoPorCliente" EntityType="SCIBDModel.FormatoPorCliente" />
+    <EntitySet Name="Frecuencia" EntityType="SCIBDModel.Frecuencia" />
+    <EntitySet Name="GrupoEmpresa" EntityType="SCIBDModel.GrupoEmpresa" />
+    <EntitySet Name="Impacto" EntityType="SCIBDModel.Impacto" />
+    <EntitySet Name="Mensaje" EntityType="SCIBDModel.Mensaje" />
+    <EntitySet Name="Prioridad" EntityType="SCIBDModel.Prioridad" />
+    <EntitySet Name="PrioridadPorSubcategoria" EntityType="SCIBDModel.PrioridadPorSubcategoria" />
+    <EntitySet Name="Problema" EntityType="SCIBDModel.Problema" />
+    <EntitySet Name="RecursoPorProblema" EntityType="SCIBDModel.RecursoPorProblema" />
+    <EntitySet Name="Servicio" EntityType="SCIBDModel.Servicio" />
+    <EntitySet Name="ServicioPorCliente" EntityType="SCIBDModel.ServicioPorCliente" />
+    <EntitySet Name="ServicioPorProblema" EntityType="SCIBDModel.ServicioPorProblema" />
+    <EntitySet Name="Solicitud" EntityType="SCIBDModel.Solicitud" />
+    <EntitySet Name="Subcategoria" EntityType="SCIBDModel.Subcategoria" />
+    <EntitySet Name="sysdiagrams" EntityType="SCIBDModel.sysdiagrams" />
+    <EntitySet Name="Ticket" EntityType="SCIBDModel.Ticket" />
+    <EntitySet Name="TicketArchivoAdjunto" EntityType="SCIBDModel.TicketArchivoAdjunto" />
+    <EntitySet Name="Transferencia" EntityType="SCIBDModel.Transferencia" />
+    <EntitySet Name="Usuario" EntityType="SCIBDModel.Usuario" />
+    <EntitySet Name="Valija" EntityType="SCIBDModel.Valija" />
+    <EntitySet Name="webpages_Membership" EntityType="SCIBDModel.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="SCIBDModel.webpages_OAuthMembership" />
+    <EntitySet Name="webpages_Roles" EntityType="SCIBDModel.webpages_Roles" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="SCIBDModel.webpages_UsersInRoles" />
+    <EntitySet Name="VwCalendario" EntityType="SCIBDModel.VwCalendario" />
+    <EntitySet Name="VwExportacionInc" EntityType="SCIBDModel.VwExportacionInc" />
+    <EntitySet Name="VwExportacionSol" EntityType="SCIBDModel.VwExportacionSol" />
+    <EntitySet Name="VwIncidencias" EntityType="SCIBDModel.VwIncidencias" />
+    <EntitySet Name="VwProblemas" EntityType="SCIBDModel.VwProblemas" />
+    <EntitySet Name="VwRptValija" EntityType="SCIBDModel.VwRptValija" />
+    <EntitySet Name="VwSolicitudes" EntityType="SCIBDModel.VwSolicitudes" />
+    <EntitySet Name="VwValija" EntityType="SCIBDModel.VwValija" />
+    <AssociationSet Name="FK_AccionPorProblema_Problema" Association="SCIBDModel.FK_AccionPorProblema_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="AccionPorProblema" EntitySet="AccionPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArchivoAccion_ArchivoAdjunto" Association="SCIBDModel.FK_ArchivoAccion_ArchivoAdjunto">
+      <End Role="ArchivoAdjunto" EntitySet="ArchivoAdjunto" />
+      <End Role="ArchivoAccion" EntitySet="ArchivoAccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArchivoAccion_Problema" Association="SCIBDModel.FK_ArchivoAccion_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="ArchivoAccion" EntitySet="ArchivoAccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArchivoPorProblema_ArchivoAdjunto" Association="SCIBDModel.FK_ArchivoPorProblema_ArchivoAdjunto">
+      <End Role="ArchivoAdjunto" EntitySet="ArchivoAdjunto" />
+      <End Role="ArchivoCausa" EntitySet="ArchivoCausa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormatoPorCliente_ArchivoAdjunto" Association="SCIBDModel.FK_FormatoPorCliente_ArchivoAdjunto">
+      <End Role="ArchivoAdjunto" EntitySet="ArchivoAdjunto" />
+      <End Role="FormatoPorCliente" EntitySet="FormatoPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArchivoPorProblema_Problema" Association="SCIBDModel.FK_ArchivoPorProblema_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="ArchivoCausa" EntitySet="ArchivoCausa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CalendarioDetalle_Calendario" Association="SCIBDModel.FK_CalendarioDetalle_Calendario">
+      <End Role="Calendario" EntitySet="Calendario" />
+      <End Role="CalendarioDetalle" EntitySet="CalendarioDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Cargo" Association="SCIBDModel.FK_Usuario_Cargo">
+      <End Role="Cargo" EntitySet="Cargo" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoriaPorCliente_Categoria" Association="SCIBDModel.FK_CategoriaPorCliente_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="CategoriaPorCliente" EntitySet="CategoriaPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subcategoria_Categoria" Association="SCIBDModel.FK_Subcategoria_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Subcategoria" EntitySet="Subcategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoriaPorCliente_Cliente" Association="SCIBDModel.FK_CategoriaPorCliente_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="CategoriaPorCliente" EntitySet="CategoriaPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CausaPorProblema_Problema" Association="SCIBDModel.FK_CausaPorProblema_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="CausaPorProblema" EntitySet="CausaPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleGrupoEmpresa_Cliente" Association="SCIBDModel.FK_DetalleGrupoEmpresa_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="DetalleGrupoEmpresa" EntitySet="DetalleGrupoEmpresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormatoPorCliente_Cliente" Association="SCIBDModel.FK_FormatoPorCliente_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="FormatoPorCliente" EntitySet="FormatoPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioPorCliente_Cliente" Association="SCIBDModel.FK_ServicioPorCliente_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="ServicioPorCliente" EntitySet="ServicioPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Cliente1" Association="SCIBDModel.FK_Usuario_Cliente1">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleGrupoEmpresa_GrupoEmpresa" Association="SCIBDModel.FK_DetalleGrupoEmpresa_GrupoEmpresa">
+      <End Role="GrupoEmpresa" EntitySet="GrupoEmpresa" />
+      <End Role="DetalleGrupoEmpresa" EntitySet="DetalleGrupoEmpresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleValija_Valija" Association="SCIBDModel.FK_DetalleValija_Valija">
+      <End Role="Valija" EntitySet="Valija" />
+      <End Role="DetalleValija" EntitySet="DetalleValija" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormatoPorCliente_Subcategoria" Association="SCIBDModel.FK_FormatoPorCliente_Subcategoria">
+      <End Role="Subcategoria" EntitySet="Subcategoria" />
+      <End Role="FormatoPorCliente" EntitySet="FormatoPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Problema_Frecuencia" Association="SCIBDModel.FK_Problema_Frecuencia">
+      <End Role="Frecuencia" EntitySet="Frecuencia" />
+      <End Role="Problema" EntitySet="Problema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Problema_Impacto" Association="SCIBDModel.FK_Problema_Impacto">
+      <End Role="Impacto" EntitySet="Impacto" />
+      <End Role="Problema" EntitySet="Problema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mensaje_Usuario" Association="SCIBDModel.FK_Mensaje_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Mensaje" EntitySet="Mensaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrioridadPorSubcategoria_Prioridad" Association="SCIBDModel.FK_PrioridadPorSubcategoria_Prioridad">
+      <End Role="Prioridad" EntitySet="Prioridad" />
+      <End Role="PrioridadPorSubcategoria" EntitySet="PrioridadPorSubcategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Prioridad" Association="SCIBDModel.FK_Solicitud_Prioridad">
+      <End Role="Prioridad" EntitySet="Prioridad" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrioridadPorSubcategoria_Subcategoria" Association="SCIBDModel.FK_PrioridadPorSubcategoria_Subcategoria">
+      <End Role="Subcategoria" EntitySet="Subcategoria" />
+      <End Role="PrioridadPorSubcategoria" EntitySet="PrioridadPorSubcategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Problema_PrioridadPorSubcategoria" Association="SCIBDModel.FK_Problema_PrioridadPorSubcategoria">
+      <End Role="PrioridadPorSubcategoria" EntitySet="PrioridadPorSubcategoria" />
+      <End Role="Problema" EntitySet="Problema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_PrioridadPorSubcategoria" Association="SCIBDModel.FK_Ticket_PrioridadPorSubcategoria">
+      <End Role="PrioridadPorSubcategoria" EntitySet="PrioridadPorSubcategoria" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Problema_Subcategoria" Association="SCIBDModel.FK_Problema_Subcategoria">
+      <End Role="Subcategoria" EntitySet="Subcategoria" />
+      <End Role="Problema" EntitySet="Problema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Problema_Usuario" Association="SCIBDModel.FK_Problema_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Problema" EntitySet="Problema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecursoPorProblema_Problema" Association="SCIBDModel.FK_RecursoPorProblema_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="RecursoPorProblema" EntitySet="RecursoPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioPorProblema_Problema" Association="SCIBDModel.FK_ServicioPorProblema_Problema">
+      <End Role="Problema" EntitySet="Problema" />
+      <End Role="ServicioPorProblema" EntitySet="ServicioPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecursoPorProblema_Usuario" Association="SCIBDModel.FK_RecursoPorProblema_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="RecursoPorProblema" EntitySet="RecursoPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioPorCliente_Servicio" Association="SCIBDModel.FK_ServicioPorCliente_Servicio">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="ServicioPorCliente" EntitySet="ServicioPorCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicioPorProblema_ServicioPorCliente" Association="SCIBDModel.FK_ServicioPorProblema_ServicioPorCliente">
+      <End Role="ServicioPorCliente" EntitySet="ServicioPorCliente" />
+      <End Role="ServicioPorProblema" EntitySet="ServicioPorProblema" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Usuario" Association="SCIBDModel.FK_Solicitud_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Usuario1" Association="SCIBDModel.FK_Solicitud_Usuario1">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Usuario2" Association="SCIBDModel.FK_Solicitud_Usuario2">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Subcategoria" Association="SCIBDModel.FK_Ticket_Subcategoria">
+      <End Role="Subcategoria" EntitySet="Subcategoria" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Ticket" Association="SCIBDModel.FK_Ticket_Ticket">
+      <End Role="Ticket" EntitySet="Ticket" />
+      <End Role="Ticket1" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Usuario" Association="SCIBDModel.FK_Ticket_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Usuario1" Association="SCIBDModel.FK_Ticket_Usuario1">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Usuario2" Association="SCIBDModel.FK_Ticket_Usuario2">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketArchivoAdjunto_Ticket" Association="SCIBDModel.FK_TicketArchivoAdjunto_Ticket">
+      <End Role="Ticket" EntitySet="Ticket" />
+      <End Role="TicketArchivoAdjunto" EntitySet="TicketArchivoAdjunto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Membership_Usuario" Association="SCIBDModel.FK_Membership_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="webpages_Membership" EntitySet="webpages_Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rol_Usuario" Association="SCIBDModel.FK_Rol_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Valija_Usuario" Association="SCIBDModel.FK_Valija_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Valija" EntitySet="Valija" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Valija_Usuario1" Association="SCIBDModel.FK_Valija_Usuario1">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Valija" EntitySet="Valija" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SCIBDModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SCIBDModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SpMinutosTranscurridos" ReturnType="Collection(Int32)">
+      <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+      <Parameter Name="MinutosPausados" Mode="In" Type="Decimal" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="AccionPorProblema">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="Int32" Nullable="false" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="FechaEstimadaSolucion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_AccionPorProblema_Problema" FromRole="AccionPorProblema" ToRole="Problema" />
+  </EntityType>
+  <EntityType Name="ArchivoAccion">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="Int32" Nullable="false" />
+    <Property Name="ArchivoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ArchivoAdjunto" Relationship="SCIBDModel.FK_ArchivoAccion_ArchivoAdjunto" FromRole="ArchivoAccion" ToRole="ArchivoAdjunto" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_ArchivoAccion_Problema" FromRole="ArchivoAccion" ToRole="Problema" />
+  </EntityType>
+  <EntityType Name="ArchivoAdjunto">
+    <Key>
+      <PropertyRef Name="ArchivoId" />
+    </Key>
+    <Property Name="ArchivoId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="ArchivoAccion" Relationship="SCIBDModel.FK_ArchivoAccion_ArchivoAdjunto" FromRole="ArchivoAdjunto" ToRole="ArchivoAccion" />
+    <NavigationProperty Name="ArchivoCausa" Relationship="SCIBDModel.FK_ArchivoPorProblema_ArchivoAdjunto" FromRole="ArchivoAdjunto" ToRole="ArchivoCausa" />
+    <NavigationProperty Name="FormatoPorCliente" Relationship="SCIBDModel.FK_FormatoPorCliente_ArchivoAdjunto" FromRole="ArchivoAdjunto" ToRole="FormatoPorCliente" />
+  </EntityType>
+  <EntityType Name="ArchivoCausa">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="Int32" Nullable="false" />
+    <Property Name="ArchivoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ArchivoAdjunto" Relationship="SCIBDModel.FK_ArchivoPorProblema_ArchivoAdjunto" FromRole="ArchivoCausa" ToRole="ArchivoAdjunto" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_ArchivoPorProblema_Problema" FromRole="ArchivoCausa" ToRole="Problema" />
+  </EntityType>
+  <EntityType Name="Calendario">
+    <Key>
+      <PropertyRef Name="CalendarioId" />
+    </Key>
+    <Property Name="CalendarioId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CalendarioDetalle" Relationship="SCIBDModel.FK_CalendarioDetalle_Calendario" FromRole="Calendario" ToRole="CalendarioDetalle" />
+  </EntityType>
+  <EntityType Name="CalendarioDetalle">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CalendarioId" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="HoraDesde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraHasta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Calendario" Relationship="SCIBDModel.FK_CalendarioDetalle_Calendario" FromRole="CalendarioDetalle" ToRole="Calendario" />
+  </EntityType>
+  <EntityType Name="Cargo">
+    <Key>
+      <PropertyRef Name="CargoId" />
+    </Key>
+    <Property Name="CargoId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Abreviacion" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Usuario" Relationship="SCIBDModel.FK_Usuario_Cargo" FromRole="Cargo" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="CategoriaId" />
+    </Key>
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="CategoriaPorCliente" Relationship="SCIBDModel.FK_CategoriaPorCliente_Categoria" FromRole="Categoria" ToRole="CategoriaPorCliente" />
+    <NavigationProperty Name="Subcategoria" Relationship="SCIBDModel.FK_Subcategoria_Categoria" FromRole="Categoria" ToRole="Subcategoria" />
+  </EntityType>
+  <EntityType Name="CategoriaPorCliente">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Categoria" Relationship="SCIBDModel.FK_CategoriaPorCliente_Categoria" FromRole="CategoriaPorCliente" ToRole="Categoria" />
+    <NavigationProperty Name="Cliente" Relationship="SCIBDModel.FK_CategoriaPorCliente_Cliente" FromRole="CategoriaPorCliente" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="CausaPorProblema">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="Int32" Nullable="false" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_CausaPorProblema_Problema" FromRole="CausaPorProblema" ToRole="Problema" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClienteId" />
+    </Key>
+    <Property Name="ClienteId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="CategoriaPorCliente" Relationship="SCIBDModel.FK_CategoriaPorCliente_Cliente" FromRole="Cliente" ToRole="CategoriaPorCliente" />
+    <NavigationProperty Name="DetalleGrupoEmpresa" Relationship="SCIBDModel.FK_DetalleGrupoEmpresa_Cliente" FromRole="Cliente" ToRole="DetalleGrupoEmpresa" />
+    <NavigationProperty Name="FormatoPorCliente" Relationship="SCIBDModel.FK_FormatoPorCliente_Cliente" FromRole="Cliente" ToRole="FormatoPorCliente" />
+    <NavigationProperty Name="ServicioPorCliente" Relationship="SCIBDModel.FK_ServicioPorCliente_Cliente" FromRole="Cliente" ToRole="ServicioPorCliente" />
+    <NavigationProperty Name="Usuario" Relationship="SCIBDModel.FK_Usuario_Cliente1" FromRole="Cliente" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="DetalleGrupoEmpresa">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="GrupoEmpresaId" Type="Int32" Nullable="false" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="SCIBDModel.FK_DetalleGrupoEmpresa_Cliente" FromRole="DetalleGrupoEmpresa" ToRole="Cliente" />
+    <NavigationProperty Name="GrupoEmpresa" Relationship="SCIBDModel.FK_DetalleGrupoEmpresa_GrupoEmpresa" FromRole="DetalleGrupoEmpresa" ToRole="GrupoEmpresa" />
+  </EntityType>
+  <EntityType Name="DetalleValija">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ValijaId" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Recibido" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Valija" Relationship="SCIBDModel.FK_DetalleValija_Valija" FromRole="DetalleValija" ToRole="Valija" />
+  </EntityType>
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="EmailId" />
+    </Key>
+    <Property Name="EmailId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailDe" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="EmailPara" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Asunto" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Cuerpo" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Enviado" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormatoPorCliente">
+    <Key>
+      <PropertyRef Name="FormatoId" />
+    </Key>
+    <Property Name="FormatoId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <Property Name="SubcategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="ArchivoId" Type="Int32" />
+    <Property Name="Nota" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="ArchivoAdjunto" Relationship="SCIBDModel.FK_FormatoPorCliente_ArchivoAdjunto" FromRole="FormatoPorCliente" ToRole="ArchivoAdjunto" />
+    <NavigationProperty Name="Cliente" Relationship="SCIBDModel.FK_FormatoPorCliente_Cliente" FromRole="FormatoPorCliente" ToRole="Cliente" />
+    <NavigationProperty Name="Subcategoria" Relationship="SCIBDModel.FK_FormatoPorCliente_Subcategoria" FromRole="FormatoPorCliente" ToRole="Subcategoria" />
+  </EntityType>
+  <EntityType Name="Frecuencia">
+    <Key>
+      <PropertyRef Name="FrecuenciaId" />
+    </Key>
+    <Property Name="FrecuenciaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_Problema_Frecuencia" FromRole="Frecuencia" ToRole="Problema" />
+  </EntityType>
+  <EntityType Name="GrupoEmpresa">
+    <Key>
+      <PropertyRef Name="GrupoEmpresaId" />
+    </Key>
+    <Property Name="GrupoEmpresaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="DetalleGrupoEmpresa" Relationship="SCIBDModel.FK_DetalleGrupoEmpresa_GrupoEmpresa" FromRole="GrupoEmpresa" ToRole="DetalleGrupoEmpresa" />
+  </EntityType>
+  <EntityType Name="Impacto">
+    <Key>
+      <PropertyRef Name="ImpactoId" />
+    </Key>
+    <Property Name="ImpactoId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_Problema_Impacto" FromRole="Impacto" ToRole="Problema" />
+  </EntityType>
+  <EntityType Name="Mensaje">
+    <Key>
+      <PropertyRef Name="MensajeId" />
+    </Key>
+    <Property Name="MensajeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="Mensaje1" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TipoTicket" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="SCIBDModel.FK_Mensaje_Usuario" FromRole="Mensaje" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Prioridad">
+    <Key>
+      <PropertyRef Name="PrioridadId" />
+    </Key>
+    <Property Name="PrioridadId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ColorRgb" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="PrioridadPorSubcategoria" Relationship="SCIBDModel.FK_PrioridadPorSubcategoria_Prioridad" FromRole="Prioridad" ToRole="PrioridadPorSubcategoria" />
+    <NavigationProperty Name="Solicitud" Relationship="SCIBDModel.FK_Solicitud_Prioridad" FromRole="Prioridad" ToRole="Solicitud" />
+  </EntityType>
+  <EntityType Name="PrioridadPorSubcategoria">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="SubcategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="PrioridadId" Type="Int32" Nullable="false" />
+    <Property Name="TiempoMaximoAtencion" Type="Int32" Nullable="false" />
+    <Property Name="TiempoMaximoSolucion" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prioridad" Relationship="SCIBDModel.FK_PrioridadPorSubcategoria_Prioridad" FromRole="PrioridadPorSubcategoria" ToRole="Prioridad" />
+    <NavigationProperty Name="Subcategoria" Relationship="SCIBDModel.FK_PrioridadPorSubcategoria_Subcategoria" FromRole="PrioridadPorSubcategoria" ToRole="Subcategoria" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_Problema_PrioridadPorSubcategoria" FromRole="PrioridadPorSubcategoria" ToRole="Problema" />
+    <NavigationProperty Name="Ticket" Relationship="SCIBDModel.FK_Ticket_PrioridadPorSubcategoria" FromRole="PrioridadPorSubcategoria" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="Problema">
+    <Key>
+      <PropertyRef Name="ProblemaId" />
+    </Key>
+    <Property Name="ProblemaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="SubcategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="ImpactoId" Type="Int32" Nullable="false" />
+    <Property Name="FrecuenciaId" Type="Int32" Nullable="false" />
+    <Property Name="PrioridadSubcategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaEsperadaSolucion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Solucion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="FechaRealSolucion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AccionPorProblema" Relationship="SCIBDModel.FK_AccionPorProblema_Problema" FromRole="Problema" ToRole="AccionPorProblema" />
+    <NavigationProperty Name="ArchivoAccion" Relationship="SCIBDModel.FK_ArchivoAccion_Problema" FromRole="Problema" ToRole="ArchivoAccion" />
+    <NavigationProperty Name="ArchivoCausa" Relationship="SCIBDModel.FK_ArchivoPorProblema_Problema" FromRole="Problema" ToRole="ArchivoCausa" />
+    <NavigationProperty Name="CausaPorProblema" Relationship="SCIBDModel.FK_CausaPorProblema_Problema" FromRole="Problema" ToRole="CausaPorProblema" />
+    <NavigationProperty Name="Frecuencia" Relationship="SCIBDModel.FK_Problema_Frecuencia" FromRole="Problema" ToRole="Frecuencia" />
+    <NavigationProperty Name="Impacto" Relationship="SCIBDModel.FK_Problema_Impacto" FromRole="Problema" ToRole="Impacto" />
+    <NavigationProperty Name="PrioridadPorSubcategoria" Relationship="SCIBDModel.FK_Problema_PrioridadPorSubcategoria" FromRole="Problema" ToRole="PrioridadPorSubcategoria" />
+    <NavigationProperty Name="Subcategoria" Relationship="SCIBDModel.FK_Problema_Subcategoria" FromRole="Problema" ToRole="Subcategoria" />
+    <NavigationProperty Name="Usuario" Relationship="SCIBDModel.FK_Problema_Usuario" FromRole="Problema" ToRole="Usuario" />
+    <NavigationProperty Name="RecursoPorProblema" Relationship="SCIBDModel.FK_RecursoPorProblema_Problema" FromRole="Problema" ToRole="RecursoPorProblema" />
+    <NavigationProperty Name="ServicioPorProblema" Relationship="SCIBDModel.FK_ServicioPorProblema_Problema" FromRole="Problema" ToRole="ServicioPorProblema" />
+  </EntityType>
+  <EntityType Name="RecursoPorProblema">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_RecursoPorProblema_Problema" FromRole="RecursoPorProblema" ToRole="Problema" />
+    <NavigationProperty Name="Usuario" Relationship="SCIBDModel.FK_RecursoPorProblema_Usuario" FromRole="RecursoPorProblema" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Servicio">
+    <Key>
+      <PropertyRef Name="ServicioId" />
+    </Key>
+    <Property Name="ServicioId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="ServicioPorCliente" Relationship="SCIBDModel.FK_ServicioPorCliente_Servicio" FromRole="Servicio" ToRole="ServicioPorCliente" />
+  </EntityType>
+  <EntityType Name="ServicioPorCliente">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ServicioId" Type="Int32" Nullable="false" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="SCIBDModel.FK_ServicioPorCliente_Cliente" FromRole="ServicioPorCliente" ToRole="Cliente" />
+    <NavigationProperty Name="Servicio" Relationship="SCIBDModel.FK_ServicioPorCliente_Servicio" FromRole="ServicioPorCliente" ToRole="Servicio" />
+    <NavigationProperty Name="ServicioPorProblema" Relationship="SCIBDModel.FK_ServicioPorProblema_ServicioPorCliente" FromRole="ServicioPorCliente" ToRole="ServicioPorProblema" />
+  </EntityType>
+  <EntityType Name="ServicioPorProblema">
+    <Key>
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="DetalleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProblemaId" Type="Int32" Nullable="false" />
+    <Property Name="ServicioPorClienteId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_ServicioPorProblema_Problema" FromRole="ServicioPorProblema" ToRole="Problema" />
+    <NavigationProperty Name="ServicioPorCliente" Relationship="SCIBDModel.FK_ServicioPorProblema_ServicioPorCliente" FromRole="ServicioPorProblema" ToRole="ServicioPorCliente" />
+  </EntityType>
+  <EntityType Name="Solicitud">
+    <Key>
+      <PropertyRef Name="SolicitudId" />
+    </Key>
+    <Property Name="SolicitudId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Asunto" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Adjunto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UsuarioAsignadoId" Type="Int32" />
+    <Property Name="Estado" Type="Byte" Nullable="false" />
+    <Property Name="FechaAsignado" Type="DateTime" Precision="3" />
+    <Property Name="FechaAbierto" Type="DateTime" Precision="3" />
+    <Property Name="FechaCerrado" Type="DateTime" Precision="3" />
+    <Property Name="FechaPausado" Type="DateTime" Precision="3" />
+    <Property Name="MinutosPausado" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Explicacion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="PrioridadId" Type="Int32" />
+    <Property Name="FechaCulminacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioAsignadorId" Type="Int32" />
+    <NavigationProperty Name="Prioridad" Relationship="SCIBDModel.FK_Solicitud_Prioridad" FromRole="Solicitud" ToRole="Prioridad" />
+    <NavigationProperty Name="Usuario" Relationship="SCIBDModel.FK_Solicitud_Usuario" FromRole="Solicitud" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="SCIBDModel.FK_Solicitud_Usuario1" FromRole="Solicitud" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario2" Relationship="SCIBDModel.FK_Solicitud_Usuario2" FromRole="Solicitud" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Subcategoria">
+    <Key>
+      <PropertyRef Name="SubcategoriaId" />
+    </Key>
+    <Property Name="SubcategoriaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Categoria" Relationship="SCIBDModel.FK_Subcategoria_Categoria" FromRole="Subcategoria" ToRole="Categoria" />
+    <NavigationProperty Name="FormatoPorCliente" Relationship="SCIBDModel.FK_FormatoPorCliente_Subcategoria" FromRole="Subcategoria" ToRole="FormatoPorCliente" />
+    <NavigationProperty Name="PrioridadPorSubcategoria" Relationship="SCIBDModel.FK_PrioridadPorSubcategoria_Subcategoria" FromRole="Subcategoria" ToRole="PrioridadPorSubcategoria" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_Problema_Subcategoria" FromRole="Subcategoria" ToRole="Problema" />
+    <NavigationProperty Name="Ticket" Relationship="SCIBDModel.FK_Ticket_Subcategoria" FromRole="Subcategoria" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="TicketId" />
+    </Key>
+    <Property Name="TicketId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="SubcategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="PrioridadSubcategoriaId" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Asunto" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Adjunto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UsuarioAsignadoId" Type="Int32" />
+    <Property Name="Estado" Type="Byte" Nullable="false" />
+    <Property Name="FechaAsignado" Type="DateTime" Precision="3" />
+    <Property Name="FechaAbierto" Type="DateTime" Precision="3" />
+    <Property Name="FechaCerrado" Type="DateTime" Precision="3" />
+    <Property Name="FechaPausado" Type="DateTime" Precision="3" />
+    <Property Name="MinutosPausado" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Explicacion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Edu" Type="Boolean" />
+    <Property Name="UsuarioAsignadorId" Type="Int32" />
+    <NavigationProperty Name="PrioridadPorSubcategoria" Relationship="SCIBDModel.FK_Ticket_PrioridadPorSubcategoria" FromRole="Ticket" ToRole="PrioridadPorSubcategoria" />
+    <NavigationProperty Name="Subcategoria" Relationship="SCIBDModel.FK_Ticket_Subcategoria" FromRole="Ticket" ToRole="Subcategoria" />
+    <NavigationProperty Name="Ticket1" Relationship="SCIBDModel.FK_Ticket_Ticket" FromRole="Ticket" ToRole="Ticket1" />
+    <NavigationProperty Name="Ticket2" Relationship="SCIBDModel.FK_Ticket_Ticket" FromRole="Ticket1" ToRole="Ticket" />
+    <NavigationProperty Name="Usuario" Relationship="SCIBDModel.FK_Ticket_Usuario" FromRole="Ticket" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="SCIBDModel.FK_Ticket_Usuario1" FromRole="Ticket" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario2" Relationship="SCIBDModel.FK_Ticket_Usuario2" FromRole="Ticket" ToRole="Usuario" />
+    <NavigationProperty Name="TicketArchivoAdjunto" Relationship="SCIBDModel.FK_TicketArchivoAdjunto_Ticket" FromRole="Ticket" ToRole="TicketArchivoAdjunto" />
+  </EntityType>
+  <EntityType Name="TicketArchivoAdjunto">
+    <Key>
+      <PropertyRef Name="TicketArchivoAdjuntoId" />
+    </Key>
+    <Property Name="TicketArchivoAdjuntoId" Type="Decimal" Nullable="false" Precision="18" Scale="0" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Ticket" Relationship="SCIBDModel.FK_TicketArchivoAdjunto_Ticket" FromRole="TicketArchivoAdjunto" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="Transferencia">
+    <Key>
+      <PropertyRef Name="TransferenciaId" />
+    </Key>
+    <Property Name="TransferenciaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketId" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioDeId" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioParaId" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TipoTicket" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioId" />
+    </Key>
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <Property Name="InformacionGeneral" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="AccesoDem" Type="Boolean" />
+    <Property Name="AccesoValija" Type="Boolean" />
+    <Property Name="UsuarioSD" Type="Int32" />
+    <Property Name="UltimoAcceso" Type="DateTime" Precision="3" />
+    <Property Name="CargoId" Type="Int32" />
+    <NavigationProperty Name="Cargo" Relationship="SCIBDModel.FK_Usuario_Cargo" FromRole="Usuario" ToRole="Cargo" />
+    <NavigationProperty Name="Cliente" Relationship="SCIBDModel.FK_Usuario_Cliente1" FromRole="Usuario" ToRole="Cliente" />
+    <NavigationProperty Name="Mensaje" Relationship="SCIBDModel.FK_Mensaje_Usuario" FromRole="Usuario" ToRole="Mensaje" />
+    <NavigationProperty Name="Problema" Relationship="SCIBDModel.FK_Problema_Usuario" FromRole="Usuario" ToRole="Problema" />
+    <NavigationProperty Name="RecursoPorProblema" Relationship="SCIBDModel.FK_RecursoPorProblema_Usuario" FromRole="Usuario" ToRole="RecursoPorProblema" />
+    <NavigationProperty Name="Solicitud" Relationship="SCIBDModel.FK_Solicitud_Usuario" FromRole="Usuario" ToRole="Solicitud" />
+    <NavigationProperty Name="Solicitud1" Relationship="SCIBDModel.FK_Solicitud_Usuario1" FromRole="Usuario" ToRole="Solicitud" />
+    <NavigationProperty Name="Solicitud2" Relationship="SCIBDModel.FK_Solicitud_Usuario2" FromRole="Usuario" ToRole="Solicitud" />
+    <NavigationProperty Name="Ticket" Relationship="SCIBDModel.FK_Ticket_Usuario" FromRole="Usuario" ToRole="Ticket" />
+    <NavigationProperty Name="Ticket1" Relationship="SCIBDModel.FK_Ticket_Usuario1" FromRole="Usuario" ToRole="Ticket" />
+    <NavigationProperty Name="Ticket2" Relationship="SCIBDModel.FK_Ticket_Usuario2" FromRole="Usuario" ToRole="Ticket" />
+    <NavigationProperty Name="webpages_Membership" Relationship="SCIBDModel.FK_Membership_Usuario" FromRole="Usuario" ToRole="webpages_Membership" />
+    <NavigationProperty Name="webpages_UsersInRoles" Relationship="SCIBDModel.FK_Rol_Usuario" FromRole="Usuario" ToRole="webpages_UsersInRoles" />
+    <NavigationProperty Name="Valija" Relationship="SCIBDModel.FK_Valija_Usuario" FromRole="Usuario" ToRole="Valija" />
+    <NavigationProperty Name="Valija1" Relationship="SCIBDModel.FK_Valija_Usuario1" FromRole="Usuario" ToRole="Valija" />
+  </EntityType>
+  <EntityType Name="Valija">
+    <Key>
+      <PropertyRef Name="ValijaId" />
+    </Key>
+    <Property Name="ValijaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioIdDe" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioIdPara" Type="Int32" Nullable="false" />
+    <Property Name="FechaEnviada" Type="DateTime" Precision="3" />
+    <Property Name="FechaRecibida" Type="DateTime" Precision="3" />
+    <Property Name="Recibida" Type="Boolean" Nullable="false" />
+    <Property Name="Enviada" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DetalleValija" Relationship="SCIBDModel.FK_DetalleValija_Valija" FromRole="Valija" ToRole="DetalleValija" />
+    <NavigationProperty Name="Usuario" Relationship="SCIBDModel.FK_Valija_Usuario" FromRole="Valija" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario1" Relationship="SCIBDModel.FK_Valija_Usuario1" FromRole="Valija" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="IsConfirmed" Type="Boolean" />
+    <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Usuario" Relationship="SCIBDModel.FK_Membership_Usuario" FromRole="webpages_Membership" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="SCIBDModel.FK_Rol_Usuario" FromRole="webpages_UsersInRoles" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="VwCalendario">
+    <Key>
+      <PropertyRef Name="CalendarioId" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Tipo" />
+      <PropertyRef Name="HoraDesde" />
+      <PropertyRef Name="HoraHasta" />
+      <PropertyRef Name="Activo" />
+      <PropertyRef Name="DetalleId" />
+    </Key>
+    <Property Name="CalendarioId" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="HoraDesde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HoraHasta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="DetalleId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VwExportacionInc">
+    <Key>
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="Cliente" />
+      <PropertyRef Name="TicketId" />
+      <PropertyRef Name="Asunto" />
+      <PropertyRef Name="Solicitante" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Categoria" />
+      <PropertyRef Name="Subcategoria" />
+      <PropertyRef Name="ClienteId" />
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="SubcategoriaId" />
+      <PropertyRef Name="Edu" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Asignador" />
+    </Key>
+    <Property Name="Estado" Type="Byte" Nullable="false" />
+    <Property Name="Administrador" Type="String" MaxLength="101" Unicode="false" FixedLength="false" />
+    <Property Name="Cliente" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="TicketId" Type="Int32" Nullable="false" />
+    <Property Name="Asunto" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="Prioridad" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="TiempoMaximoAtencion" Type="Int32" />
+    <Property Name="MinsTransAten" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TiempoMaximoSolucion" Type="Int32" />
+    <Property Name="MinsTransSol" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Solicitante" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+    <Property Name="Explicacion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MinutosPausado" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Categoria" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Subcategoria" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AdministradorId" Type="Int32" />
+    <Property Name="FechaCerrado" Type="DateTime" Precision="3" />
+    <Property Name="PrioridadSubcategoriaId" Type="Int32" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="SubcategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="Edu" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Asignador" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="VwExportacionSol">
+    <Key>
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="Cliente" />
+      <PropertyRef Name="SolicitudId" />
+      <PropertyRef Name="Asunto" />
+      <PropertyRef Name="Solicitante" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="ClienteId" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Asignador" />
+    </Key>
+    <Property Name="Estado" Type="Byte" Nullable="false" />
+    <Property Name="Administrador" Type="String" MaxLength="101" Unicode="false" FixedLength="false" />
+    <Property Name="Cliente" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="SolicitudId" Type="Int32" Nullable="false" />
+    <Property Name="Asunto" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="Prioridad" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="TiempoMaximoSolucion" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MinsTransAten" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MinsTransSol" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Solicitante" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+    <Property Name="Explicacion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MinutosPausado" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AdministradorId" Type="Int32" />
+    <Property Name="FechaCerrado" Type="DateTime" Precision="3" />
+    <Property Name="PrioridadId" Type="Int32" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Asignador" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="VwIncidencias">
+    <Key>
+      <PropertyRef Name="TicketId" />
+      <PropertyRef Name="Cliente" />
+      <PropertyRef Name="Asunto" />
+      <PropertyRef Name="Solicitante" />
+      <PropertyRef Name="Administrador" />
+      <PropertyRef Name="Prioridad" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="ClienteId" />
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="SubcategoriaId" />
+      <PropertyRef Name="Subcategoria" />
+      <PropertyRef Name="Categoria" />
+      <PropertyRef Name="SolicitanteId" />
+      <PropertyRef Name="SolicitanteEmail" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Telefono" />
+      <PropertyRef Name="FechaNacimiento" />
+      <PropertyRef Name="Asignador" />
+    </Key>
+    <Property Name="TicketId" Type="Int32" Nullable="false" />
+    <Property Name="Cliente" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Asunto" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="Solicitante" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+    <Property Name="Administrador" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+    <Property Name="Prioridad" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DiasTranscurridos" Type="Int32" />
+    <Property Name="FinAproximado" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+    <Property Name="FechaAbierto" Type="DateTime" Precision="3" />
+    <Property Name="FechaPausado" Type="DateTime" Precision="3" />
+    <Property Name="FechaCerrado" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="Byte" Nullable="false" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="SubcategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="AdministradorId" Type="Int32" />
+    <Property Name="PrioridadSubcategoriaId" Type="Int32" />
+    <Property Name="PrioridadId" Type="Int32" />
+    <Property Name="ColorRgb" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Subcategoria" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Categoria" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SolicitanteId" Type="Int32" Nullable="false" />
+    <Property Name="SolicitanteEmail" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
+    <Property Name="AdministradorEmail" Type="String" MaxLength="56" Unicode="true" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Explicacion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Edu" Type="Boolean" />
+    <Property Name="Asignador" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="VwProblemas">
+    <Key>
+      <PropertyRef Name="ProblemaId" />
+      <PropertyRef Name="ClienteId" />
+      <PropertyRef Name="UsuarioId" />
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="SubcategoriaId" />
+      <PropertyRef Name="PrioridadSubcategoriaId" />
+      <PropertyRef Name="FrecuenciaId" />
+      <PropertyRef Name="ImpactoId" />
+      <PropertyRef Name="Cliente" />
+      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="Categoria" />
+      <PropertyRef Name="Subcategoria" />
+      <PropertyRef Name="Prioridad" />
+      <PropertyRef Name="Frecuencia" />
+      <PropertyRef Name="Impacto" />
+      <PropertyRef Name="Titulo" />
+      <PropertyRef Name="FechaRegistro" />
+      <PropertyRef Name="FechaEsperadaSolucion" />
+    </Key>
+    <Property Name="ProblemaId" Type="Int32" Nullable="false" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="SubcategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="PrioridadSubcategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="FrecuenciaId" Type="Int32" Nullable="false" />
+    <Property Name="ImpactoId" Type="Int32" Nullable="false" />
+    <Property Name="Cliente" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+    <Property Name="Categoria" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Subcategoria" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Prioridad" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ColorRgb" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Frecuencia" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Impacto" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaEsperadaSolucion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaRealSolucion" Type="DateTime" Precision="3" />
+    <Property Name="Solucion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="VwRptValija">
+    <Key>
+      <PropertyRef Name="ValijaId" />
+      <PropertyRef Name="FechaEnviada" />
+      <PropertyRef Name="UsuarioDescDe" />
+      <PropertyRef Name="UsuarioDescPara" />
+      <PropertyRef Name="ClienteDescDe" />
+      <PropertyRef Name="ClienteDescPara" />
+      <PropertyRef Name="Descripcion" />
+    </Key>
+    <Property Name="ValijaId" Type="Int32" Nullable="false" />
+    <Property Name="FechaEnviada" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioDescDe" Type="String" Nullable="false" MaxLength="102" Unicode="false" FixedLength="false" />
+    <Property Name="UsuarioDescPara" Type="String" Nullable="false" MaxLength="102" Unicode="false" FixedLength="false" />
+    <Property Name="ClienteDescDe" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ClienteDescPara" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="VwSolicitudes">
+    <Key>
+      <PropertyRef Name="SolicitudId" />
+      <PropertyRef Name="Cliente" />
+      <PropertyRef Name="Asunto" />
+      <PropertyRef Name="Solicitante" />
+      <PropertyRef Name="Administrador" />
+      <PropertyRef Name="Prioridad" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="ClienteId" />
+      <PropertyRef Name="SolicitanteId" />
+      <PropertyRef Name="SolicitanteEmail" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Telefono" />
+      <PropertyRef Name="FechaNacimiento" />
+      <PropertyRef Name="Asignador" />
+    </Key>
+    <Property Name="SolicitudId" Type="Int32" Nullable="false" />
+    <Property Name="Cliente" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Asunto" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="Solicitante" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+    <Property Name="Administrador" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+    <Property Name="Prioridad" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DiasTranscurridos" Type="Int32" />
+    <Property Name="FinAproximado" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="FechaAbierto" Type="DateTime" Precision="3" />
+    <Property Name="FechaPausado" Type="DateTime" Precision="3" />
+    <Property Name="FechaCerrado" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="Byte" Nullable="false" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <Property Name="AdministradorId" Type="Int32" />
+    <Property Name="PrioridadId" Type="Int32" />
+    <Property Name="ColorRgb" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="SolicitanteId" Type="Int32" Nullable="false" />
+    <Property Name="SolicitanteEmail" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
+    <Property Name="AdministradorEmail" Type="String" MaxLength="56" Unicode="true" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Explicacion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaCulminacion" Type="DateTime" Precision="3" />
+    <Property Name="Asignador" Type="String" Nullable="false" MaxLength="101" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="VwValija">
+    <Key>
+      <PropertyRef Name="ValijaId" />
+      <PropertyRef Name="UsuarioIdDe" />
+      <PropertyRef Name="UsuarioIdPara" />
+      <PropertyRef Name="ClienteIdDe" />
+      <PropertyRef Name="ClienteIdPara" />
+      <PropertyRef Name="UsuarioDescDe" />
+      <PropertyRef Name="UsuarioDescPara" />
+      <PropertyRef Name="ClienteDescDe" />
+      <PropertyRef Name="ClienteDescPara" />
+      <PropertyRef Name="Recibida" />
+      <PropertyRef Name="Enviada" />
+    </Key>
+    <Property Name="ValijaId" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioIdDe" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioIdPara" Type="Int32" Nullable="false" />
+    <Property Name="ClienteIdDe" Type="Int32" Nullable="false" />
+    <Property Name="ClienteIdPara" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioDescDe" Type="String" Nullable="false" MaxLength="102" Unicode="false" FixedLength="false" />
+    <Property Name="UsuarioDescPara" Type="String" Nullable="false" MaxLength="102" Unicode="false" FixedLength="false" />
+    <Property Name="ClienteDescDe" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ClienteDescPara" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="FechaEnviada" Type="DateTime" Precision="3" />
+    <Property Name="FechaRecibida" Type="DateTime" Precision="3" />
+    <Property Name="Recibida" Type="Boolean" Nullable="false" />
+    <Property Name="Enviada" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AccionPorProblema_Problema">
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="1" />
+    <End Role="AccionPorProblema" Type="SCIBDModel.AccionPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="AccionPorProblema">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArchivoAccion_ArchivoAdjunto">
+    <End Role="ArchivoAdjunto" Type="SCIBDModel.ArchivoAdjunto" Multiplicity="1" />
+    <End Role="ArchivoAccion" Type="SCIBDModel.ArchivoAccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArchivoAdjunto">
+        <PropertyRef Name="ArchivoId" />
+      </Principal>
+      <Dependent Role="ArchivoAccion">
+        <PropertyRef Name="ArchivoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArchivoAccion_Problema">
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="1" />
+    <End Role="ArchivoAccion" Type="SCIBDModel.ArchivoAccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="ArchivoAccion">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArchivoPorProblema_ArchivoAdjunto">
+    <End Role="ArchivoAdjunto" Type="SCIBDModel.ArchivoAdjunto" Multiplicity="1" />
+    <End Role="ArchivoCausa" Type="SCIBDModel.ArchivoCausa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArchivoAdjunto">
+        <PropertyRef Name="ArchivoId" />
+      </Principal>
+      <Dependent Role="ArchivoCausa">
+        <PropertyRef Name="ArchivoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormatoPorCliente_ArchivoAdjunto">
+    <End Role="ArchivoAdjunto" Type="SCIBDModel.ArchivoAdjunto" Multiplicity="0..1" />
+    <End Role="FormatoPorCliente" Type="SCIBDModel.FormatoPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArchivoAdjunto">
+        <PropertyRef Name="ArchivoId" />
+      </Principal>
+      <Dependent Role="FormatoPorCliente">
+        <PropertyRef Name="ArchivoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArchivoPorProblema_Problema">
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="1" />
+    <End Role="ArchivoCausa" Type="SCIBDModel.ArchivoCausa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="ArchivoCausa">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CalendarioDetalle_Calendario">
+    <End Role="Calendario" Type="SCIBDModel.Calendario" Multiplicity="1" />
+    <End Role="CalendarioDetalle" Type="SCIBDModel.CalendarioDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendario">
+        <PropertyRef Name="CalendarioId" />
+      </Principal>
+      <Dependent Role="CalendarioDetalle">
+        <PropertyRef Name="CalendarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Cargo">
+    <End Role="Cargo" Type="SCIBDModel.Cargo" Multiplicity="0..1" />
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargo">
+        <PropertyRef Name="CargoId" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="CargoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoriaPorCliente_Categoria">
+    <End Role="Categoria" Type="SCIBDModel.Categoria" Multiplicity="1" />
+    <End Role="CategoriaPorCliente" Type="SCIBDModel.CategoriaPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="CategoriaId" />
+      </Principal>
+      <Dependent Role="CategoriaPorCliente">
+        <PropertyRef Name="CategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subcategoria_Categoria">
+    <End Role="Categoria" Type="SCIBDModel.Categoria" Multiplicity="1" />
+    <End Role="Subcategoria" Type="SCIBDModel.Subcategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="CategoriaId" />
+      </Principal>
+      <Dependent Role="Subcategoria">
+        <PropertyRef Name="CategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoriaPorCliente_Cliente">
+    <End Role="Cliente" Type="SCIBDModel.Cliente" Multiplicity="1" />
+    <End Role="CategoriaPorCliente" Type="SCIBDModel.CategoriaPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="CategoriaPorCliente">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CausaPorProblema_Problema">
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="1" />
+    <End Role="CausaPorProblema" Type="SCIBDModel.CausaPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="CausaPorProblema">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleGrupoEmpresa_Cliente">
+    <End Role="Cliente" Type="SCIBDModel.Cliente" Multiplicity="1" />
+    <End Role="DetalleGrupoEmpresa" Type="SCIBDModel.DetalleGrupoEmpresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="DetalleGrupoEmpresa">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormatoPorCliente_Cliente">
+    <End Role="Cliente" Type="SCIBDModel.Cliente" Multiplicity="1" />
+    <End Role="FormatoPorCliente" Type="SCIBDModel.FormatoPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="FormatoPorCliente">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioPorCliente_Cliente">
+    <End Role="Cliente" Type="SCIBDModel.Cliente" Multiplicity="1" />
+    <End Role="ServicioPorCliente" Type="SCIBDModel.ServicioPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="ServicioPorCliente">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Cliente1">
+    <End Role="Cliente" Type="SCIBDModel.Cliente" Multiplicity="1" />
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleGrupoEmpresa_GrupoEmpresa">
+    <End Role="GrupoEmpresa" Type="SCIBDModel.GrupoEmpresa" Multiplicity="1" />
+    <End Role="DetalleGrupoEmpresa" Type="SCIBDModel.DetalleGrupoEmpresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GrupoEmpresa">
+        <PropertyRef Name="GrupoEmpresaId" />
+      </Principal>
+      <Dependent Role="DetalleGrupoEmpresa">
+        <PropertyRef Name="GrupoEmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleValija_Valija">
+    <End Role="Valija" Type="SCIBDModel.Valija" Multiplicity="1" />
+    <End Role="DetalleValija" Type="SCIBDModel.DetalleValija" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Valija">
+        <PropertyRef Name="ValijaId" />
+      </Principal>
+      <Dependent Role="DetalleValija">
+        <PropertyRef Name="ValijaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormatoPorCliente_Subcategoria">
+    <End Role="Subcategoria" Type="SCIBDModel.Subcategoria" Multiplicity="1" />
+    <End Role="FormatoPorCliente" Type="SCIBDModel.FormatoPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategoria">
+        <PropertyRef Name="SubcategoriaId" />
+      </Principal>
+      <Dependent Role="FormatoPorCliente">
+        <PropertyRef Name="SubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Problema_Frecuencia">
+    <End Role="Frecuencia" Type="SCIBDModel.Frecuencia" Multiplicity="1" />
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Frecuencia">
+        <PropertyRef Name="FrecuenciaId" />
+      </Principal>
+      <Dependent Role="Problema">
+        <PropertyRef Name="FrecuenciaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Problema_Impacto">
+    <End Role="Impacto" Type="SCIBDModel.Impacto" Multiplicity="1" />
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Impacto">
+        <PropertyRef Name="ImpactoId" />
+      </Principal>
+      <Dependent Role="Problema">
+        <PropertyRef Name="ImpactoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mensaje_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="1" />
+    <End Role="Mensaje" Type="SCIBDModel.Mensaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Mensaje">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrioridadPorSubcategoria_Prioridad">
+    <End Role="Prioridad" Type="SCIBDModel.Prioridad" Multiplicity="1" />
+    <End Role="PrioridadPorSubcategoria" Type="SCIBDModel.PrioridadPorSubcategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prioridad">
+        <PropertyRef Name="PrioridadId" />
+      </Principal>
+      <Dependent Role="PrioridadPorSubcategoria">
+        <PropertyRef Name="PrioridadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Prioridad">
+    <End Role="Prioridad" Type="SCIBDModel.Prioridad" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="SCIBDModel.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prioridad">
+        <PropertyRef Name="PrioridadId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="PrioridadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrioridadPorSubcategoria_Subcategoria">
+    <End Role="Subcategoria" Type="SCIBDModel.Subcategoria" Multiplicity="1" />
+    <End Role="PrioridadPorSubcategoria" Type="SCIBDModel.PrioridadPorSubcategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategoria">
+        <PropertyRef Name="SubcategoriaId" />
+      </Principal>
+      <Dependent Role="PrioridadPorSubcategoria">
+        <PropertyRef Name="SubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Problema_PrioridadPorSubcategoria">
+    <End Role="PrioridadPorSubcategoria" Type="SCIBDModel.PrioridadPorSubcategoria" Multiplicity="1" />
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrioridadPorSubcategoria">
+        <PropertyRef Name="DetalleId" />
+      </Principal>
+      <Dependent Role="Problema">
+        <PropertyRef Name="PrioridadSubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_PrioridadPorSubcategoria">
+    <End Role="PrioridadPorSubcategoria" Type="SCIBDModel.PrioridadPorSubcategoria" Multiplicity="0..1" />
+    <End Role="Ticket" Type="SCIBDModel.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrioridadPorSubcategoria">
+        <PropertyRef Name="DetalleId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="PrioridadSubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Problema_Subcategoria">
+    <End Role="Subcategoria" Type="SCIBDModel.Subcategoria" Multiplicity="1" />
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategoria">
+        <PropertyRef Name="SubcategoriaId" />
+      </Principal>
+      <Dependent Role="Problema">
+        <PropertyRef Name="SubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Problema_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="1" />
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Problema">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecursoPorProblema_Problema">
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="1" />
+    <End Role="RecursoPorProblema" Type="SCIBDModel.RecursoPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="RecursoPorProblema">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioPorProblema_Problema">
+    <End Role="Problema" Type="SCIBDModel.Problema" Multiplicity="1" />
+    <End Role="ServicioPorProblema" Type="SCIBDModel.ServicioPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problema">
+        <PropertyRef Name="ProblemaId" />
+      </Principal>
+      <Dependent Role="ServicioPorProblema">
+        <PropertyRef Name="ProblemaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecursoPorProblema_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="1" />
+    <End Role="RecursoPorProblema" Type="SCIBDModel.RecursoPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="RecursoPorProblema">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioPorCliente_Servicio">
+    <End Role="Servicio" Type="SCIBDModel.Servicio" Multiplicity="1" />
+    <End Role="ServicioPorCliente" Type="SCIBDModel.ServicioPorCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="ServicioId" />
+      </Principal>
+      <Dependent Role="ServicioPorCliente">
+        <PropertyRef Name="ServicioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicioPorProblema_ServicioPorCliente">
+    <End Role="ServicioPorCliente" Type="SCIBDModel.ServicioPorCliente" Multiplicity="1" />
+    <End Role="ServicioPorProblema" Type="SCIBDModel.ServicioPorProblema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicioPorCliente">
+        <PropertyRef Name="DetalleId" />
+      </Principal>
+      <Dependent Role="ServicioPorProblema">
+        <PropertyRef Name="ServicioPorClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="1" />
+    <End Role="Solicitud" Type="SCIBDModel.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Usuario1">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="SCIBDModel.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="UsuarioAsignadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Usuario2">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="SCIBDModel.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="UsuarioAsignadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Subcategoria">
+    <End Role="Subcategoria" Type="SCIBDModel.Subcategoria" Multiplicity="1" />
+    <End Role="Ticket" Type="SCIBDModel.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategoria">
+        <PropertyRef Name="SubcategoriaId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="SubcategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Ticket">
+    <End Role="Ticket" Type="SCIBDModel.Ticket" Multiplicity="1" />
+    <End Role="Ticket1" Type="SCIBDModel.Ticket" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Ticket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="Ticket1">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="0..1" />
+    <End Role="Ticket" Type="SCIBDModel.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="UsuarioAsignadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Usuario1">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="1" />
+    <End Role="Ticket" Type="SCIBDModel.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Usuario2">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="0..1" />
+    <End Role="Ticket" Type="SCIBDModel.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="UsuarioAsignadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketArchivoAdjunto_Ticket">
+    <End Role="Ticket" Type="SCIBDModel.Ticket" Multiplicity="1" />
+    <End Role="TicketArchivoAdjunto" Type="SCIBDModel.TicketArchivoAdjunto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ticket">
+        <PropertyRef Name="TicketId" />
+      </Principal>
+      <Dependent Role="TicketArchivoAdjunto">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Membership_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="1" />
+    <End Role="webpages_Membership" Type="SCIBDModel.webpages_Membership" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="webpages_Membership">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rol_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="SCIBDModel.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Valija_Usuario">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="1" />
+    <End Role="Valija" Type="SCIBDModel.Valija" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Valija">
+        <PropertyRef Name="UsuarioIdDe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Valija_Usuario1">
+    <End Role="Usuario" Type="SCIBDModel.Usuario" Multiplicity="1" />
+    <End Role="Valija" Type="SCIBDModel.Valija" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Valija">
+        <PropertyRef Name="UsuarioIdPara" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

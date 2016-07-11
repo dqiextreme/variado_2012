@@ -1,0 +1,178 @@
+
+@{ Register Assembly="Anthem" Namespace="Anthem" TagPrefix="anthem" }
+@{ Register Src="controles/Menu.ascx" TagName="Menu" TagPrefix="uc1" }
+@{ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" }
+@{ Register Src="controles/CloseSession.ascx" TagName="CloseSession" TagPrefix="uc2" }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <style type="text/css">
+        .style2
+        {
+            font-size: 10px;
+            font-family: Verdana;
+            font-weight: bold;
+        }
+        .modalBackground
+        {
+            background-color: #000000;
+            filter: alpha(opacity=60);
+            opacity: 0.5;
+        }
+        .modalPopup
+        {
+            background-color: #ffffdd;
+            border-width: 3px;
+            border-style: solid;
+            border-color: Gray;
+            padding: 3px;
+            width: 500px;
+        }
+        #progressBackgroundFilter
+        {
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            background-color: #000;
+            filter: alpha(opacity=60);
+            opacity: 0.5;
+            z-index: 1000;
+        }
+        #processMessage
+        {
+            background-color: #FFFFFF;
+            border: 30px solid #000000;
+            position: fixed;
+            top: 30%;
+            left: 43%;
+            padding: 10px;
+            width: 30%;
+            z-index: 1001;
+            background-color: #fff;
+            font-family: Verdana;
+            font-size: 12px;
+        }
+        .style3
+        {
+            font-size: 10px;
+            font-family: Verdana;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+        .style4
+        {
+            font-size: 10px;
+            font-family: Verdana;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body topmargin='0'>
+    <form id="form1" runat="server">
+    <div align="center">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"
+            EnableScriptLocalization="False" />
+        <table style="width: 780px" cellpadding="0" cellspacing="0">
+            <tr>
+                <td align="center">
+                    <uc1:Menu ID="Menu1" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td align="left" bgcolor="#BBD4F8" style="border: 1px solid #3b619c">
+                    <font face="Verdana" size="1"><strong><span>
+                        <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="image/separator.gif" />
+                        <anthem:ImageButton ID="ImageButton2" runat="server" AutoUpdateAfterCallBack="True"
+                            CausesValidation="False" ImageUrl="image/new.gif" />
+                        <anthem:ImageButton ID="_Btn_Guardar" runat="server" AutoUpdateAfterCallBack="True"
+                            ImageUrl="image/save.gif" onclick="_Btn_Guardar_Click" />
+                        <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="image/separator.gif" />
+                    </span></strong></font>
+                    <uc2:CloseSession ID="CloseSession1" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td align="left" bgcolor="#666666" class="style3" style="text-align: center">
+                    Consulta de Preorden de Compra
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    <br />
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <asp:Panel ID="_Pnl_PanelBusqueda" runat="server">
+                                <table style="width: 100%;">
+                                    <tr valign="top">
+                                        <td class="style2" width="10%">
+                                            Compañia:</td>
+                                        <td class="style2">
+                                            <asp:DropDownList ID="_Ddl_Compania" runat="server" Font-Names="Verdana" 
+                                                Font-Size="7pt">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td class="style2" width="10%">
+                                            Año:
+                                        </td>
+                                        <td class="style2">
+                                            <asp:DropDownList ID="_Ddl_Ano" runat="server" Enabled="False" 
+                                                Font-Names="Verdana" Font-Size="7pt">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td class="style2" width="11%">
+                                            Mes:</td>
+                                        <td class="style2">
+                                            <asp:DropDownList ID="_Ddl_Mes" runat="server" Enabled="False" 
+                                                Font-Names="Verdana" Font-Size="7pt">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td align="left" class="style4" colspan="2">
+                                            <asp:Button ID="_Btn_Consultar" runat="server" BorderWidth="1px" Font-Names="Verdana"
+                                                Font-Size="8pt" OnClick="_Btn_Consultar_Click" Text="Consultar" />
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td class="style2" align="left" colspan="2">
+                                            <asp:Label ID="_Lbl_Calendario" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </asp:Panel>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="position: fixed; left: 40%; top: 50%; width: 200; height: 200; z-index: 100600; font-family: verdana;display:none; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="UpdatePanel1"
+            DisplayAfter="20">
+            <ProgressTemplate>
+                <div id="processMessage" style="border: 1px solid #000000">
+                    Procesando la solicitud, espere por favor..!!<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    </form>
+</body>
+</html>

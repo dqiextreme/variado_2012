@@ -1,0 +1,724 @@
+
+@{ Register Src="controles/Menu.ascx" TagName="Menu" TagPrefix="uc1" }
+@{ Register Assembly="Anthem" Namespace="Anthem" TagPrefix="anthem" }
+@{ Register Src="controles/CloseSession.ascx" TagName="CloseSession" TagPrefix="uc2" }
+@{ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" }
+@{ Register src="controles/Ctr_Usuario.ascx" tagname="Ctr_Usuario" tagprefix="uc3" }
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+	<title>@{ Response.Write(_Str_TituloPantalla);}
+</title>
+	
+	<link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+
+
+    <script language="javascript">
+        function clientActiveTabChanged(sender, args) {
+            if (sender.get_activeTabIndex() == 1 || sender.get_activeTabIndex() == 2) {
+                sender.set_activeTabIndex(0);
+            }
+
+        }
+        
+        function _Mtd_Onload() {
+            document.getElementById('progressBackgroundFilter1').style.display = "block";
+            document.getElementById('progressBackgroundFilter2').style.display = "block";
+            //document.getElementById('progressBackgroundFilter3').style.display = "block";
+        }
+        
+        function _Mtd_AllProveedor(_Str_ClientID,_Str_Proveedor,_Str_Grupo,_Str_Subgrupo,_Str_Producto) {
+            if (document.getElementById(_Str_ClientID).checked) {
+                document.getElementById(_Str_Proveedor).selectedIndex = 0;
+                document.getElementById(_Str_Grupo).selectedIndex = 0;
+                document.getElementById(_Str_Subgrupo).selectedIndex = 0;
+                document.getElementById(_Str_Producto).value = "";
+            }
+        }
+        function _Mtd_AllGrupo(_Str_ClientID, _Str_Proveedor, _Str_Grupo, _Str_Subgrupo, _Str_Producto) {
+            if (document.getElementById(_Str_ClientID).checked) {
+                document.getElementById(_Str_Grupo).selectedIndex = 0;
+                document.getElementById(_Str_Subgrupo).selectedIndex = 0;
+                document.getElementById(_Str_Producto).value = "";
+            }
+        }
+        function _Mtd_AllSubGrupo(_Str_ClientID, _Str_Proveedor, _Str_Grupo, _Str_Subgrupo, _Str_Producto) {
+            if (document.getElementById(_Str_ClientID).checked) {
+                document.getElementById(_Str_Subgrupo).selectedIndex = 0;
+                document.getElementById(_Str_Producto).value = "";
+            }
+        }
+        function _Mtd_AllProductos(_Str_ClientID, _Str_Proveedor, _Str_Grupo, _Str_Subgrupo, _Str_Producto) {
+            if (document.getElementById(_Str_ClientID).checked) {
+                document.getElementById(_Str_Producto).value = "";
+            }
+        }
+    </script>
+
+    <style type="text/css">
+        .style3
+        {
+            font-size: 10px;
+        }
+    </style>
+
+</head>
+<body topmargin="0" onload="_Mtd_Onload();">
+    <form id="form1" runat="server">
+    <center>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"
+            EnableScriptLocalization="False">
+        </asp:ScriptManager>
+        <table style="width: 780px;" cellpadding="0" cellspacing="0">
+            <tr>
+                <td align="center">
+                    <uc1:Menu ID="Menu1" runat="server" />
+                    </td>
+            </tr>
+            <tr>
+                <td align="left" bgcolor="#BBD4F8" style="border: 1px solid #3b619c">
+                    <font face="Verdana" size="1"><strong><span>
+                        <table width="100%">
+                            <tr>
+                                <td width="5">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton1" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                </td>
+                                <td width="45">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:UpdatePanel ID="_UP_MenuPrincipal" runat="server" 
+                                        UpdateMode="Conditional">
+                                            <ContentTemplate>
+                                                <asp:ImageButton ID="_Img_Nuevo" runat="server" ImageUrl="image/new.gif" CausesValidation="False"
+                                                    OnClick="_Img_Nuevo_Click" />
+                                                <asp:ImageButton ID="_Img_Guardar" runat="server" ImageUrl="image/save.gif" OnClick="_Img_Guardar_Click"
+                                                    ValidationGroup="Guardar" />
+                                                <ajaxToolkit:ConfirmButtonExtender ID="_Img_Guardar_ConfirmButtonExtender" runat="server"
+                                                    ConfirmText="¿Desea guardar el registro?" Enabled="True" TargetControlID="_Img_Guardar">
+                                                </ajaxToolkit:ConfirmButtonExtender>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </span></strong></font>
+                                </td>
+                                <td width="10%">
+                                    <font face="Verdana" size="1"><strong><span>
+                                        <asp:ImageButton Style="cursor: default" ID="ImageButton6" runat="server" ImageUrl="image/separator.gif" />
+                                    </span></strong></font>
+                                    <uc2:CloseSession ID="CloseSession2" runat="server" />
+                                </td>
+                                <td style="text-align: right">
+                                    <uc3:Ctr_Usuario ID="Ctr_Usuario1" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                    </span></strong></font>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#666666">
+                    <asp:Label ID="_Lbl_TituloReporte" runat="server" Text="Título del reporte" Font-Bold="True"
+                        Font-Names="Verdana" Font-Size="8pt" ForeColor="White"></asp:Label>
+                </td>
+            </tr>
+        </table>
+        <table width="780px" bgcolor="white">
+            <tr>
+                <td align="left">
+                    <br />
+                    <asp:UpdatePanel ID="_UP_TabContainer" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <ajaxToolkit:TabContainer Width="100%" ID="TabContainer1" CssClass="ajax__tab_yuitabview-theme"
+                                runat="server" ActiveTabIndex="0" EnableTheming="True" OnClientActiveTabChanged="clientActiveTabChanged"
+                                Font-Names="Verdana" Font-Size="8pt" AutoPostBack="False">
+                                <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Consulta">
+                                    <HeaderTemplate>
+                                        Consulta
+                                    </HeaderTemplate>
+                                    <ContentTemplate>
+                                        <table width="100%">
+                                            <tr>
+                                                <td>
+                                                    <asp:UpdatePanel ID="_UP_Param" runat="server" UpdateMode="Conditional">
+                                                        <ContentTemplate>
+                                                            <table style="font-family: Verdana; font-size: 8pt; font-weight: bold;" width="100%">
+                                                                <tr>
+                                                                    <td align="left" width="100">
+                                                                        <asp:Label ID="_Lbl_Compania" runat="server" Text="Compañia :" Font-Names="Verdana"
+                                                                            Font-Size="10px"></asp:Label>
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <asp:DropDownList ID="_Ddl_Compania" runat="server" AutoCallBack="True" Font-Names="Verdana"
+                                                                            Font-Size="7pt" Width="390px" AutoPostBack="True" 
+                                                                            onselectedindexchanged="_Ddl_Compania_SelectedIndexChanged">
+                                                                        </asp:DropDownList>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" class="style3" width="100">
+                                                                        Proveedor:
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <asp:DropDownList ID="_Ddl_Proveedor" runat="server" AutoCallBack="True" AutoPostBack="True"
+                                                                            Enabled="False" Font-Names="Verdana" Font-Size="7pt" Width="390px" 
+                                                                            onselectedindexchanged="_Ddl_Proveedor_SelectedIndexChanged">
+                                                                        </asp:DropDownList>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" class="style3" width="100">
+                                                                        Grupo:
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <asp:DropDownList ID="_Ddl_Grupo" runat="server" AutoCallBack="True" AutoPostBack="True"
+                                                                            Enabled="False" Font-Names="Verdana" Font-Size="7pt" Width="390px" 
+                                                                            onselectedindexchanged="_Ddl_Grupo_SelectedIndexChanged">
+                                                                        </asp:DropDownList>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" class="style3" width="100">
+                                                                        Subgrupo:
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <asp:DropDownList ID="_Ddl_Subgrupo" runat="server" AutoCallBack="True" AutoPostBack="True"
+                                                                            Enabled="False" Font-Names="Verdana" Font-Size="7pt" Width="390px" 
+                                                                            onselectedindexchanged="_Ddl_Subgrupo_SelectedIndexChanged">
+                                                                        </asp:DropDownList>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" class="style3" width="100">
+                                                                        Producto:
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <asp:TextBox ID="_Txt_BuscarProd" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                                            BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Height="16px" 
+                                                                            Width="385px" ReadOnly="True"></asp:TextBox>
+                                                                        &nbsp;<asp:Button ID="_Btn_BuscarProd" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                                                            BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="..." 
+                                                                            onclick="_Btn_BuscarProd_Click" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" colspan="2" style="text-align: center; padding-top: 15px;">
+                                                                        <asp:Button ID="_Btn_Consultar" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                                                            BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="Consultar" 
+                                                                            onclick="_Btn_Consultar_Click" />
+                                                                        <br />
+                                                                        <br />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
+                                                    <asp:Panel runat="server" ID="_Pnl_GridPrincipal" Style="background-color: #FFFFFF;
+                                                        border: solid 1px Gray; color: Black; text-align: center;">
+                                                        <asp:UpdatePanel ID="_UP_GridPrincipal" runat="server" UpdateMode=Conditional>
+                                                            <ContentTemplate>
+                                                                <table width="100%">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table width="100%">
+                                                                                <tr valign="top">
+                                                                                    <td style="text-align: left; font-family: verdana; font-size: 8pt;" valign="top">
+                                                                                        <asp:GridView ID="_Dtg_Principal" runat="server" AllowPaging="True" CellPadding="4"
+                                                                                            ForeColor="#333333" GridLines="None" Style="text-align: left" Width="100%" 
+                                                                                            AutoGenerateColumns="False" 
+                                                                                            onpageindexchanged="_Dtg_Principal_PageIndexChanged" 
+                                                                                            onpageindexchanging="_Dtg_Principal_PageIndexChanging" 
+                                                                                            onrowdeleted="_Dtg_Principal_RowDeleted" 
+                                                                                            onrowdeleting="_Dtg_Principal_RowDeleting">
+                                                                                            <AlternatingRowStyle BackColor="White" />
+                                                                                            <Columns>
+                                                                                                <asp:TemplateField ShowHeader="False">
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete"
+                                                                                                            Text=""><img src="logos/papelera.gif" border='0'/></asp:LinkButton>
+                                                                                                        <ajaxToolkit:ConfirmButtonExtender ID="LinkButton1_ConfirmButtonExtender" runat="server"
+                                                                                                            ConfirmText="¿Desea eliminar el registro seleccionado?" Enabled="True" TargetControlID="LinkButton1">
+                                                                                                        </ajaxToolkit:ConfirmButtonExtender>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+                                                                                                <asp:BoundField DataField="cnamecomp" HeaderText="Compañia" />
+                                                                                                <asp:BoundField DataField="cproducto" HeaderText="Producto" />
+                                                                                                <asp:BoundField DataField="cnamefc" HeaderText="Descripción" />
+                                                                                                <asp:BoundField DataField="clistprecio1" HeaderText="Lista 1" />
+                                                                                                <asp:BoundField DataField="clistprecio2" HeaderText="Lista 2" />
+                                                                                                <asp:BoundField DataField="clistprecio3" HeaderText="Lista 3" />
+                                                                                                <asp:BoundField DataField="clistprecio4" HeaderText="Lista 4" />
+                                                                                                <asp:BoundField DataField="clistprecio5" HeaderText="Lista 5" />
+                                                                                                <asp:BoundField DataField="clistprecio6" HeaderText="Lista 6" />
+                                                                                                <asp:TemplateField Visible=false>
+                                                                                                    <EditItemTemplate>
+                                                                                                        <asp:TextBox ID="TextBox1" runat="server" Text='@{ # Bind("CCOMPANY")}
+'></asp:TextBox>
+                                                                                                    </EditItemTemplate>
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:Label ID="Label1" runat="server" Text='@{ # Bind("CCOMPANY")}
+'></asp:Label>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+                                                                                            </Columns>
+                                                                                            <EditRowStyle BackColor="#2461BF" />
+                                                                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                                                            <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" Font-Names="Verdana"
+                                                                                                Font-Size="7pt" ForeColor="Black" />
+                                                                                            <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" ForeColor="White"
+                                                                                                HorizontalAlign="Center" />
+                                                                                            <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                                                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                                                        </asp:GridView>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </ContentTemplate>
+                                                        </asp:UpdatePanel>
+                                                    </asp:Panel>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </ajaxToolkit:TabPanel>
+                                <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Detalles" TabIndex="1">
+                                    <HeaderTemplate>
+                                        Detalles
+                                    </HeaderTemplate>
+                                    <ContentTemplate>
+                                        <table width="100%">
+                                            <tr>
+                                                <td>
+                                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode=Conditional>
+                                                        <ContentTemplate>
+                                                            <table style="font-family: Verdana; font-size: 8pt; font-weight: bold;" width="100%">
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <asp:UpdatePanel ID="_Upd_Compania" runat="server" UpdateMode="Conditional">
+                                                                            <ContentTemplate>
+                                                                                <table width="100%">
+                                                                                    <tr>
+                                                                                        <td width="100">
+                                                                                            <asp:Label ID="Label1" runat="server" CssClass="style3" Font-Names="Verdana" 
+                                                                                                Font-Size="10px" Text="Compañia :"></asp:Label>
+                                                                                        </td>
+                                                                                        <td style="width:392px">
+                                                                                            <asp:DropDownList ID="_Ddl_CompaniaDet" runat="server" AutoCallBack="True" 
+                                                                                                AutoPostBack="True" Font-Names="Verdana" Font-Size="7pt" 
+                                                                                                OnSelectedIndexChanged="_Ddl_CompaniaDet_SelectedIndexChanged" Width="390px">
+                                                                                            </asp:DropDownList>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            &nbsp;</td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </ContentTemplate>
+                                                                        </asp:UpdatePanel>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <asp:UpdatePanel ID="_Upd_Proveedor" runat="server" UpdateMode="Conditional">
+                                                                            <ContentTemplate>
+                                                                                <table width="100%">
+                                                                                    <tr>
+                                                                                        <td width="100" class="style3">
+                                                                                            Proveedor:
+                                                                                        </td>
+                                                                                        <td style="width:392px">
+                                                                                            <asp:DropDownList ID="_Ddl_ProveedorDet" runat="server" AutoCallBack="True" 
+                                                                                                AutoPostBack="True" Enabled="False" Font-Names="Verdana" Font-Size="7pt" 
+                                                                                                Width="390px" 
+                                                                                                onselectedindexchanged="_Ddl_ProveedorDet_SelectedIndexChanged">
+                                                                                            </asp:DropDownList>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <asp:CheckBox ID="_Chk_AllProveedor" runat="server" 
+                                                                                                Text="Todos los proveedores" Font-Size="10px" />
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </ContentTemplate>
+                                                                        </asp:UpdatePanel>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <asp:UpdatePanel ID="_Upd_Grupo" runat="server" UpdateMode="Conditional">
+                                                                            <ContentTemplate>
+                                                                                <table width="100%">
+                                                                                    <tr>
+                                                                                        <td width="100" style="font-size: 10px">
+                                                                                            Grupo:</td>
+                                                                                        <td style="width:392px">
+                                                                                            <asp:DropDownList ID="_Ddl_GrupoDet" runat="server" AutoCallBack="True" 
+                                                                                                AutoPostBack="True" Enabled="False" Font-Names="Verdana" Font-Size="7pt" 
+                                                                                                Width="390px" onselectedindexchanged="_Ddl_GrupoDet_SelectedIndexChanged">
+                                                                                            </asp:DropDownList>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <asp:CheckBox ID="_Chk_AllGrupo" runat="server" Text="Todos los grupos" 
+                                                                                                Font-Names="Verdana" Font-Size="10px" />
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </ContentTemplate>
+                                                                        </asp:UpdatePanel>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <asp:UpdatePanel ID="_Upd_Subgrupo" runat="server" UpdateMode="Conditional">
+                                                                            <ContentTemplate>
+                                                                                <table width="100%">
+                                                                                    <tr>
+                                                                                        <td width="100" class="style3">
+                                                                                            Subgrupo:</td>
+                                                                                        <td style="width:392px">
+                                                                                            <asp:DropDownList ID="_Ddl_SubgrupoDet" runat="server" AutoCallBack="True" 
+                                                                                                Enabled="False" Font-Names="Verdana" Font-Size="7pt" 
+                                                                                                Width="390px" AutoPostBack="True" onselectedindexchanged="_Ddl_SubgrupoDet_SelectedIndexChanged" 
+                                                                                                >
+                                                                                            </asp:DropDownList>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <asp:CheckBox ID="_Chk_AllSubgrupo" runat="server" Text="Todos los subgrupos" 
+                                                                                                Font-Names="Verdana" Font-Size="10px" />
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </ContentTemplate>
+                                                                        </asp:UpdatePanel>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <asp:UpdatePanel ID="_Upd_Producto" runat="server" UpdateMode="Conditional">
+                                                                            <ContentTemplate>
+                                                                                <table width="100%">
+                                                                                    <tr>
+                                                                                        <td width="100" class="style3">Producto:</td>
+                                                                                        <td style="width:392px">
+                                                                                            <asp:TextBox ID="_Txt_ProductoDet" runat="server" BorderColor="#000001" 
+                                                                                                BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                                                                                Width="248px" Enabled="False"></asp:TextBox>
+                                                                                            &nbsp;<asp:Button ID="_Btn_BuscarProducto" runat="server" BorderColor="Black" 
+                                                                                                BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                                                                                Text="..." onclick="Button2_Click" style="width: 24px" />
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <asp:CheckBox ID="_Chk_AllProductos" runat="server" 
+                                                                                                Text="Todos los productos" Font-Names="Verdana" Font-Size="10px" />
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </ContentTemplate>
+                                                                        </asp:UpdatePanel>
+                                                                    </td>
+                                                                </tr>                                                                
+                                                                <tr>
+                                                                    <td align="left" class="style3">
+                                                                        <asp:UpdatePanel ID="_Upd_ListadoPrecioDet" runat="server" UpdateMode="Conditional">
+                                                                            <ContentTemplate>
+                                                                                <table style="width: 100%;">
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            Lista de Precio 1<br />
+                                                                                            <asp:TextBox ID="_Txt_Lprecio1" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="50px"></asp:TextBox>
+                                                                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_Lprecio1_MaskedEditExtender" runat="server"
+                                                                                                CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                                                                CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                                                                CultureTimePlaceholder="" Enabled="True" Mask="99.99" MaskType="Number" TargetControlID="_Txt_Lprecio1">
+                                                                                            </ajaxToolkit:MaskedEditExtender>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            Lista de Precio 2<br />
+                                                                                            <asp:TextBox ID="_Txt_Lprecio2" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="50px"></asp:TextBox>
+                                                                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_Lprecio2_MaskedEditExtender" runat="server"
+                                                                                                CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                                                                CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                                                                CultureTimePlaceholder="" Enabled="True" Mask="99.99" 
+                                                                                                TargetControlID="_Txt_Lprecio2" MaskType="Number">
+                                                                                            </ajaxToolkit:MaskedEditExtender>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            Lista de Precio 3<br />
+                                                                                            <asp:TextBox ID="_Txt_Lprecio3" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="50px"></asp:TextBox>
+                                                                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_Lprecio3_MaskedEditExtender" runat="server"
+                                                                                                CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                                                                CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                                                                CultureTimePlaceholder="" Enabled="True" Mask="99.99" 
+                                                                                                TargetControlID="_Txt_Lprecio3" MaskType="Number">
+                                                                                            </ajaxToolkit:MaskedEditExtender>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            Lista de Precio 4<br />
+                                                                                            <asp:TextBox ID="_Txt_Lprecio4" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Height="16px" Width="50px"></asp:TextBox>
+                                                                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_Lprecio4_MaskedEditExtender" runat="server"
+                                                                                                CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                                                                CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                                                                CultureTimePlaceholder="" Enabled="True" Mask="99.99" 
+                                                                                                TargetControlID="_Txt_Lprecio4" MaskType="Number">
+                                                                                            </ajaxToolkit:MaskedEditExtender>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            Lista de Precio 5<br />
+                                                                                            <asp:TextBox ID="_Txt_Lprecio5" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="50px"></asp:TextBox>
+                                                                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_Lprecio5_MaskedEditExtender" runat="server"
+                                                                                                CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                                                                CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                                                                CultureTimePlaceholder="" Enabled="True" Mask="99.99" 
+                                                                                                TargetControlID="_Txt_Lprecio5" MaskType="Number">
+                                                                                            </ajaxToolkit:MaskedEditExtender>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            Lista de Precio 6<br />
+                                                                                            <asp:TextBox ID="_Txt_Lprecio6" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                                                                                BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="50px"></asp:TextBox>
+                                                                                            <ajaxToolkit:MaskedEditExtender ID="_Txt_Lprecio6_MaskedEditExtender" runat="server"
+                                                                                                CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat=""
+                                                                                                CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder=""
+                                                                                                CultureTimePlaceholder="" Enabled="True" Mask="99.99" 
+                                                                                                TargetControlID="_Txt_Lprecio6" MaskType="Number">
+                                                                                            </ajaxToolkit:MaskedEditExtender>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </ContentTemplate>
+                                                                        </asp:UpdatePanel>                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" style="text-align: center">
+                                                                        <asp:Button ID="_Btn_Guardar" runat="server" BorderColor="Black" 
+                                                                            BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                                                            Text="Agregar" onclick="_Btn_Guardar_Click" />
+                                                                        <br />
+                                                                        <br />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
+                                                    <asp:Panel runat="server" ID="Panel2" Style="background-color: #FFFFFF; border: solid 1px Gray;
+                                                        color: Black; text-align: center;">
+                                                        <asp:UpdatePanel ID="_Upd_GridDet" runat="server" UpdateMode=Conditional>
+                                                            <ContentTemplate>
+                                                                <table width="100%">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table width="100%">
+                                                                                <tr valign="top">
+                                                                                    <td style="text-align: left; font-family: verdana; font-size: 8pt;" valign="top">
+                                                                                        <asp:GridView ID="_Dtg_GridDetalle" runat="server" AllowPaging="True" CellPadding="4"
+                                                                                            ForeColor="#333333" GridLines="None" Style="text-align: left" Width="100%" 
+                                                                                            AutoGenerateColumns="False" 
+                                                                                            onpageindexchanging="_Dtg_GridDetalle_PageIndexChanging" 
+                                                                                            onrowdeleting="_Dtg_GridDetalle_RowDeleting">
+                                                                                            <AlternatingRowStyle BackColor="White" />
+                                                                                            <Columns>
+                                                                                                <asp:TemplateField ShowHeader="False">
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete"
+                                                                                                            Text=""><img src="logos/papelera.gif" border='0'/></asp:LinkButton>
+                                                                                                        <ajaxToolkit:ConfirmButtonExtender ID="LinkButton1_ConfirmButtonExtender" runat="server"
+                                                                                                            ConfirmText="¿Desea eliminar el registro seleccionado?" Enabled="True" TargetControlID="LinkButton1">
+                                                                                                        </ajaxToolkit:ConfirmButtonExtender>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+                                                                                                <asp:BoundField DataField="cproducto" HeaderText="Producto" />
+                                                                                                <asp:BoundField DataField="cnamefc" HeaderText="Descripción" />
+                                                                                                <asp:BoundField DataField="clista1" HeaderText="Lista 1" />
+                                                                                                <asp:BoundField DataField="clista2" HeaderText="Lista 2" />
+                                                                                                <asp:BoundField DataField="clista3" HeaderText="Lista 3" />
+                                                                                                <asp:BoundField DataField="clista4" HeaderText="Lista 4" />
+                                                                                                <asp:BoundField DataField="clista5" HeaderText="Lista 5" />
+                                                                                                <asp:BoundField DataField="clista6" HeaderText="Lista 6" />
+                                                                                            </Columns>
+                                                                                            <EditRowStyle BackColor="#2461BF" />
+                                                                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                                                            <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" Font-Names="Verdana"
+                                                                                                Font-Size="7pt" ForeColor="Black" />
+                                                                                            <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" ForeColor="White"
+                                                                                                HorizontalAlign="Center" />
+                                                                                            <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                                                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                                                        </asp:GridView>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </ContentTemplate>
+                                                        </asp:UpdatePanel>
+                                                    </asp:Panel>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ContentTemplate>
+                                </ajaxToolkit:TabPanel>
+                            </ajaxToolkit:TabContainer>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="_Img_Nuevo" EventName="Click" />
+                            <asp:AsyncPostBackTrigger ControlID="_Img_Guardar" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
+        ShowSummary="False" ValidationGroup="Guardar" />
+    @*búsqueda ---------------------------------------------------------------------------------------------------------------------*@
+    <asp:Button runat="server" ID="_Btn_HiddeControl" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender runat="server" ID="programmaticModalPopup" BehaviorID="programmaticModalPopupBehavior"
+        TargetControlID="_Btn_HiddeControl" PopupControlID="_Pnl_PanelBusqueda" BackgroundCssClass="modalBackground"
+        DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_PanelBusqueda" Style="display: block;
+        padding: 10px" Width="700px">
+        @*bandera 2*@
+        <asp:Panel runat="Server" ID="Panel1" Style="background-color: #FFFFFF; border: solid 1px Gray;
+            color: Black; text-align: center;">
+            <asp:UpdatePanel ID="_UP_Busqueda" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr valign="top">
+                            <td style="text-align: left; font-family: verdana; font-size: 8pt;" valign="top">
+                                Buscar:<br>
+                                <asp:TextBox ID="_Txt_Buscar" runat="server" BorderColor="#000001" BorderStyle="Solid"
+                                    BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Width="248px" Height="16px"></asp:TextBox>
+                                &nbsp;<asp:Button ID="_Btn_BuscarPorCodigo" runat="server" Text="Código" BorderColor="Black"
+                                    BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                    onclick="_Btn_BuscarPorCodigo_Click" />
+                                &nbsp;<asp:Button ID="_Btn_BuscarPorDescripcion" runat="server" BorderColor="Black"
+                                    BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" 
+                                    Text="Descripción" onclick="_Btn_BuscarPorDescripcion_Click" />
+                                <asp:GridView ID="_Dtg_Busqueda" runat="server" AllowPaging="True" CellPadding="4"
+                                    ForeColor="#333333" GridLines="None" Style="text-align: left" Width="100%" 
+                                    onselectedindexchanged="_Dtg_Busqueda_SelectedIndexChanged" 
+                                    onpageindexchanged="_Dtg_Busqueda_PageIndexChanged" 
+                                    onpageindexchanging="_Dtg_Busqueda_PageIndexChanging">
+                                    <RowStyle BackColor="White" Font-Names="Verdana" Font-Size="7pt" />
+                                    <Columns>
+                                        <asp:TemplateField ShowHeader="False">
+                                            <ItemTemplate>
+                                                <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Select"
+                                                    Text="Seleccionar" />
+                                            </ItemTemplate>
+                                            <ControlStyle BorderColor="Black" BorderWidth="1px" Font-Names="Verdana" Font-Size="7pt" />
+                                            <ItemStyle Width="50px" />
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#2461BF" Font-Names="Verdana" Font-Size="7pt" ForeColor="White"
+                                        HorizontalAlign="Center" />
+                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                    <HeaderStyle BackColor="#BBD4F8" BorderColor="Black" Font-Bold="True" Font-Names="Verdana"
+                                        Font-Size="7pt" ForeColor="Black" />
+                                    <EditRowStyle BackColor="#2461BF" />
+                                    <AlternatingRowStyle BackColor="White" />
+                                </asp:GridView>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td>
+                                <asp:Button ID="_Btn_CerrarPn1" runat="server" BorderColor="Black" BorderStyle="Solid"
+                                    BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="Cerrar" 
+                                    Style="height: 19px" onclick="_Btn_CerrarPn1_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:Panel>
+    </asp:Panel>
+    @*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+    <asp:Button runat="server" ID="_Btn_MessageBoxHidden" Style="display: none" />
+    <ajaxToolkit:ModalPopupExtender runat="server" ID="_MPE_MessageBox" BehaviorID="_MPE_MessageBoxBehavior"
+        TargetControlID="_Btn_MessageBoxHidden" PopupControlID="_Pnl_MessageBoxPopup"
+        BackgroundCssClass="modalBackground" DropShadow="True" RepositionMode="RepositionOnWindowScroll">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel runat="server" CssClass="modalPopup" ID="_Pnl_MessageBoxPopup" Style="display: block;padding: 10px" Width="700px">
+        @*bandera 3*@
+        <asp:Panel runat="Server" ID="_Pnl_MessageBox" Style="background-color: #FFFFFF; border: solid 1px Gray; color: Black; text-align: center;">
+            <asp:UpdatePanel ID="_UP_MessageBox" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <table style="width: 100%;">
+                        <tr valign="top">
+                            <td>
+                                <asp:Label ID="_Lbl_MessageBox" runat="server" Font-Names="Verdana" Font-Size="8pt"></asp:Label><br /><br />
+                                <asp:Button ID="_Btn_MessageBoxAceptar" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" Text="Aceptar" Style="height: 19px" onclick="_Btn_MessageBoxAceptar_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:Panel>
+    </asp:Panel>
+    @*messagebox ----------------------------------------------------------------------------------------------------------------------*@
+    @*<div style="position: fixed; left: 40%; top: 40%; width: 200; height: 200; z-index: 100600; font-family: verdana; font-size: 9px; font-weight: bold; background-color: #FFFFFF;">
+		<asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="_UP_TabContainer" DisplayAfter="20">
+			<ProgressTemplate>
+				<div id='progressBackgroundFilter' Style="display: none"> bandera 1
+				</div>
+				<div id="processMessage" style="border: 1px solid #000000" style="left: 34%; top: 34%">
+					Procesando la solicitud, espere por favor..!!<br />
+					<br />
+					<img alt="Loading" src="images/animated_loading.gif" />
+				</div>
+			</ProgressTemplate>
+		</asp:UpdateProgress>
+	</div>*@
+    <div style="position: fixed; z-index: 100600; font-family: verdana; font-size: 9px;
+        font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="_UPR_Busqueda" runat="server" AssociatedUpdatePanelID="_UP_TabContainer"
+            DisplayAfter="20">
+            <ProgressTemplate>
+                <div id="progressBackgroundFilter1" style="display: none" class="progressBackgroundFilter">
+                </div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block" style="left: 34%;
+                    top: 34%">
+                    Procesando, por favor espere...<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+
+    <div style="position: fixed; z-index: 100600; font-family: verdana; font-size: 9px;
+        font-weight: bold; background-color: #FFFFFF;">
+        <asp:UpdateProgress ID="_UPR_MenuPrincipal" runat="server" AssociatedUpdatePanelID="_UP_MenuPrincipal"
+            DisplayAfter="20">
+            <ProgressTemplate>
+                <div id="progressBackgroundFilter2" style="display: none" class="progressBackgroundFilter"></div>
+                <div id="processMessage" style="border: 1px solid #000000; display: block" style="left: 34%; top: 34%">
+                    Procesando, por favor espere...<br />
+                    <br />
+                    <img alt="Loading" src="images/animated_loading.gif" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    @*búsqueda ---------------------------------------------------------------------------------------------------------------------*@
+    </form>
+</body>
+</html>
+

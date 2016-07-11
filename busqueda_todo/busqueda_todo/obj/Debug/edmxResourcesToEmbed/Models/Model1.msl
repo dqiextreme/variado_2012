@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="test_linqsql1ModelStoreContainer" CdmEntityContainer="test_linqsql1Entities">
+    <EntitySetMapping Name="Adjunto">
+      <EntityTypeMapping TypeName="test_linqsql1Model.Adjunto">
+        <MappingFragment StoreEntitySet="Adjunto">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departamento1">
+      <EntityTypeMapping TypeName="test_linqsql1Model.departamento1">
+        <MappingFragment StoreEntitySet="departamento1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="test_linqsql1Model.Employees">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="ccodsunagro" ColumnName="ccodsunagro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="into_sel">
+      <EntityTypeMapping TypeName="test_linqsql1Model.into_sel">
+        <MappingFragment StoreEntitySet="into_sel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="prueba" ColumnName="prueba" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="puesto1">
+      <EntityTypeMapping TypeName="test_linqsql1Model.puesto1">
+        <MappingFragment StoreEntitySet="puesto1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="test_linqsql1Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketArchivoAdjunto">
+      <EntityTypeMapping TypeName="test_linqsql1Model.TicketArchivoAdjunto">
+        <MappingFragment StoreEntitySet="TicketArchivoAdjunto">
+          <ScalarProperty Name="TicketArchivoAdjuntoId" ColumnName="TicketArchivoAdjuntoId" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user1">
+      <EntityTypeMapping TypeName="test_linqsql1Model.user1">
+        <MappingFragment StoreEntitySet="user1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="puesto" ColumnName="puesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="STEP_1" FunctionName="test_linqsql1Model.Store.STEP_1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="test_linqsql1Model.STEP_1_Result">
+          <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+          <ScalarProperty Name="COLUMN_NAME" ColumnName="COLUMN_NAME" />
+          <ScalarProperty Name="DATA_TYPE" ColumnName="DATA_TYPE" />
+          <ScalarProperty Name="ORDINAL_POSITION" ColumnName="ORDINAL_POSITION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STEP_COLUMN" FunctionName="test_linqsql1Model.Store.STEP_COLUMN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="test_linqsql1Model.STEP_COLUMN_Result">
+          <ScalarProperty Name="COLUMN_NAME" ColumnName="COLUMN_NAME" />
+          <ScalarProperty Name="DATA_TYPE" ColumnName="DATA_TYPE" />
+          <ScalarProperty Name="ORDINAL_POSITION" ColumnName="ORDINAL_POSITION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STEP_TABLE" FunctionName="test_linqsql1Model.Store.STEP_TABLE" />
+    <FunctionImportMapping FunctionImportName="STEP_search" FunctionName="test_linqsql1Model.Store.STEP_search" />
+  </EntityContainerMapping>
+</Mapping>

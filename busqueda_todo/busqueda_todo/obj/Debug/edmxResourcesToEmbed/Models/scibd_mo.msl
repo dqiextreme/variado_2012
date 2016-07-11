@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SCIBDModelStoreContainer" CdmEntityContainer="SCIBDEntities">
+    <EntitySetMapping Name="AccionPorProblema">
+      <EntityTypeMapping TypeName="SCIBDModel.AccionPorProblema">
+        <MappingFragment StoreEntitySet="AccionPorProblema">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="ProblemaId" ColumnName="ProblemaId" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaEstimadaSolucion" ColumnName="FechaEstimadaSolucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArchivoAccion">
+      <EntityTypeMapping TypeName="SCIBDModel.ArchivoAccion">
+        <MappingFragment StoreEntitySet="ArchivoAccion">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="ProblemaId" ColumnName="ProblemaId" />
+          <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArchivoAdjunto">
+      <EntityTypeMapping TypeName="SCIBDModel.ArchivoAdjunto">
+        <MappingFragment StoreEntitySet="ArchivoAdjunto">
+          <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArchivoCausa">
+      <EntityTypeMapping TypeName="SCIBDModel.ArchivoCausa">
+        <MappingFragment StoreEntitySet="ArchivoCausa">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="ProblemaId" ColumnName="ProblemaId" />
+          <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calendario">
+      <EntityTypeMapping TypeName="SCIBDModel.Calendario">
+        <MappingFragment StoreEntitySet="Calendario">
+          <ScalarProperty Name="CalendarioId" ColumnName="CalendarioId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalendarioDetalle">
+      <EntityTypeMapping TypeName="SCIBDModel.CalendarioDetalle">
+        <MappingFragment StoreEntitySet="CalendarioDetalle">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="CalendarioId" ColumnName="CalendarioId" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="HoraDesde" ColumnName="HoraDesde" />
+          <ScalarProperty Name="HoraHasta" ColumnName="HoraHasta" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cargo">
+      <EntityTypeMapping TypeName="SCIBDModel.Cargo">
+        <MappingFragment StoreEntitySet="Cargo">
+          <ScalarProperty Name="CargoId" ColumnName="CargoId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Abreviacion" ColumnName="Abreviacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="SCIBDModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoriaPorCliente">
+      <EntityTypeMapping TypeName="SCIBDModel.CategoriaPorCliente">
+        <MappingFragment StoreEntitySet="CategoriaPorCliente">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CausaPorProblema">
+      <EntityTypeMapping TypeName="SCIBDModel.CausaPorProblema">
+        <MappingFragment StoreEntitySet="CausaPorProblema">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="ProblemaId" ColumnName="ProblemaId" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="SCIBDModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleGrupoEmpresa">
+      <EntityTypeMapping TypeName="SCIBDModel.DetalleGrupoEmpresa">
+        <MappingFragment StoreEntitySet="DetalleGrupoEmpresa">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="GrupoEmpresaId" ColumnName="GrupoEmpresaId" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleValija">
+      <EntityTypeMapping TypeName="SCIBDModel.DetalleValija">
+        <MappingFragment StoreEntitySet="DetalleValija">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="ValijaId" ColumnName="ValijaId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Recibido" ColumnName="Recibido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Email">
+      <EntityTypeMapping TypeName="SCIBDModel.Email">
+        <MappingFragment StoreEntitySet="Email">
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="EmailDe" ColumnName="EmailDe" />
+          <ScalarProperty Name="EmailPara" ColumnName="EmailPara" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+          <ScalarProperty Name="Enviado" ColumnName="Enviado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormatoPorCliente">
+      <EntityTypeMapping TypeName="SCIBDModel.FormatoPorCliente">
+        <MappingFragment StoreEntitySet="FormatoPorCliente">
+          <ScalarProperty Name="FormatoId" ColumnName="FormatoId" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="SubcategoriaId" ColumnName="SubcategoriaId" />
+          <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+          <ScalarProperty Name="Nota" ColumnName="Nota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Frecuencia">
+      <EntityTypeMapping TypeName="SCIBDModel.Frecuencia">
+        <MappingFragment StoreEntitySet="Frecuencia">
+          <ScalarProperty Name="FrecuenciaId" ColumnName="FrecuenciaId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GrupoEmpresa">
+      <EntityTypeMapping TypeName="SCIBDModel.GrupoEmpresa">
+        <MappingFragment StoreEntitySet="GrupoEmpresa">
+          <ScalarProperty Name="GrupoEmpresaId" ColumnName="GrupoEmpresaId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Impacto">
+      <EntityTypeMapping TypeName="SCIBDModel.Impacto">
+        <MappingFragment StoreEntitySet="Impacto">
+          <ScalarProperty Name="ImpactoId" ColumnName="ImpactoId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mensaje">
+      <EntityTypeMapping TypeName="SCIBDModel.Mensaje">
+        <MappingFragment StoreEntitySet="Mensaje">
+          <ScalarProperty Name="MensajeId" ColumnName="MensajeId" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="Mensaje1" ColumnName="Mensaje" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="TipoTicket" ColumnName="TipoTicket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prioridad">
+      <EntityTypeMapping TypeName="SCIBDModel.Prioridad">
+        <MappingFragment StoreEntitySet="Prioridad">
+          <ScalarProperty Name="PrioridadId" ColumnName="PrioridadId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="ColorRgb" ColumnName="ColorRgb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrioridadPorSubcategoria">
+      <EntityTypeMapping TypeName="SCIBDModel.PrioridadPorSubcategoria">
+        <MappingFragment StoreEntitySet="PrioridadPorSubcategoria">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="SubcategoriaId" ColumnName="SubcategoriaId" />
+          <ScalarProperty Name="PrioridadId" ColumnName="PrioridadId" />
+          <ScalarProperty Name="TiempoMaximoAtencion" ColumnName="TiempoMaximoAtencion" />
+          <ScalarProperty Name="TiempoMaximoSolucion" ColumnName="TiempoMaximoSolucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Problema">
+      <EntityTypeMapping TypeName="SCIBDModel.Problema">
+        <MappingFragment StoreEntitySet="Problema">
+          <ScalarProperty Name="ProblemaId" ColumnName="ProblemaId" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="SubcategoriaId" ColumnName="SubcategoriaId" />
+          <ScalarProperty Name="ImpactoId" ColumnName="ImpactoId" />
+          <ScalarProperty Name="FrecuenciaId" ColumnName="FrecuenciaId" />
+          <ScalarProperty Name="PrioridadSubcategoriaId" ColumnName="PrioridadSubcategoriaId" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaEsperadaSolucion" ColumnName="FechaEsperadaSolucion" />
+          <ScalarProperty Name="Solucion" ColumnName="Solucion" />
+          <ScalarProperty Name="FechaRealSolucion" ColumnName="FechaRealSolucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecursoPorProblema">
+      <EntityTypeMapping TypeName="SCIBDModel.RecursoPorProblema">
+        <MappingFragment StoreEntitySet="RecursoPorProblema">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="ProblemaId" ColumnName="ProblemaId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servicio">
+      <EntityTypeMapping TypeName="SCIBDModel.Servicio">
+        <MappingFragment StoreEntitySet="Servicio">
+          <ScalarProperty Name="ServicioId" ColumnName="ServicioId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServicioPorCliente">
+      <EntityTypeMapping TypeName="SCIBDModel.ServicioPorCliente">
+        <MappingFragment StoreEntitySet="ServicioPorCliente">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="ServicioId" ColumnName="ServicioId" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServicioPorProblema">
+      <EntityTypeMapping TypeName="SCIBDModel.ServicioPorProblema">
+        <MappingFragment StoreEntitySet="ServicioPorProblema">
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+          <ScalarProperty Name="ProblemaId" ColumnName="ProblemaId" />
+          <ScalarProperty Name="ServicioPorClienteId" ColumnName="ServicioPorClienteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Solicitud">
+      <EntityTypeMapping TypeName="SCIBDModel.Solicitud">
+        <MappingFragment StoreEntitySet="Solicitud">
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Adjunto" ColumnName="Adjunto" />
+          <ScalarProperty Name="UsuarioAsignadoId" ColumnName="UsuarioAsignadoId" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaAsignado" ColumnName="FechaAsignado" />
+          <ScalarProperty Name="FechaAbierto" ColumnName="FechaAbierto" />
+          <ScalarProperty Name="FechaCerrado" ColumnName="FechaCerrado" />
+          <ScalarProperty Name="FechaPausado" ColumnName="FechaPausado" />
+          <ScalarProperty Name="MinutosPausado" ColumnName="MinutosPausado" />
+          <ScalarProperty Name="Explicacion" ColumnName="Explicacion" />
+          <ScalarProperty Name="PrioridadId" ColumnName="PrioridadId" />
+          <ScalarProperty Name="FechaCulminacion" ColumnName="FechaCulminacion" />
+          <ScalarProperty Name="UsuarioAsignadorId" ColumnName="UsuarioAsignadorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subcategoria">
+      <EntityTypeMapping TypeName="SCIBDModel.Subcategoria">
+        <MappingFragment StoreEntitySet="Subcategoria">
+          <ScalarProperty Name="SubcategoriaId" ColumnName="SubcategoriaId" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SCIBDModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket">
+      <EntityTypeMapping TypeName="SCIBDModel.Ticket">
+        <MappingFragment StoreEntitySet="Ticket">
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="SubcategoriaId" ColumnName="SubcategoriaId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="PrioridadSubcategoriaId" ColumnName="PrioridadSubcategoriaId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Adjunto" ColumnName="Adjunto" />
+          <ScalarProperty Name="UsuarioAsignadoId" ColumnName="UsuarioAsignadoId" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaAsignado" ColumnName="FechaAsignado" />
+          <ScalarProperty Name="FechaAbierto" ColumnName="FechaAbierto" />
+          <ScalarProperty Name="FechaCerrado" ColumnName="FechaCerrado" />
+          <ScalarProperty Name="FechaPausado" ColumnName="FechaPausado" />
+          <ScalarProperty Name="MinutosPausado" ColumnName="MinutosPausado" />
+          <ScalarProperty Name="Explicacion" ColumnName="Explicacion" />
+          <ScalarProperty Name="Edu" ColumnName="Edu" />
+          <ScalarProperty Name="UsuarioAsignadorId" ColumnName="UsuarioAsignadorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketArchivoAdjunto">
+      <EntityTypeMapping TypeName="SCIBDModel.TicketArchivoAdjunto">
+        <MappingFragment StoreEntitySet="TicketArchivoAdjunto">
+          <ScalarProperty Name="TicketArchivoAdjuntoId" ColumnName="TicketArchivoAdjuntoId" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transferencia">
+      <EntityTypeMapping TypeName="SCIBDModel.Transferencia">
+        <MappingFragment StoreEntitySet="Transferencia">
+          <ScalarProperty Name="TransferenciaId" ColumnName="TransferenciaId" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="UsuarioDeId" ColumnName="UsuarioDeId" />
+          <ScalarProperty Name="UsuarioParaId" ColumnName="UsuarioParaId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="TipoTicket" ColumnName="TipoTicket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="SCIBDModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="InformacionGeneral" ColumnName="InformacionGeneral" />
+          <ScalarProperty Name="AccesoDem" ColumnName="AccesoDem" />
+          <ScalarProperty Name="AccesoValija" ColumnName="AccesoValija" />
+          <ScalarProperty Name="UsuarioSD" ColumnName="UsuarioSD" />
+          <ScalarProperty Name="UltimoAcceso" ColumnName="UltimoAcceso" />
+          <ScalarProperty Name="CargoId" ColumnName="CargoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Valija">
+      <EntityTypeMapping TypeName="SCIBDModel.Valija">
+        <MappingFragment StoreEntitySet="Valija">
+          <ScalarProperty Name="ValijaId" ColumnName="ValijaId" />
+          <ScalarProperty Name="UsuarioIdDe" ColumnName="UsuarioIdDe" />
+          <ScalarProperty Name="UsuarioIdPara" ColumnName="UsuarioIdPara" />
+          <ScalarProperty Name="FechaEnviada" ColumnName="FechaEnviada" />
+          <ScalarProperty Name="FechaRecibida" ColumnName="FechaRecibida" />
+          <ScalarProperty Name="Recibida" ColumnName="Recibida" />
+          <ScalarProperty Name="Enviada" ColumnName="Enviada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Membership">
+      <EntityTypeMapping TypeName="SCIBDModel.webpages_Membership">
+        <MappingFragment StoreEntitySet="webpages_Membership">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+          <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+          <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_OAuthMembership">
+      <EntityTypeMapping TypeName="SCIBDModel.webpages_OAuthMembership">
+        <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Roles">
+      <EntityTypeMapping TypeName="SCIBDModel.webpages_Roles">
+        <MappingFragment StoreEntitySet="webpages_Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_UsersInRoles">
+      <EntityTypeMapping TypeName="SCIBDModel.webpages_UsersInRoles">
+        <MappingFragment StoreEntitySet="webpages_UsersInRoles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VwCalendario">
+      <EntityTypeMapping TypeName="SCIBDModel.VwCalendario">
+        <MappingFragment StoreEntitySet="VwCalendario">
+          <ScalarProperty Name="CalendarioId" ColumnName="CalendarioId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="HoraDesde" ColumnName="HoraDesde" />
+          <ScalarProperty Name="HoraHasta" ColumnName="HoraHasta" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="DetalleId" ColumnName="DetalleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VwExportacionInc">
+      <EntityTypeMapping TypeName="SCIBDModel.VwExportacionInc">
+        <MappingFragment StoreEntitySet="VwExportacionInc">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Administrador" ColumnName="Administrador" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="TiempoMaximoAtencion" ColumnName="TiempoMaximoAtencion" />
+          <ScalarProperty Name="MinsTransAten" ColumnName="MinsTransAten" />
+          <ScalarProperty Name="TiempoMaximoSolucion" ColumnName="TiempoMaximoSolucion" />
+          <ScalarProperty Name="MinsTransSol" ColumnName="MinsTransSol" />
+          <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+          <ScalarProperty Name="Explicacion" ColumnName="Explicacion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="MinutosPausado" ColumnName="MinutosPausado" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Subcategoria" ColumnName="Subcategoria" />
+          <ScalarProperty Name="AdministradorId" ColumnName="AdministradorId" />
+          <ScalarProperty Name="FechaCerrado" ColumnName="FechaCerrado" />
+          <ScalarProperty Name="PrioridadSubcategoriaId" ColumnName="PrioridadSubcategoriaId" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+          <ScalarProperty Name="SubcategoriaId" ColumnName="SubcategoriaId" />
+          <ScalarProperty Name="Edu" ColumnName="Edu" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Asignador" ColumnName="Asignador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VwExportacionSol">
+      <EntityTypeMapping TypeName="SCIBDModel.VwExportacionSol">
+        <MappingFragment StoreEntitySet="VwExportacionSol">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Administrador" ColumnName="Administrador" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="TiempoMaximoSolucion" ColumnName="TiempoMaximoSolucion" />
+          <ScalarProperty Name="MinsTransAten" ColumnName="MinsTransAten" />
+          <ScalarProperty Name="MinsTransSol" ColumnName="MinsTransSol" />
+          <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+          <ScalarProperty Name="Explicacion" ColumnName="Explicacion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="MinutosPausado" ColumnName="MinutosPausado" />
+          <ScalarProperty Name="AdministradorId" ColumnName="AdministradorId" />
+          <ScalarProperty Name="FechaCerrado" ColumnName="FechaCerrado" />
+          <ScalarProperty Name="PrioridadId" ColumnName="PrioridadId" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Asignador" ColumnName="Asignador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VwIncidencias">
+      <EntityTypeMapping TypeName="SCIBDModel.VwIncidencias">
+        <MappingFragment StoreEntitySet="VwIncidencias">
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+          <ScalarProperty Name="Administrador" ColumnName="Administrador" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="DiasTranscurridos" ColumnName="DiasTranscurridos" />
+          <ScalarProperty Name="FinAproximado" ColumnName="FinAproximado" />
+          <ScalarProperty Name="FechaAbierto" ColumnName="FechaAbierto" />
+          <ScalarProperty Name="FechaPausado" ColumnName="FechaPausado" />
+          <ScalarProperty Name="FechaCerrado" ColumnName="FechaCerrado" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+          <ScalarProperty Name="SubcategoriaId" ColumnName="SubcategoriaId" />
+          <ScalarProperty Name="AdministradorId" ColumnName="AdministradorId" />
+          <ScalarProperty Name="PrioridadSubcategoriaId" ColumnName="PrioridadSubcategoriaId" />
+          <ScalarProperty Name="PrioridadId" ColumnName="PrioridadId" />
+          <ScalarProperty Name="ColorRgb" ColumnName="ColorRgb" />
+          <ScalarProperty Name="Subcategoria" ColumnName="Subcategoria" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="SolicitanteId" ColumnName="SolicitanteId" />
+          <ScalarProperty Name="SolicitanteEmail" ColumnName="SolicitanteEmail" />
+          <ScalarProperty Name="AdministradorEmail" ColumnName="AdministradorEmail" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Explicacion" ColumnName="Explicacion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Edu" ColumnName="Edu" />
+          <ScalarProperty Name="Asignador" ColumnName="Asignador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VwProblemas">
+      <EntityTypeMapping TypeName="SCIBDModel.VwProblemas">
+        <MappingFragment StoreEntitySet="VwProblemas">
+          <ScalarProperty Name="ProblemaId" ColumnName="ProblemaId" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+          <ScalarProperty Name="SubcategoriaId" ColumnName="SubcategoriaId" />
+          <ScalarProperty Name="PrioridadSubcategoriaId" ColumnName="PrioridadSubcategoriaId" />
+          <ScalarProperty Name="FrecuenciaId" ColumnName="FrecuenciaId" />
+          <ScalarProperty Name="ImpactoId" ColumnName="ImpactoId" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Subcategoria" ColumnName="Subcategoria" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="ColorRgb" ColumnName="ColorRgb" />
+          <ScalarProperty Name="Frecuencia" ColumnName="Frecuencia" />
+          <ScalarProperty Name="Impacto" ColumnName="Impacto" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaEsperadaSolucion" ColumnName="FechaEsperadaSolucion" />
+          <ScalarProperty Name="FechaRealSolucion" ColumnName="FechaRealSolucion" />
+          <ScalarProperty Name="Solucion" ColumnName="Solucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VwRptValija">
+      <EntityTypeMapping TypeName="SCIBDModel.VwRptValija">
+        <MappingFragment StoreEntitySet="VwRptValija">
+          <ScalarProperty Name="ValijaId" ColumnName="ValijaId" />
+          <ScalarProperty Name="FechaEnviada" ColumnName="FechaEnviada" />
+          <ScalarProperty Name="UsuarioDescDe" ColumnName="UsuarioDescDe" />
+          <ScalarProperty Name="UsuarioDescPara" ColumnName="UsuarioDescPara" />
+          <ScalarProperty Name="ClienteDescDe" ColumnName="ClienteDescDe" />
+          <ScalarProperty Name="ClienteDescPara" ColumnName="ClienteDescPara" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VwSolicitudes">
+      <EntityTypeMapping TypeName="SCIBDModel.VwSolicitudes">
+        <MappingFragment StoreEntitySet="VwSolicitudes">
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+          <ScalarProperty Name="Administrador" ColumnName="Administrador" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="DiasTranscurridos" ColumnName="DiasTranscurridos" />
+          <ScalarProperty Name="FinAproximado" ColumnName="FinAproximado" />
+          <ScalarProperty Name="FechaAbierto" ColumnName="FechaAbierto" />
+          <ScalarProperty Name="FechaPausado" ColumnName="FechaPausado" />
+          <ScalarProperty Name="FechaCerrado" ColumnName="FechaCerrado" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="AdministradorId" ColumnName="AdministradorId" />
+          <ScalarProperty Name="PrioridadId" ColumnName="PrioridadId" />
+          <ScalarProperty Name="ColorRgb" ColumnName="ColorRgb" />
+          <ScalarProperty Name="SolicitanteId" ColumnName="SolicitanteId" />
+          <ScalarProperty Name="SolicitanteEmail" ColumnName="SolicitanteEmail" />
+          <ScalarProperty Name="AdministradorEmail" ColumnName="AdministradorEmail" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Explicacion" ColumnName="Explicacion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="FechaCulminacion" ColumnName="FechaCulminacion" />
+          <ScalarProperty Name="Asignador" ColumnName="Asignador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VwValija">
+      <EntityTypeMapping TypeName="SCIBDModel.VwValija">
+        <MappingFragment StoreEntitySet="VwValija">
+          <ScalarProperty Name="ValijaId" ColumnName="ValijaId" />
+          <ScalarProperty Name="UsuarioIdDe" ColumnName="UsuarioIdDe" />
+          <ScalarProperty Name="UsuarioIdPara" ColumnName="UsuarioIdPara" />
+          <ScalarProperty Name="ClienteIdDe" ColumnName="ClienteIdDe" />
+          <ScalarProperty Name="ClienteIdPara" ColumnName="ClienteIdPara" />
+          <ScalarProperty Name="UsuarioDescDe" ColumnName="UsuarioDescDe" />
+          <ScalarProperty Name="UsuarioDescPara" ColumnName="UsuarioDescPara" />
+          <ScalarProperty Name="ClienteDescDe" ColumnName="ClienteDescDe" />
+          <ScalarProperty Name="ClienteDescPara" ColumnName="ClienteDescPara" />
+          <ScalarProperty Name="FechaEnviada" ColumnName="FechaEnviada" />
+          <ScalarProperty Name="FechaRecibida" ColumnName="FechaRecibida" />
+          <ScalarProperty Name="Recibida" ColumnName="Recibida" />
+          <ScalarProperty Name="Enviada" ColumnName="Enviada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SCIBDModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SCIBDModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SCIBDModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SCIBDModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SCIBDModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SCIBDModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SCIBDModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SCIBDModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="SpMinutosTranscurridos" FunctionName="SCIBDModel.Store.SpMinutosTranscurridos" />
+  </EntityContainerMapping>
+</Mapping>
