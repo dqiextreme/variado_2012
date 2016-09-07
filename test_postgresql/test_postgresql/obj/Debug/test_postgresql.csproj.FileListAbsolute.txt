@@ -1,0 +1,11 @@
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\bin\Debug\test_postgresql.exe.config
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\obj\Debug\test_postgresql.csprojResolveAssemblyReference.cache
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\obj\Debug\test_postgresql.Form1.resources
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\obj\Debug\test_postgresql.Properties.Resources.resources
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\obj\Debug\test_postgresql.csproj.GenerateResource.Cache
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\bin\Debug\test_postgresql.exe
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\bin\Debug\test_postgresql.pdb
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\bin\Debug\Npgsql.dll
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\bin\Debug\Npgsql.xml
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\obj\Debug\test_postgresql.exe
+C:\Users\asoftware8\Documents\Visual Studio 2012\Projects\variado_2012\test_postgresql\test_postgresql\obj\Debug\test_postgresql.pdb
